@@ -26,9 +26,7 @@ const loginLimiter = cache.clients.redisClient
           execEvenly: true,
       });
 
-const loginLimiterQueue = new RateLimiterQueue(loginLimiter, {
-    maxQueueSize: 200,
-});
+const loginLimiterQueue = new RateLimiterQueue(loginLimiter);
 
 const token2Cookie = (token) =>
     cache.tryGet(`twitter:cookie:${token}`, async () => {
@@ -90,15 +88,17 @@ export const twitterGot = async (url, params) => {
             'x-csrf-token': jsonCookie.ct0,
         },
         dispatcher: dispatchers[token].agent,
+        onResponse: async ({ response }) => {
+            if (response.status === 403) {
+                logger.debug(`Delete twitter cookie for token ${token}`);
+                await cache.set(`twitter:cookie:${token}`, '', config.cache.contentExpire);
+            }
+        },
     });
 
     if (token) {
         logger.debug(`Reset twitter cookie for token ${token}`);
         await cache.set(`twitter:cookie:${token}`, JSON.stringify(dispatchers[token].jar.serializeSync()), config.cache.contentExpire);
-    }
-    if (response.status === 403) {
-        logger.debug(`Delete twitter cookie for token ${token}`);
-        await cache.set(`twitter:cookie:${token}`, '', config.cache.contentExpire);
     }
 
     return response._data;
