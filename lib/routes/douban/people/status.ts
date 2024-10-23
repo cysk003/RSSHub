@@ -95,9 +95,8 @@ function tryFixStatus(status) {
         }
     }
 
-    // 接口提供的URL最后有分享追踪器，要删去，否则路由无法工作
     if (status.sharing_url) {
-        status.sharing_url = status.sharing_url.split('?')[0];
+        status.sharing_url = status.sharing_url.split('&')[0];
     }
 
     if (!result.isFixSuccess) {
