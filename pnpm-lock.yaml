@@ -44,8 +44,8 @@ importers:
         specifier: 1.2.2
         version: 1.2.2(hono@4.12.8)(zod@4.3.6)
       '@jocmp/mercury-parser':
-        specifier: 3.0.4
-        version: 3.0.4
+        specifier: 3.0.5
+        version: 3.0.5
       '@notionhq/client':
         specifier: 5.13.0
         version: 5.13.0
@@ -227,8 +227,8 @@ importers:
         specifier: 3.13.0
         version: 3.13.0(patch_hash=e1697dd9dde771024b5d0669a3eff6237e75fbac78381a6127012b67593bb2b7)
       sanitize-html:
-        specifier: 2.17.1
-        version: 2.17.1
+        specifier: 2.17.2
+        version: 2.17.2
       simplecc-wasm:
         specifier: 1.1.1
         version: 1.1.1
@@ -372,8 +372,8 @@ importers:
         specifier: 8.57.1
         version: 8.57.1(eslint@10.0.3(jiti@2.6.1))(typescript@5.9.3)
       '@vercel/nft':
-        specifier: 1.3.2
-        version: 1.3.2(rollup@4.59.0)
+        specifier: 1.4.0
+        version: 1.4.0(rollup@4.59.0)
       '@vitest/coverage-v8':
         specifier: 4.0.9
         version: 4.0.9(vitest@4.0.9(@types/debug@4.1.12)(@types/node@25.5.0)(jiti@2.6.1)(jsdom@27.0.0(bufferutil@4.1.0)(utf-8-validate@5.0.10))(msw@2.4.3(typescript@5.9.3))(tsx@4.21.0)(yaml@2.8.2))
@@ -539,8 +539,8 @@ packages:
     engines: {node: ^20.19.0 || >=22.12.0}
     hasBin: true
 
-  '@babel/runtime-corejs2@7.28.6':
-    resolution: {integrity: sha512-pOHfxftxpetWUeBacCB3ZOPc/OO6hiT9MLv0qd9j474khiCcduwO8uuJI3N7vX3m8GJotTT6lxlA89TS/PylGg==}
+  '@babel/runtime-corejs2@7.29.2':
+    resolution: {integrity: sha512-+FqVkbqWaDleqS9fgzFypApKoPvmGFgk5X2lGXbL9wgz6tf88qt2HEUuEn9E3yBeLt7p8pIgODbJ5icVRALKhQ==}
     engines: {node: '>=6.9.0'}
 
   '@babel/types@7.29.0':
@@ -1326,8 +1326,8 @@ packages:
     resolution: {integrity: sha512-wgm9Ehl2jpeqP3zw/7mo3kRHFp5MEDhqAdwy1fTGkHAwnkGOVsgpvQhL8B5n1qlb01jV3n/bI0ZfZp5lWA1k4w==}
     engines: {node: '>=18.0.0'}
 
-  '@jocmp/mercury-parser@3.0.4':
-    resolution: {integrity: sha512-DbsDWjpbDKB0vP2tlAOl6DVHy9I+CIxaY5kK3YNzHhJuf2f29DXFQW4EJVZqsov2VPypqiS48O5bCbQxCYgWNQ==}
+  '@jocmp/mercury-parser@3.0.5':
+    resolution: {integrity: sha512-zynqBWu/QsD8kb/8bj9CyqyJ7Y7ohuuE565/pz46mDvz1ZDLbmCZfGfSf2NyrRquW84FEpbTDST30dfjxDcjyg==}
     engines: {node: '>=22'}
     hasBin: true
     bundledDependencies:
@@ -2788,8 +2788,8 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@vercel/nft@1.3.2':
-    resolution: {integrity: sha512-HC8venRc4Ya7vNeBsJneKHHMDDWpQie7VaKhAIOst3MKO+DES+Y/SbzSp8mFkD7OzwAE2HhHkeSuSmwS20mz3A==}
+  '@vercel/nft@1.4.0':
+    resolution: {integrity: sha512-rr7JVnI7YGjA4lngucrWjZ7eCOJZZQaDHB+5NRGOuNc+k4PU2Lb9PmYm8uBmW8qichF7WkR2RmwmhXHBhx6wzw==}
     engines: {node: '>=20'}
     hasBin: true
 
@@ -3551,8 +3551,9 @@ packages:
   electron-to-chromium@1.5.313:
     resolution: {integrity: sha512-QBMrTWEf00GXZmJyx2lbYD45jpI3TUFnNIzJ5BBc8piGUDwMPa1GV6HJWTZVvY/eiN3fSopl7NRbgGp9sZ9LTA==}
 
-  ellipsize@0.1.0:
-    resolution: {integrity: sha512-5gxbEjcb/Z2n6TTmXZx9wVi3N/DOzE7RXY3Xg9dakDuhX/izwumB9rGjeWUV6dTA0D0+juvo+JonZgNR9sgA5A==}
+  ellipsize@0.7.0:
+    resolution: {integrity: sha512-zxc0AigE4HMvuiqEk7//BjwCSFBXseJCuGNxfjo6wz1BoCSrJDj8tYnIgn/Z7lQ2T89ZypvGyJvPCCVf9uErBA==}
+    engines: {node: ^20.19.0 || >= 22.12.0}
 
   emoji-regex@10.6.0:
     resolution: {integrity: sha512-toUI84YS5YmxW219erniWD0CIVOo46xGKColeNQRgOzDorgBi1v4D71/OFzgD9GO2UGKIv1C3Sp8DAn0+j5w7A==}
@@ -5381,8 +5382,8 @@ packages:
     resolution: {integrity: sha512-b3rppTKm9T+PsVCBEOUR46GWI7fdOs00VKZ1+9c1EWDaDMvjQc6tUwuFyIprgGgTcWoVHSKrU8H31ZHA2e0RHA==}
     engines: {node: '>=10'}
 
-  sanitize-html@2.17.1:
-    resolution: {integrity: sha512-ehFCW+q1a4CSOWRAdX97BX/6/PDEkCqw7/0JXZAGQV57FQB3YOkTa/rrzHPeJ+Aghy4vZAFfWMYyfxIiB7F/gw==}
+  sanitize-html@2.17.2:
+    resolution: {integrity: sha512-EnffJUl46VE9uvZ0XeWzObHLurClLlT12gsOk1cHyP2Ol1P0BnBnsXmShlBmWVJM+dKieQI68R0tsPY5m/B+Jg==}
 
   sax@1.5.0:
     resolution: {integrity: sha512-21IYA3Q5cQf089Z6tgaUTr7lDAyzoTPx5HRtbhsME8Udispad8dC/+sziTNugOEx54ilvatQ9YCzl4KQLPcRHA==}
@@ -6370,7 +6371,7 @@ snapshots:
     dependencies:
       '@babel/types': 8.0.0-rc.2
 
-  '@babel/runtime-corejs2@7.28.6':
+  '@babel/runtime-corejs2@7.29.2':
     dependencies:
       core-js: 2.6.12
 
@@ -6959,13 +6960,13 @@ snapshots:
     dependencies:
       minipass: 7.1.3
 
-  '@jocmp/mercury-parser@3.0.4':
+  '@jocmp/mercury-parser@3.0.5':
     dependencies:
-      '@babel/runtime-corejs2': 7.28.6
+      '@babel/runtime-corejs2': 7.29.2
       cheerio: 1.2.0
       dayjs: 1.11.20
       difflib: https://codeload.github.com/postlight/difflib.js/tar.gz/32e8e38c7fcd935241b9baab71bb432fd9b166ed
-      ellipsize: 0.1.0
+      ellipsize: 0.7.0
       iconv-lite: 0.7.2
       postman-request: 2.88.1-postman.48
       string-direction: 0.1.2
@@ -8319,7 +8320,7 @@ snapshots:
   '@unrs/resolver-binding-win32-x64-msvc@1.11.1':
     optional: true
 
-  '@vercel/nft@1.3.2(rollup@4.59.0)':
+  '@vercel/nft@1.4.0(rollup@4.59.0)':
     dependencies:
       '@mapbox/node-pre-gyp': 2.0.3
       '@rollup/pluginutils': 5.3.0(rollup@4.59.0)
@@ -9036,7 +9037,7 @@ snapshots:
 
   electron-to-chromium@1.5.313: {}
 
-  ellipsize@0.1.0: {}
+  ellipsize@0.7.0: {}
 
   emoji-regex@10.6.0: {}
 
@@ -11336,11 +11337,11 @@ snapshots:
 
   safe-stable-stringify@2.5.0: {}
 
-  sanitize-html@2.17.1:
+  sanitize-html@2.17.2:
     dependencies:
       deepmerge: 4.3.1
       escape-string-regexp: 4.0.0
-      htmlparser2: 8.0.2
+      htmlparser2: 10.1.0
       is-plain-object: 5.0.0
       parse-srcset: 1.0.2
       postcss: 8.5.8
