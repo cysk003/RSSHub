@@ -3082,6 +3082,9 @@
   "/fishshell/": [
     "x2cf"
   ],
+  "/fjdaily/:date?": [
+    "DakoWang"
+  ],
   "/fjksbm/:category?": [
     "nczitzk"
   ],
@@ -4628,6 +4631,9 @@
   ],
   "/imop/tianshu": [
     "zhkgo"
+  ],
+  "/in-en/news/:type": [
+    "Harviewang"
   ],
   "/inceptionlabs/blog": [
     "zdenek-stursa"

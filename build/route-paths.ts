@@ -1003,6 +1003,7 @@ export type RoutePath =
   | `/firefox/release/:platform?`
   | `/fisher-spb/news`
   | `/fishshell/`
+  | `/fjdaily/:date?`
   | `/fjksbm/:category?`
   | `/flashcat/blog`
   | `/flyert/creditcard/:bank`
@@ -1514,6 +1515,7 @@ export type RoutePath =
   | `/imiker/ask/jinghua`
   | `/immich/cursed-knowledge`
   | `/imop/tianshu`
+  | `/in-en/news/:type`
   | `/inceptionlabs/blog`
   | `/indianexpress/section/:id{.+}?`
   | `/indiansinkuwait/latest`
