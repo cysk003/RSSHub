@@ -2129,6 +2129,7 @@ export type RoutePath =
   | `/nytimes/rss/:cat?`
   | `/obsidian/plugins`
   | `/obsidian/publish/:id`
+  | `/obsidian/themes`
   | `/oceanengine/index/:keyword/:channel?`
   | `/oct0pu5/`
   | `/odaily/:id?`
@@ -2524,6 +2525,7 @@ export type RoutePath =
   | `/seu/yjs`
   | `/seu/yzb/:type`
   | `/sfacg/novel/chapter/:id`
+  | `/shanghaimuseum/display/offline-exhibit/:type?`
   | `/shcstheatre/programs`
   | `/shiep/:type/:id?`
   | `/shisu/en/:section`
