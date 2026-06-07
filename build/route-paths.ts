@@ -1317,8 +1317,6 @@ export type RoutePath =
   | `/grist/series/:series`
   | `/grist/topic/:topic`
   | `/grubstreet/`
-  | `/grupoanimal/estados`
-  | `/grupoanimal/politica`
   | `/gs/developer/blog`
   | `/guancha/:category?`
   | `/guancha/headline`
