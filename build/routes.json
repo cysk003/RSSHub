@@ -47188,6 +47188,64 @@
     "url": "career.csu.edu.cn",
     "lang": "zh-CN"
   },
+  "csust": {
+    "routes": {
+      "/tggs": {
+        "path": "/tggs",
+        "categories": [
+          "university"
+        ],
+        "example": "/csust/tggs",
+        "features": {
+          "supportRadar": true
+        },
+        "radar": [
+          {
+            "source": [
+              "www.csust.edu.cn/tggs.htm",
+              "www.csust.edu.cn/"
+            ]
+          }
+        ],
+        "name": "通告公示",
+        "maintainers": [
+          "powerfullz"
+        ],
+        "url": "www.csust.edu.cn/tggs.htm",
+        "location": "tggs.ts",
+        "module": "() => import('@/routes/csust/tggs.ts')"
+      },
+      "/xkxs": {
+        "path": "/xkxs",
+        "categories": [
+          "university"
+        ],
+        "example": "/csust/xkxs",
+        "features": {
+          "supportRadar": true
+        },
+        "radar": [
+          {
+            "source": [
+              "www.csust.edu.cn/xkxs.htm",
+              "www.csust.edu.cn/"
+            ]
+          }
+        ],
+        "name": "学科学术",
+        "maintainers": [
+          "powerfullz"
+        ],
+        "url": "www.csust.edu.cn/xkxs.htm",
+        "location": "xkxs.ts",
+        "module": "() => import('@/routes/csust/xkxs.ts')"
+      }
+    },
+    "apiRoutes": {},
+    "name": "长沙理工大学",
+    "url": "www.csust.edu.cn",
+    "lang": "zh-CN"
+  },
   "ctbu": {
     "routes": {
       "/xxgg": {
@@ -119374,76 +119432,6 @@
       "programming"
     ],
     "lang": "en"
-  },
-  "csust": {
-    "routes": {
-      "/tggs": {
-        "path": "/tggs",
-        "categories": [
-          "university"
-        ],
-        "example": "/csust/tggs",
-        "parameters": {},
-        "features": {
-          "requireConfig": false,
-          "requirePuppeteer": false,
-          "antiCrawler": false,
-          "supportBT": false,
-          "supportPodcast": false,
-          "supportScihub": false
-        },
-        "radar": [
-          {
-            "source": [
-              "www.csust.edu.cn/tggs.htm",
-              "www.csust.edu.cn/"
-            ]
-          }
-        ],
-        "name": "通告公示",
-        "maintainers": [
-          "powerfullz"
-        ],
-        "url": "www.csust.edu.cn/tggs.htm",
-        "location": "tggs.ts",
-        "module": "() => import('@/routes/csust/tggs.ts')"
-      },
-      "/xkxs": {
-        "path": "/xkxs",
-        "categories": [
-          "university"
-        ],
-        "example": "/csust/xkxs",
-        "parameters": {},
-        "features": {
-          "requireConfig": false,
-          "requirePuppeteer": false,
-          "antiCrawler": false,
-          "supportBT": false,
-          "supportPodcast": false,
-          "supportScihub": false
-        },
-        "radar": [
-          {
-            "source": [
-              "www.csust.edu.cn/xkxs.htm",
-              "www.csust.edu.cn/"
-            ]
-          }
-        ],
-        "name": "学科学术",
-        "maintainers": [
-          "powerfullz"
-        ],
-        "url": "www.csust.edu.cn/xkxs.htm",
-        "location": "xkxs.ts",
-        "module": "() => import('@/routes/csust/xkxs.ts')"
-      }
-    },
-    "apiRoutes": {},
-    "name": "长沙理工大学",
-    "url": "www.csust.edu.cn",
-    "lang": "zh-CN"
   },
   "cw": {
     "routes": {
