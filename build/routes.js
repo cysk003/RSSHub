@@ -13045,6 +13045,139 @@ export default {
     "url": "eleduck.com",
     "lang": "zh-CN"
   },
+  "everia": {
+    "routes": {
+      "/": {
+        "path": "/",
+        "categories": [
+          "picture"
+        ],
+        "example": "/everia",
+        "parameters": {},
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false,
+          "nsfw": true
+        },
+        "radar": [
+          {
+            "source": [
+              "everia.club/"
+            ],
+            "target": ""
+          }
+        ],
+        "name": "Latest",
+        "maintainers": [
+          "KTachibanaM",
+          "AiraNadih"
+        ],
+        "location": "latest.ts",
+        "module": () => import('@/routes/everia/latest.ts')
+      },
+      "/search/:keyword": {
+        "path": "/search/:keyword",
+        "categories": [
+          "picture"
+        ],
+        "example": "/everia/search/日向坂46",
+        "parameters": {
+          "keyword": "Keyword"
+        },
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false,
+          "nsfw": true
+        },
+        "name": "Search",
+        "maintainers": [
+          "KTachibanaM",
+          "AiraNadih"
+        ],
+        "location": "search.ts",
+        "module": () => import('@/routes/everia/search.ts')
+      },
+      "/category/:category": {
+        "path": "/category/:category",
+        "categories": [
+          "picture"
+        ],
+        "example": "/everia/category/cosplay",
+        "parameters": {
+          "category": "Category of the image stream"
+        },
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false,
+          "nsfw": true
+        },
+        "radar": [
+          {
+            "source": [
+              "everia.club/category/:category"
+            ],
+            "target": "/category/:category"
+          }
+        ],
+        "name": "Images with category",
+        "maintainers": [
+          "KTachibanaM",
+          "AiraNadih"
+        ],
+        "location": "category.ts",
+        "module": () => import('@/routes/everia/category.ts')
+      },
+      "/tag/:tag": {
+        "path": "/tag/:tag",
+        "categories": [
+          "picture"
+        ],
+        "example": "/everia/tag/hinatazaka46-日向坂46",
+        "parameters": {
+          "tag": "Tag of the image stream"
+        },
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false,
+          "nsfw": true
+        },
+        "radar": [
+          {
+            "source": [
+              "everia.club/tag/:tag"
+            ],
+            "target": "/tag/:tag"
+          }
+        ],
+        "name": "Images with tag",
+        "maintainers": [
+          "KTachibanaM",
+          "AiraNadih"
+        ],
+        "location": "tag.ts",
+        "module": () => import('@/routes/everia/tag.ts')
+      }
+    },
+    "apiRoutes": {},
+    "name": "EVERIA.CLUB",
+    "url": "everia.club"
+  },
   "fantia": {
     "routes": {
       "/search/:type?/:caty?/:period?/:order?/:rating?/:keyword?": {
@@ -61081,139 +61214,6 @@ export default {
     "url": "www.eventernote.com",
     "lang": "ja"
   },
-  "everia": {
-    "routes": {
-      "/category/:category": {
-        "path": "/category/:category",
-        "categories": [
-          "picture"
-        ],
-        "example": "/everia/category/cosplay",
-        "parameters": {
-          "category": "Category of the image stream"
-        },
-        "features": {
-          "requireConfig": false,
-          "requirePuppeteer": false,
-          "antiCrawler": false,
-          "supportBT": false,
-          "supportPodcast": false,
-          "supportScihub": false,
-          "nsfw": true
-        },
-        "radar": [
-          {
-            "source": [
-              "everia.club/category/:category"
-            ],
-            "target": "/category/:category"
-          }
-        ],
-        "name": "Images with category",
-        "maintainers": [
-          "KTachibanaM",
-          "AiraNadih"
-        ],
-        "location": "category.ts",
-        "module": () => import('@/routes/everia/category.ts')
-      },
-      "/": {
-        "path": "/",
-        "categories": [
-          "picture"
-        ],
-        "example": "/everia",
-        "parameters": {},
-        "features": {
-          "requireConfig": false,
-          "requirePuppeteer": false,
-          "antiCrawler": false,
-          "supportBT": false,
-          "supportPodcast": false,
-          "supportScihub": false,
-          "nsfw": true
-        },
-        "radar": [
-          {
-            "source": [
-              "everia.club/"
-            ],
-            "target": ""
-          }
-        ],
-        "name": "Latest",
-        "maintainers": [
-          "KTachibanaM",
-          "AiraNadih"
-        ],
-        "location": "latest.ts",
-        "module": () => import('@/routes/everia/latest.ts')
-      },
-      "/search/:keyword": {
-        "path": "/search/:keyword",
-        "categories": [
-          "picture"
-        ],
-        "example": "/everia/search/日向坂46",
-        "parameters": {
-          "keyword": "Keyword"
-        },
-        "features": {
-          "requireConfig": false,
-          "requirePuppeteer": false,
-          "antiCrawler": false,
-          "supportBT": false,
-          "supportPodcast": false,
-          "supportScihub": false,
-          "nsfw": true
-        },
-        "name": "Search",
-        "maintainers": [
-          "KTachibanaM",
-          "AiraNadih"
-        ],
-        "location": "search.ts",
-        "module": () => import('@/routes/everia/search.ts')
-      },
-      "/tag/:tag": {
-        "path": "/tag/:tag",
-        "categories": [
-          "picture"
-        ],
-        "example": "/everia/tag/hinatazaka46-日向坂46",
-        "parameters": {
-          "tag": "Tag of the image stream"
-        },
-        "features": {
-          "requireConfig": false,
-          "requirePuppeteer": false,
-          "antiCrawler": false,
-          "supportBT": false,
-          "supportPodcast": false,
-          "supportScihub": false,
-          "nsfw": true
-        },
-        "radar": [
-          {
-            "source": [
-              "everia.club/tag/:tag"
-            ],
-            "target": "/tag/:tag"
-          }
-        ],
-        "name": "Images with tag",
-        "maintainers": [
-          "KTachibanaM",
-          "AiraNadih"
-        ],
-        "location": "tag.ts",
-        "module": () => import('@/routes/everia/tag.ts')
-      }
-    },
-    "apiRoutes": {},
-    "name": "EVERIA.CLUB",
-    "url": "everia.club"
-  },
   "expats": {
     "routes": {
       "/czech-news/:category?": {
@@ -85809,6 +85809,37 @@ export default {
       "new-media"
     ],
     "lang": "en"
+  },
+  "namoc": {
+    "routes": {
+      "/zhanlan": {
+        "path": "/zhanlan",
+        "categories": [
+          "travel"
+        ],
+        "example": "/namoc/zhanlan",
+        "name": "Exhibitions",
+        "maintainers": [
+          "magazian"
+        ],
+        "radar": [
+          {
+            "source": [
+              "www.namoc.cn/namoc/zhanlan/zl_list.shtml"
+            ],
+            "target": "/zhanlan"
+          }
+        ],
+        "location": "zhanlan.tsx",
+        "module": () => import('@/routes/namoc/zhanlan.tsx')
+      }
+    },
+    "apiRoutes": {},
+    "name": "National Art Museum of China",
+    "url": "www.namoc.cn",
+    "zh": {
+      "name": "中国美术馆"
+    }
   },
   "nankai": {
     "routes": {
