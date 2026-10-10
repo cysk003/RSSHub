@@ -198,6 +198,19 @@
       }
     ]
   },
+  "acea.auto": {
+    "_name": "ACEA",
+    "www": [
+      {
+        "title": "Publications",
+        "docs": "https://docs.rsshub.app/routes/finance",
+        "source": [
+          "/nav/"
+        ],
+        "target": "/acea/publications"
+      }
+    ]
+  },
   "alipan.com": {
     "_name": "阿里云盘",
     "www": [
@@ -379,6 +392,19 @@
           "/channel/:channel"
         ],
         "target": "/castbox/channel/:channel"
+      }
+    ]
+  },
+  "chaturbate.com": {
+    "_name": "Chaturbate",
+    ".": [
+      {
+        "title": "Live status",
+        "docs": "https://docs.rsshub.app/routes/live",
+        "source": [
+          "/:username"
+        ],
+        "target": "/chaturbate/live/:username"
       }
     ]
   },
@@ -4981,37 +5007,6 @@
           "/:community"
         ],
         "target": "/digg/community/:community"
-      }
-    ]
-  },
-  "douyin.com": {
-    "_name": "抖音直播",
-    ".": [
-      {
-        "title": "标签",
-        "docs": "https://docs.rsshub.app/routes/social-media",
-        "source": [
-          "/hashtag/:cid"
-        ],
-        "target": "/douyin/hashtag/:cid"
-      },
-      {
-        "title": "博主",
-        "docs": "https://docs.rsshub.app/routes/social-media",
-        "source": [
-          "/user/:uid"
-        ],
-        "target": "/douyin/user/:uid"
-      }
-    ],
-    "live": [
-      {
-        "title": "直播间开播",
-        "docs": "https://docs.rsshub.app/routes/live",
-        "source": [
-          "/:rid"
-        ],
-        "target": "/douyin/live/:rid"
       }
     ]
   },
@@ -10178,19 +10173,6 @@
       }
     ]
   },
-  "acea.auto": {
-    "_name": "ACEA",
-    "www": [
-      {
-        "title": "Publications",
-        "docs": "https://docs.rsshub.app/routes/finance",
-        "source": [
-          "/nav/"
-        ],
-        "target": "/acea/publications"
-      }
-    ]
-  },
   "acfun.cn": {
     "_name": "AcFun",
     "www": [
@@ -13845,14 +13827,14 @@
   },
   "bcg.com": {
     "_name": "Boston Consulting Group",
-    ".": [
+    "www": [
       {
-        "title": "Infrastructure insights",
+        "title": "Search",
         "docs": "https://docs.rsshub.app/routes/new-media",
         "source": [
-          "/industries/urban-planning/infrastructure"
+          "/search"
         ],
-        "target": "/bcg/infrastructure"
+        "target": "/bcg/search/:params?"
       }
     ]
   },
@@ -20797,44 +20779,34 @@
       }
     ]
   },
-  "douban.com": {
-    "_name": "豆瓣",
-    "movie": [
+  "douyin.com": {
+    "_name": "抖音直播",
+    ".": [
       {
-        "title": "豆瓣电影-即将上映",
+        "title": "标签",
         "docs": "https://docs.rsshub.app/routes/social-media",
         "source": [
-          "/coming"
+          "/hashtag/:cid"
         ],
-        "target": "/douban/movie/coming"
-      }
-    ],
-    "www": [
-      {
-        "title": "豆瓣榜单与集合",
-        "docs": "https://docs.rsshub.app/routes/social-media",
-        "source": [
-          "/subject_collection/:type"
-        ],
-        "target": "/douban/list/:type"
+        "target": "/douyin/hashtag/:cid"
       },
       {
-        "title": "豆瓣小组",
+        "title": "博主",
         "docs": "https://docs.rsshub.app/routes/social-media",
         "source": [
-          "/group/:groupid"
+          "/user/:uid"
         ],
-        "target": "/douban/group/:groupid"
+        "target": "/douyin/user/:uid"
       }
     ],
-    "book": [
+    "live": [
       {
-        "title": "豆瓣读书论坛",
-        "docs": "https://docs.rsshub.app/routes/social-media",
+        "title": "直播间开播",
+        "docs": "https://docs.rsshub.app/routes/live",
         "source": [
-          "/:id/discussion"
+          "/:rid"
         ],
-        "target": "/douban/:id/discussion"
+        "target": "/douyin/live/:rid/:showTime?"
       }
     ]
   },
@@ -22513,6 +22485,20 @@
           "/"
         ],
         "target": "/ftm/"
+      }
+    ]
+  },
+  "funresearch.cn": {
+    "_name": "泛研网",
+    "www": [
+      {
+        "title": "项目申报",
+        "docs": "https://docs.rsshub.app/routes/study",
+        "source": [
+          "/grant/index",
+          "/grant/search"
+        ],
+        "target": "/funresearch/grants"
       }
     ]
   },
@@ -41404,76 +41390,6 @@
       }
     ]
   },
-  "steamcommunity.com": {
-    "_name": "Steam",
-    ".": [
-      {
-        "title": "Community Hub",
-        "docs": "https://docs.rsshub.app/routes/game",
-        "source": [
-          "/app/:appid"
-        ],
-        "target": "/steam/appcommunityfeed/:appid"
-      },
-      {
-        "title": "News",
-        "docs": "https://docs.rsshub.app/routes/game",
-        "source": [
-          "/app/:appid",
-          "/app/:appid/allnews",
-          "/app/:appid/announcements",
-          "/app/:appid/news"
-        ],
-        "target": "/steam/news/:appid"
-      },
-      {
-        "title": "Sharefile Changelog",
-        "docs": "https://docs.rsshub.app/routes/game",
-        "source": [
-          "/sharedfiles/filedetails/changelog/:sharefileID"
-        ],
-        "target": "/steam/sharefile-changelog/:sharefileID"
-      },
-      {
-        "title": "Workshop Search Results",
-        "docs": "https://docs.rsshub.app/routes/game",
-        "source": [
-          "/app/:appid/workshop/"
-        ],
-        "target": "/steam/workshopsearch/:appid"
-      }
-    ]
-  },
-  "steampowered.com": {
-    "_name": "Steam",
-    "store": [
-      {
-        "title": "Community Hub",
-        "docs": "https://docs.rsshub.app/routes/game",
-        "source": [
-          "/app/:appid/*/"
-        ],
-        "target": "/steam/appcommunityfeed/:appid"
-      },
-      {
-        "title": "Latest Curator Reviews",
-        "docs": "https://docs.rsshub.app/routes/game",
-        "source": [
-          "/curator/:id"
-        ],
-        "target": "/steam/curator/:id"
-      },
-      {
-        "title": "Store Search",
-        "docs": "https://docs.rsshub.app/routes/game",
-        "source": [
-          "/",
-          "/search/:params"
-        ],
-        "target": "/steam/search/:params"
-      }
-    ]
-  },
   "stheadline.com": {
     "_name": "星島日報",
     "www": [
@@ -45101,15 +45017,6 @@
         "target": "/xueqiu/user_stock/:id"
       },
       {
-        "title": "组合最新调仓信息",
-        "docs": "https://docs.rsshub.app/routes/finance",
-        "source": [
-          "/P/:id",
-          "/p/:id"
-        ],
-        "target": "/xueqiu/snb/:id"
-      },
-      {
         "title": "用户收藏动态",
         "docs": "https://docs.rsshub.app/routes/finance",
         "source": [
@@ -45157,6 +45064,15 @@
           "/:id/column"
         ],
         "target": "/xueqiu/column/:id"
+      },
+      {
+        "title": "组合最新调仓信息",
+        "docs": "https://docs.rsshub.app/routes/finance",
+        "source": [
+          "/P/:id",
+          "/p/:id"
+        ],
+        "target": "/xueqiu/snb/:id"
       },
       {
         "title": "股票评论",
@@ -47393,6 +47309,55 @@
           "/home/:id"
         ],
         "target": "/dongqiudi/top_news/:id"
+      }
+    ]
+  },
+  "douban.com": {
+    "_name": "豆瓣",
+    "movie": [
+      {
+        "title": "豆瓣电影-即将上映",
+        "docs": "https://docs.rsshub.app/routes/social-media",
+        "source": [
+          "/coming"
+        ],
+        "target": "/douban/movie/coming"
+      }
+    ],
+    "www": [
+      {
+        "title": "豆瓣榜单与集合",
+        "docs": "https://docs.rsshub.app/routes/social-media",
+        "source": [
+          "/subject_collection/:type"
+        ],
+        "target": "/douban/list/:type"
+      },
+      {
+        "title": "小组帖子更新",
+        "docs": "https://docs.rsshub.app/routes/social-media",
+        "source": [
+          "/group/topic/:id"
+        ],
+        "target": "/douban/group/topic/:id"
+      },
+      {
+        "title": "豆瓣小组",
+        "docs": "https://docs.rsshub.app/routes/social-media",
+        "source": [
+          "/group/:groupid"
+        ],
+        "target": "/douban/group/:groupid"
+      }
+    ],
+    "book": [
+      {
+        "title": "豆瓣读书论坛",
+        "docs": "https://docs.rsshub.app/routes/social-media",
+        "source": [
+          "/:id/discussion"
+        ],
+        "target": "/douban/:id/discussion"
       }
     ]
   },
@@ -53615,6 +53580,108 @@
       }
     ]
   },
+  "steamcommunity.com": {
+    "_name": "Steam",
+    ".": [
+      {
+        "title": "Community Hub",
+        "docs": "https://docs.rsshub.app/routes/game",
+        "source": [
+          "/app/:appid"
+        ],
+        "target": "/steam/appcommunityfeed/:appid"
+      },
+      {
+        "title": "News",
+        "docs": "https://docs.rsshub.app/routes/game",
+        "source": [
+          "/app/:appid",
+          "/app/:appid/allnews",
+          "/app/:appid/announcements",
+          "/app/:appid/news"
+        ],
+        "target": "/steam/news/:appid"
+      },
+      {
+        "title": "Sharefile Changelog",
+        "docs": "https://docs.rsshub.app/routes/game",
+        "source": [
+          "/sharedfiles/filedetails/changelog/:sharefileID"
+        ],
+        "target": "/steam/sharefile-changelog/:sharefileID"
+      },
+      {
+        "title": "Workshop Search Results",
+        "docs": "https://docs.rsshub.app/routes/game",
+        "source": [
+          "/app/:appid/workshop/"
+        ],
+        "target": "/steam/workshopsearch/:appid"
+      },
+      {
+        "title": "Discussion List",
+        "docs": "https://docs.rsshub.app/routes/game",
+        "source": [
+          "/app/:appid/discussions"
+        ],
+        "target": "/steam/discussions/:appid"
+      },
+      {
+        "title": "Discussion List",
+        "docs": "https://docs.rsshub.app/routes/game",
+        "source": [
+          "/app/:appid/discussions/:feature"
+        ],
+        "target": "/steam/discussions/:appid/:feature"
+      },
+      {
+        "title": "Discussion List",
+        "docs": "https://docs.rsshub.app/routes/game",
+        "source": [
+          "/app/:appid/discussions/:feature/:topicId"
+        ],
+        "target": "/steam/discussions/:appid/:feature"
+      },
+      {
+        "title": "Discussion Thread",
+        "docs": "https://docs.rsshub.app/routes/game",
+        "source": [
+          "/app/:appid/discussions/:feature/:topicId"
+        ],
+        "target": "/steam/discussion/:appid/:feature/:topicId"
+      }
+    ]
+  },
+  "steampowered.com": {
+    "_name": "Steam",
+    "store": [
+      {
+        "title": "Community Hub",
+        "docs": "https://docs.rsshub.app/routes/game",
+        "source": [
+          "/app/:appid/*/"
+        ],
+        "target": "/steam/appcommunityfeed/:appid"
+      },
+      {
+        "title": "Latest Curator Reviews",
+        "docs": "https://docs.rsshub.app/routes/game",
+        "source": [
+          "/curator/:id"
+        ],
+        "target": "/steam/curator/:id"
+      },
+      {
+        "title": "Store Search",
+        "docs": "https://docs.rsshub.app/routes/game",
+        "source": [
+          "/",
+          "/search/:params"
+        ],
+        "target": "/steam/search/:params"
+      }
+    ]
+  },
   "studygolang.com": {
     "_name": "Go 语言中文网",
     ".": [
@@ -54706,17 +54773,15 @@
   },
   "weibo.com": {
     "_name": "微博",
-    "s": [
+    ".": [
       {
-        "title": "热搜榜",
+        "title": "新鲜事",
         "docs": "https://docs.rsshub.app/routes/social-media",
         "source": [
-          "/top/summary"
+          "/a/hot/:id.html"
         ],
-        "target": "/weibo/search/hot/:fulltext?"
-      }
-    ],
-    ".": [
+        "target": "/weibo/fresh/:id"
+      },
       {
         "title": "最新关注时间线",
         "docs": "https://docs.rsshub.app/routes/social-media",
@@ -54748,6 +54813,16 @@
           "/u/:uid"
         ],
         "target": "/weibo/user/:uid"
+      }
+    ],
+    "s": [
+      {
+        "title": "热搜榜",
+        "docs": "https://docs.rsshub.app/routes/social-media",
+        "source": [
+          "/top/summary"
+        ],
+        "target": "/weibo/search/hot/:fulltext?"
       }
     ],
     "www": [
@@ -55636,6 +55711,14 @@
   "x.com": {
     "_name": "X (Twitter)",
     ".": [
+      {
+        "title": "Space speaking status",
+        "docs": "https://docs.rsshub.app/routes/social-media",
+        "source": [
+          "/:username"
+        ],
+        "target": "/twitter/spaces/:username"
+      },
       {
         "title": "Home latest timeline",
         "docs": "https://docs.rsshub.app/routes/social-media",
