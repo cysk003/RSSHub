@@ -5935,7 +5935,7 @@
     "_name": "小米",
     "m": [
       {
-        "title": "小米众筹",
+        "title": "众筹",
         "docs": "https://docs.rsshub.app/routes/shopping",
         "source": [
           "/crowdfunding/home"
@@ -38527,6 +38527,19 @@
           "/:bookName/book-series/:bookId"
         ],
         "target": "/routledge/:bookName/book-series/:bookId"
+      }
+    ]
+  },
+  "rsseverything.com": {
+    "_name": "RssEverything",
+    ".": [
+      {
+        "title": "Shared Feeds",
+        "docs": "https://docs.rsshub.app/routes/other",
+        "source": [
+          "/:language/sharedfeeds"
+        ],
+        "target": "/rsseverything/:language/sharedfeeds"
       }
     ]
   },

@@ -1796,6 +1796,9 @@
   "/xiaoheihe/user/:id": [
     "tssujt"
   ],
+  "/xiaomiev/newproducts": [
+    "nuomi1"
+  ],
   "/xiaomiyoupin/crowdfunding": [
     "bigfei"
   ],
@@ -7638,6 +7641,9 @@
   ],
   "/rsc/journal/:id/:category?": [
     "nczitzk"
+  ],
+  "/rsseverything/:language/sharedfeeds": [
+    "AboutRSS"
   ],
   "/rsshub/routes/:lang?": [
     "DIYgod"

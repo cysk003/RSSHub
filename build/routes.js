@@ -20341,7 +20341,7 @@ export default {
           "shopping"
         ],
         "example": "/mi/crowdfunding",
-        "name": "小米众筹",
+        "name": "众筹",
         "maintainers": [
           "DIYgod",
           "nuomi1"
@@ -20373,7 +20373,7 @@ export default {
           "shopping"
         ],
         "example": "/mi/newproducts",
-        "name": "小米上新",
+        "name": "上新",
         "maintainers": [
           "nuomi1"
         ],
@@ -23308,6 +23308,37 @@ export default {
     "apiRoutes": {},
     "name": "小黑盒",
     "url": "xiaoheihe.cn",
+    "lang": "zh-CN"
+  },
+  "xiaomiev": {
+    "routes": {
+      "/newproducts": {
+        "path": "/newproducts",
+        "categories": [
+          "shopping"
+        ],
+        "example": "/xiaomiev/newproducts",
+        "name": "上新",
+        "maintainers": [
+          "nuomi1"
+        ],
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportRadar": false,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "view": 5,
+        "location": "newproducts.ts",
+        "module": () => import('@/routes/xiaomiev/newproducts.ts')
+      }
+    },
+    "apiRoutes": {},
+    "name": "小米汽车",
+    "url": "xiaomiev.com",
     "lang": "zh-CN"
   },
   "xiaomiyoupin": {
@@ -105085,6 +105116,48 @@ export default {
     "url": "pubs.rsc.org",
     "lang": "en"
   },
+  "rsseverything": {
+    "routes": {
+      "/:language/sharedfeeds": {
+        "path": "/:language/sharedfeeds",
+        "categories": [
+          "other"
+        ],
+        "example": "/rsseverything/zh/sharedfeeds",
+        "parameters": {
+          "language": {
+            "description": "Language of the page, and of the feed addresses it links to. One of `de`, `en`, `es`, `fr`, `it`, `ja`, `ko`, `pt`, `ru`, `zh`, `zh-Hant`"
+          }
+        },
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "radar": [
+          {
+            "source": [
+              "rsseverything.com/:language/sharedfeeds"
+            ],
+            "target": "/:language/sharedfeeds"
+          }
+        ],
+        "name": "Shared Feeds",
+        "maintainers": [
+          "AboutRSS"
+        ],
+        "location": "sharedfeeds.ts",
+        "module": () => import('@/routes/rsseverything/sharedfeeds.ts')
+      }
+    },
+    "apiRoutes": {},
+    "name": "RssEverything",
+    "url": "rsseverything.com",
+    "lang": "en"
+  },
   "rsshub": {
     "routes": {
       "/routes/:lang?": {
@@ -166003,14 +166076,14 @@ export default {
           "requireConfig": [
             {
               "name": "TWITTER_AUTH_TOKEN",
-              "description": "An authorized login session for the X web API. Developer API keys and third-party timeline providers are not used by this route."
+              "description": "Please see above for details."
             }
           ]
         },
         "maintainers": [
           "DIYgod"
         ],
-        "description": "Reports a user speaking in a live Space, including Spaces hosted by other users. Hosts and co-hosts are also included; listeners are excluded. Each user/Space pair has a stable entry ID and uses the actual Space start time. When the user is not speaking in a live Space, a status entry has a fixed ID and no publication date. This does not join or listen to a Space. Requires your own authorized TWITTER\\_AUTH\\_TOKEN on a self-hosted instance.",
+        "description": "Reports a user speaking in a live Space, including Spaces hosted by other users. Hosts and co-hosts are also included; listeners are excluded. Each user/Space pair has a stable entry ID and uses the actual Space start time. When the user is not in a live Space, or is in one without speaking, a status entry says so with a fixed ID and no publication date. This does not join or listen to a Space.",
         "radar": [
           {
             "source": [

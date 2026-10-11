@@ -2919,6 +2919,7 @@ export type RoutePath =
   | `/rsc/journal/:id/:category?`
   | `/rss/:url{.+}`
   | `/rss3/:account/:network?/:tag?`
+  | `/rsseverything/:language/sharedfeeds`
   | `/rsshub/routes/:lang?`
   | `/rsshub/transform/html/:url/:routeParams`
   | `/rsshub/transform/json/:url/:routeParams`
@@ -3739,6 +3740,7 @@ export type RoutePath =
   | `/xiaohongshu/board/:board_id`
   | `/xiaohongshu/user/:user_id/:category/:routeParams?`
   | `/xiaomi.eu/releases`
+  | `/xiaomiev/newproducts`
   | `/xiaomiyoupin/crowdfunding`
   | `/xiaomiyoupin/latest`
   | `/xiaote/news`
