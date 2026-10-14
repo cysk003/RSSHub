@@ -3578,6 +3578,7 @@ export type RoutePath =
   | `/v2ex/topics/:type`
   | `/v2ex/xna`
   | `/v2rayshare/`
+  | `/vb-audio/voicemeeter/changelog`
   | `/vcb-s/`
   | `/vcb-s/category/:cate`
   | `/verfghbw/press`
@@ -3810,6 +3811,7 @@ export type RoutePath =
   | `/xyzrank/new-podcasts`
   | `/yahoo/author/:author`
   | `/yahoo/finance/:topic?`
+  | `/yahoo/finance/hk/:topic?`
   | `/yahoo/gaming`
   | `/yahoo/news/:region/:category?`
   | `/yahoo/news/list/:region/:listId`

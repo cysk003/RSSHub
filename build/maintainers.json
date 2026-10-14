@@ -8991,6 +8991,9 @@
   "/v2ex/xna": [
     "luckyscript"
   ],
+  "/vb-audio/voicemeeter/changelog": [
+    "TonyRL"
+  ],
   "/verfghbw/press": [
     "quinn-dev"
   ],
@@ -12428,13 +12431,16 @@
   "/yahoo/author/:author": [
     "loganrockmore"
   ],
-  "/yahoo/finance/:topic?": [
-    "DIYgod"
-  ],
   "/yahoo/gaming": [
     "DIYgod"
   ],
   "/yahoo/news/publisher/:publisher": [
+    "DIYgod"
+  ],
+  "/yahoo/finance/hk/:topic?": [
+    "pseudoyu"
+  ],
+  "/yahoo/finance/:topic?": [
     "DIYgod"
   ],
   "/yahoo/news/:region/:category?": [
