@@ -5751,6 +5751,12 @@
     "axojhf",
     "zhaoweizhong"
   ],
+  "/lowendtalk/discussion/:id": [
+    "nczitzk"
+  ],
+  "/lowendtalk/profile/:type/:username": [
+    "TonyRL"
+  ],
   "/lrepacks/:category?": [
     "nczitzk"
   ],
@@ -7253,6 +7259,9 @@
   ],
   "/resonac/products": [
     "valuex"
+  ],
+  "/reuters/my-news": [
+    "dzx-dzx"
   ],
   "/reuters/:category/:topic?": [
     "LyleLee",
