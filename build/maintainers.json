@@ -4741,7 +4741,7 @@
   "/gzmtu/tsg": [
     "skyedai910"
   ],
-  "/hackernews/:section?/:type?/:value?": [
+  "/hackernews/:section?/:type?/:value?/:minComments?": [
     "nczitzk",
     "xie-dongping"
   ],
@@ -9426,6 +9426,18 @@
   ],
   "/zjgsu/xszq": [
     "nicolaszf"
+  ],
+  "/zjnu/academic": [
+    "gushen610140"
+  ],
+  "/zjnu/general": [
+    "gushen610140"
+  ],
+  "/zjnu/media": [
+    "gushen610140"
+  ],
+  "/zjnu/news": [
+    "gushen610140"
   ],
   "/zjol/paper/:id?": [
     "nczitzk"
