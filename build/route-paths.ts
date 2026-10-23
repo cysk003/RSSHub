@@ -822,6 +822,7 @@ export type RoutePath =
   | `/cugb/news/:channel?`
   | `/cuilingmag/:category?`
   | `/cuit/cxxww/:category{.+}?`
+  | `/cum.st/:service?/:id?/:type?`
   | `/cupl/jwc`
   | `/curiouscat/user/:id`
   | `/curius/links/:name`
@@ -1253,6 +1254,7 @@ export type RoutePath =
   | `/fzu/:type`
   | `/gab/user/:username`
   | `/galxe/quest/:alias`
+  | `/game-wisdom/:category?`
   | `/gameapps/`
   | `/gamebase/news/:type?/:category?`
   | `/gamegene/news`
@@ -1673,6 +1675,7 @@ export type RoutePath =
   | `/hkushop/vinyl/:cat?`
   | `/hlju/news/:category?`
   | `/hljucm/yjsy/:category?`
+  | `/hn.plus/konek/newest`
   | `/hnmuseum/current-exhibitions/:type?`
   | `/hnmuseum/hnmnews`
   | `/hnrb/:id?`
@@ -1689,6 +1692,7 @@ export type RoutePath =
   | `/hottoys/`
   | `/hotukdeals/:type`
   | `/hotukdeals/hottest`
+  | `/hotukdeals/tag/:tag/:sort?`
   | `/houxu/`
   | `/houxu/events`
   | `/houxu/lives/:id`
@@ -3789,6 +3793,7 @@ export type RoutePath =
   | `/xoyo/jx3/:caty?`
   | `/xsijishe/forum/:fid`
   | `/xsijishe/rank/:type`
+  | `/xsw/:bookId`
   | `/xuangubao/subject/:subject_id`
   | `/xueqiu/column/:id`
   | `/xueqiu/favorite/:id`
