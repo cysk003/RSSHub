@@ -273,7 +273,7 @@ export type RoutePath =
   | `/asus/gpu-tweak`
   | `/atcoder/contest/:language?/:rated?/:category?/:keyword?`
   | `/atcoder/post/:language?/:keyword?`
-  | `/athome/chintai/:pref/:city`
+  | `/athome/chintai/:pref/:city/:page?`
   | `/athome/kodate/chuko/:pref/:city`
   | `/athome/mansion/chuko/:pref/:city`
   | `/athome/rent-store/:pref/:city`
@@ -1696,9 +1696,9 @@ export type RoutePath =
   | `/hnust/graduate/:type?`
   | `/hnust/jwc`
   | `/home-assistant/hacs/repositories`
-  | `/homes/chintai/:pref/:city`
-  | `/homes/kodate/chuko/:pref/:city`
-  | `/homes/mansion/chuko/:pref/:city`
+  | `/homes/chintai/:pref/:city/:page?`
+  | `/homes/kodate/chuko/:pref/:city/:page?`
+  | `/homes/mansion/chuko/:pref/:city/:page?`
   | `/hongkong/chp/:category?/:language?`
   | `/hongkong/dh/:language?`
   | `/hostmonit/cloudflareyes/:type?`
@@ -3284,7 +3284,7 @@ export type RoutePath =
   | `/sustech/bidding`
   | `/sustech/newshub-zh`
   | `/sustech/yjs`
-  | `/suumo/chintai/:pref/:city`
+  | `/suumo/chintai/:pref/:city/:page?`
   | `/suumo/chukoikkodate/:pref/:city`
   | `/suumo/ms/chuko/:pref/:city`
   | `/swissinfo/:language?/:category?`
@@ -3844,6 +3844,7 @@ export type RoutePath =
   | `/xyzrank/hot-episodes-new`
   | `/xyzrank/hot-podcasts`
   | `/xyzrank/new-podcasts`
+  | `/yahoo/auctions/search/:query`
   | `/yahoo/author/:author`
   | `/yahoo/finance/:topic?`
   | `/yahoo/finance/hk/:topic?`
