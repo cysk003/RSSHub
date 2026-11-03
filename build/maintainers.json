@@ -84,9 +84,6 @@
   "/freebuf/articles/:type": [
     "trganda"
   ],
-  "/fuliba/latest": [
-    "shinemoon"
-  ],
   "/7gogo/user/:username": [
     "hoilc"
   ],
@@ -1648,12 +1645,14 @@
     "nuomi1"
   ],
   "/xiaomiyoupin/crowdfunding": [
-    "bigfei"
+    "bigfei",
+    "nuomi1"
   ],
   "/xiaomiyoupin/latest": [
     "xyqfer",
     "DIYgod",
-    "bigfei"
+    "bigfei",
+    "nuomi1"
   ],
   "/ximalaya/:type/:id/:all?/:shownote?": [
     "lengthmin",
@@ -4402,6 +4401,9 @@
   "/fudan/cce": [
     "mrbruce516"
   ],
+  "/fuliba/latest": [
+    "shinemoon"
+  ],
   "/funresearch/grants": [
     "DIYgod"
   ],
@@ -4558,18 +4560,9 @@
   "/github/notifications": [
     "zhzy0077"
   ],
-  "/github/org_event/:org/:types?": [
-    "mslxl"
-  ],
-  "/github/feed/:user/:types?": [
-    "RtYkk"
-  ],
   "/github/pull/:user/:repo/:state?/:labels?": [
     "hashman",
     "TonyRL"
-  ],
-  "/github/repo_event/:owner/:repo/:types?": [
-    "mslxl"
   ],
   "/github/repos/:user/:type?/:sort?": [
     "DIYgod"
@@ -4582,6 +4575,15 @@
   ],
   "/github/starred_repos/:user": [
     "LanceZhu"
+  ],
+  "/github/org_event/:org/:types?": [
+    "mslxl"
+  ],
+  "/github/feed/:user/:types?": [
+    "RtYkk"
+  ],
+  "/github/repo_event/:owner/:repo/:types?": [
+    "mslxl"
   ],
   "/github/user_event/:username/:types?": [
     "mslxl"
@@ -12092,6 +12094,9 @@
   ],
   "/sjtu/yzb/zkxx/:type": [
     "stdrc"
+  ],
+  "/sjtu/cs/rcpy/:category": [
+    "BeaCox"
   ],
   "/slowmist/:type?": [
     "AtlasQuan"

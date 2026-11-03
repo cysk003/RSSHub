@@ -976,44 +976,6 @@ export default {
     "url": "freebuf.com",
     "lang": "zh-CN"
   },
-  "fuliba": {
-    "routes": {
-      "/latest": {
-        "path": "/latest",
-        "categories": [
-          "new-media"
-        ],
-        "example": "/fuliba/latest",
-        "parameters": {},
-        "features": {
-          "requireConfig": false,
-          "requirePuppeteer": false,
-          "antiCrawler": false,
-          "supportBT": false,
-          "supportPodcast": false,
-          "supportScihub": false
-        },
-        "radar": [
-          {
-            "source": [
-              "fuliba2023.net/"
-            ]
-          }
-        ],
-        "name": "最新",
-        "maintainers": [
-          "shinemoon"
-        ],
-        "url": "fuliba2023.net/",
-        "location": "latest.ts",
-        "module": () => import('@/routes/fuliba/latest.ts')
-      }
-    },
-    "apiRoutes": {},
-    "name": "福利吧",
-    "url": "fuliba2023.net",
-    "lang": "zh-CN"
-  },
   "7gogo": {
     "routes": {
       "/user/:username": {
@@ -19412,7 +19374,6 @@ export default {
           "shopping"
         ],
         "example": "/xiaomiyoupin/crowdfunding",
-        "parameters": {},
         "features": {
           "requireConfig": false,
           "requirePuppeteer": false,
@@ -19430,9 +19391,11 @@ export default {
         ],
         "name": "众筹",
         "maintainers": [
-          "bigfei"
+          "bigfei",
+          "nuomi1"
         ],
         "url": "xiaomiyoupin.com/",
+        "view": 5,
         "location": "crowdfunding.ts",
         "module": () => import('@/routes/xiaomiyoupin/crowdfunding.ts')
       },
@@ -19442,7 +19405,6 @@ export default {
           "shopping"
         ],
         "example": "/xiaomiyoupin/latest",
-        "parameters": {},
         "features": {
           "requireConfig": false,
           "requirePuppeteer": false,
@@ -19458,13 +19420,15 @@ export default {
             ]
           }
         ],
-        "name": "每日上新",
+        "name": "上新",
         "maintainers": [
           "xyqfer",
           "DIYgod",
-          "bigfei"
+          "bigfei",
+          "nuomi1"
         ],
         "url": "xiaomiyoupin.com/",
+        "view": 5,
         "location": "latest.ts",
         "module": () => import('@/routes/xiaomiyoupin/latest.ts')
       }
@@ -22775,7 +22739,7 @@ export default {
         "categories": [
           "game"
         ],
-        "example": "/mihoyo/bbs/official/2/3/20/",
+        "example": "/mihoyo/bbs/official/2/3/20",
         "parameters": {
           "gids": "游戏id",
           "type": "公告类型，默认为 2(即 活动)",
@@ -31468,7 +31432,7 @@ export default {
         "maintainers": [
           "lifetraveler"
         ],
-        "example": "/air-level/rank/best,/air-level/rank",
+        "example": "/air-level/rank",
         "location": "levelrank.ts",
         "module": () => import('@/routes/air-level/levelrank.ts')
       }
@@ -48008,7 +47972,7 @@ export default {
         "categories": [
           "anime"
         ],
-        "example": "/collabo-cafe/",
+        "example": "/collabo-cafe",
         "features": {
           "requireConfig": false,
           "requirePuppeteer": false,
@@ -60562,6 +60526,44 @@ export default {
     ],
     "lang": "zh-CN"
   },
+  "fuliba": {
+    "routes": {
+      "/latest": {
+        "path": "/latest",
+        "categories": [
+          "new-media"
+        ],
+        "example": "/fuliba/latest",
+        "parameters": {},
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "radar": [
+          {
+            "source": [
+              "fuliba2023.net/"
+            ]
+          }
+        ],
+        "name": "最新",
+        "maintainers": [
+          "shinemoon"
+        ],
+        "url": "fuliba2023.net/",
+        "location": "latest.ts",
+        "module": () => import('@/routes/fuliba/latest.ts')
+      }
+    },
+    "apiRoutes": {},
+    "name": "福利吧",
+    "url": "fuliba2023.net",
+    "lang": "zh-CN"
+  },
   "funresearch": {
     "routes": {
       "/grants": {
@@ -62521,6 +62523,187 @@ export default {
         "location": "notifications.ts",
         "module": () => import('@/routes/github/notifications.ts')
       },
+      "/pull/:user/:repo/:state?/:labels?": {
+        "path": "/pull/:user/:repo/:state?/:labels?",
+        "categories": [
+          "programming"
+        ],
+        "example": "/github/pull/DIYgod/RSSHub",
+        "parameters": {
+          "user": "GitHub username",
+          "repo": "GitHub repo name",
+          "state": {
+            "description": "the state of pull requests.",
+            "default": "open",
+            "options": [
+              {
+                "label": "Open",
+                "value": "open"
+              },
+              {
+                "label": "Closed",
+                "value": "closed"
+              },
+              {
+                "label": "All",
+                "value": "all"
+              }
+            ]
+          },
+          "labels": "a list of comma separated label names"
+        },
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "radar": [
+          {
+            "source": [
+              "github.com/:user/:repo/pulls",
+              "github.com/:user/:repo/pulls/:id",
+              "github.com/:user/:repo"
+            ],
+            "target": "/pull/:user/:repo"
+          }
+        ],
+        "name": "Repo Pull Requests",
+        "maintainers": [
+          "hashman",
+          "TonyRL"
+        ],
+        "location": "pulls.ts",
+        "module": () => import('@/routes/github/pulls.ts')
+      },
+      "/repos/:user/:type?/:sort?": {
+        "path": "/repos/:user/:type?/:sort?",
+        "categories": [
+          "programming"
+        ],
+        "example": "/github/repos/DIYgod",
+        "parameters": {
+          "user": "GitHub username",
+          "type": "Type of repository, can be `all`, `owner`, `member`, `public`, `private`, `forks`, `sources`",
+          "sort": "Sort by `created`, `updated`, `pushed`, `full_name`"
+        },
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "radar": [
+          {
+            "source": [
+              "github.com/:user"
+            ]
+          }
+        ],
+        "name": "User Repo",
+        "maintainers": [
+          "DIYgod"
+        ],
+        "location": "repos.ts",
+        "module": () => import('@/routes/github/repos.ts')
+      },
+      "/search/:query/:sort?/:order?": {
+        "path": "/search/:query/:sort?/:order?",
+        "categories": [
+          "programming"
+        ],
+        "example": "/github/search/RSSHub/bestmatch/desc",
+        "parameters": {
+          "query": "search keyword",
+          "sort": "Sort options (default to bestmatch)",
+          "order": "Sort order, desc and asc (desc descending by default)"
+        },
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "name": "Search Result",
+        "maintainers": [
+          "LogicJake"
+        ],
+        "description": "| Sort options     | sort      |\n| ---------------- | --------- |\n| Best match       | bestmatch |\n| Most stars       | stars     |\n| Most forks       | forks     |\n| Recently updated | updated   |",
+        "location": "search.ts",
+        "module": () => import('@/routes/github/search.ts')
+      },
+      "/stars/:user/:repo": {
+        "path": "/stars/:user/:repo",
+        "categories": [
+          "programming"
+        ],
+        "example": "/github/stars/DIYgod/RSSHub",
+        "view": 5,
+        "parameters": {
+          "user": "GitHub username",
+          "repo": "GitHub repo name"
+        },
+        "features": {
+          "requireConfig": [
+            {
+              "name": "GITHUB_ACCESS_TOKEN",
+              "description": "GitHub Access Token"
+            }
+          ]
+        },
+        "radar": [
+          {
+            "source": [
+              "github.com/:user/:repo/stargazers",
+              "github.com/:user/:repo"
+            ]
+          }
+        ],
+        "name": "Repo Stars",
+        "maintainers": [
+          "HenryQW"
+        ],
+        "location": "star.ts",
+        "module": () => import('@/routes/github/star.ts')
+      },
+      "/starred_repos/:user": {
+        "path": "/starred_repos/:user",
+        "categories": [
+          "programming"
+        ],
+        "example": "/github/starred_repos/DIYgod",
+        "parameters": {
+          "user": "User name"
+        },
+        "features": {
+          "requireConfig": [
+            {
+              "name": "GITHUB_ACCESS_TOKEN",
+              "optional": true,
+              "description": "To get more requests"
+            }
+          ]
+        },
+        "radar": [
+          {
+            "source": [
+              "github.com/:user"
+            ]
+          }
+        ],
+        "name": "User Starred Repositories",
+        "maintainers": [
+          "LanceZhu"
+        ],
+        "location": "starred-repos.ts",
+        "module": () => import('@/routes/github/starred-repos.ts')
+      },
       "/org_event/:org/:types?": {
         "path": "/org_event/:org/:types?",
         "categories": [
@@ -62727,61 +62910,6 @@ export default {
         "location": "private-feed.ts",
         "module": () => import('@/routes/github/private-feed.ts')
       },
-      "/pull/:user/:repo/:state?/:labels?": {
-        "path": "/pull/:user/:repo/:state?/:labels?",
-        "categories": [
-          "programming"
-        ],
-        "example": "/github/pull/DIYgod/RSSHub",
-        "parameters": {
-          "user": "GitHub username",
-          "repo": "GitHub repo name",
-          "state": {
-            "description": "the state of pull requests.",
-            "default": "open",
-            "options": [
-              {
-                "label": "Open",
-                "value": "open"
-              },
-              {
-                "label": "Closed",
-                "value": "closed"
-              },
-              {
-                "label": "All",
-                "value": "all"
-              }
-            ]
-          },
-          "labels": "a list of comma separated label names"
-        },
-        "features": {
-          "requireConfig": false,
-          "requirePuppeteer": false,
-          "antiCrawler": false,
-          "supportBT": false,
-          "supportPodcast": false,
-          "supportScihub": false
-        },
-        "radar": [
-          {
-            "source": [
-              "github.com/:user/:repo/pulls",
-              "github.com/:user/:repo/pulls/:id",
-              "github.com/:user/:repo"
-            ],
-            "target": "/pull/:user/:repo"
-          }
-        ],
-        "name": "Repo Pull Requests",
-        "maintainers": [
-          "hashman",
-          "TonyRL"
-        ],
-        "location": "pulls.ts",
-        "module": () => import('@/routes/github/pulls.ts')
-      },
       "/repo_event/:owner/:repo/:types?": {
         "path": "/repo_event/:owner/:repo/:types?",
         "categories": [
@@ -62895,132 +63023,6 @@ export default {
         ],
         "location": "repo-event.ts",
         "module": () => import('@/routes/github/repo-event.ts')
-      },
-      "/repos/:user/:type?/:sort?": {
-        "path": "/repos/:user/:type?/:sort?",
-        "categories": [
-          "programming"
-        ],
-        "example": "/github/repos/DIYgod",
-        "parameters": {
-          "user": "GitHub username",
-          "type": "Type of repository, can be `all`, `owner`, `member`, `public`, `private`, `forks`, `sources`",
-          "sort": "Sort by `created`, `updated`, `pushed`, `full_name`"
-        },
-        "features": {
-          "requireConfig": false,
-          "requirePuppeteer": false,
-          "antiCrawler": false,
-          "supportBT": false,
-          "supportPodcast": false,
-          "supportScihub": false
-        },
-        "radar": [
-          {
-            "source": [
-              "github.com/:user"
-            ]
-          }
-        ],
-        "name": "User Repo",
-        "maintainers": [
-          "DIYgod"
-        ],
-        "location": "repos.ts",
-        "module": () => import('@/routes/github/repos.ts')
-      },
-      "/search/:query/:sort?/:order?": {
-        "path": "/search/:query/:sort?/:order?",
-        "categories": [
-          "programming"
-        ],
-        "example": "/github/search/RSSHub/bestmatch/desc",
-        "parameters": {
-          "query": "search keyword",
-          "sort": "Sort options (default to bestmatch)",
-          "order": "Sort order, desc and asc (desc descending by default)"
-        },
-        "features": {
-          "requireConfig": false,
-          "requirePuppeteer": false,
-          "antiCrawler": false,
-          "supportBT": false,
-          "supportPodcast": false,
-          "supportScihub": false
-        },
-        "name": "Search Result",
-        "maintainers": [
-          "LogicJake"
-        ],
-        "description": "| Sort options     | sort      |\n| ---------------- | --------- |\n| Best match       | bestmatch |\n| Most stars       | stars     |\n| Most forks       | forks     |\n| Recently updated | updated   |",
-        "location": "search.ts",
-        "module": () => import('@/routes/github/search.ts')
-      },
-      "/stars/:user/:repo": {
-        "path": "/stars/:user/:repo",
-        "categories": [
-          "programming"
-        ],
-        "example": "/github/stars/DIYgod/RSSHub",
-        "view": 5,
-        "parameters": {
-          "user": "GitHub username",
-          "repo": "GitHub repo name"
-        },
-        "features": {
-          "requireConfig": [
-            {
-              "name": "GITHUB_ACCESS_TOKEN",
-              "description": "GitHub Access Token"
-            }
-          ]
-        },
-        "radar": [
-          {
-            "source": [
-              "github.com/:user/:repo/stargazers",
-              "github.com/:user/:repo"
-            ]
-          }
-        ],
-        "name": "Repo Stars",
-        "maintainers": [
-          "HenryQW"
-        ],
-        "location": "star.ts",
-        "module": () => import('@/routes/github/star.ts')
-      },
-      "/starred_repos/:user": {
-        "path": "/starred_repos/:user",
-        "categories": [
-          "programming"
-        ],
-        "example": "/github/starred_repos/DIYgod",
-        "parameters": {
-          "user": "User name"
-        },
-        "features": {
-          "requireConfig": [
-            {
-              "name": "GITHUB_ACCESS_TOKEN",
-              "optional": true,
-              "description": "To get more requests"
-            }
-          ]
-        },
-        "radar": [
-          {
-            "source": [
-              "github.com/:user"
-            ]
-          }
-        ],
-        "name": "User Starred Repositories",
-        "maintainers": [
-          "LanceZhu"
-        ],
-        "location": "starred-repos.ts",
-        "module": () => import('@/routes/github/starred-repos.ts')
       },
       "/user_event/:username/:types?": {
         "path": "/user_event/:username/:types?",
@@ -91291,25 +91293,13 @@ export default {
           },
           {
             "source": [
-              "www.nippon.com/cn/sci-tech"
-            ],
-            "target": "/Science,Technology"
-          },
-          {
-            "source": [
-              "www.nippon.com/cn/in-depth"
+              "www.nippon.com/cn/insight"
             ],
             "target": "/In-depth"
           },
           {
             "source": [
-              "www.nippon.com/cn/japan-topics"
-            ],
-            "target": "/japan-topics"
-          },
-          {
-            "source": [
-              "www.nippon.com/cn/japan-data"
+              "www.nippon.com/cn/data"
             ],
             "target": "/japan-data"
           },
@@ -91333,7 +91323,7 @@ export default {
           }
         ],
         "name": "政治外交",
-        "description": "| 政治     | 经济    | 社会    | 展览预告 | 焦点专题           | 深度报道 | 话题         | 日本信息库 | 日本一蹩      | 人物访谈 | 编辑部通告    |\n| -------- | ------- | ------- | -------- | ------------------ | -------- | ------------ | ---------- | ------------- | -------- | ------------- |\n| Politics | Economy | Society | Culture  | Science,Technology | In-depth | japan-topics | japan-data | japan-glances | People   | Announcements |",
+        "description": "| 政治     | 财经    | 社会    | 日本文化 | 深度报道 | 日本信息库 | 日本一瞥      | 人物   | 编辑部通知    |\n| -------- | ------- | ------- | -------- | -------- | ---------- | ------------- | ------ | ------------- |\n| Politics | Economy | Society | Culture  | In-depth | japan-data | japan-glances | People | Announcements |",
         "maintainers": [
           "laampui"
         ],
@@ -122288,7 +122278,7 @@ export default {
           "mobyw"
         ],
         "url": "www.jwc.uestc.edu.cn/",
-        "description": "| 重要公告  | 学生事务公告 | 教师事务公告 | 教学新闻 | 办公室 |\n| --------- | ------------ | ------------ | -------- | ------ |\n| important | student      | teacher      | teaching | office |",
+        "description": "| 通知公告  | 学生事务公告 | 教师事务公告 | 教学新闻 | 办公室公告 |\n| --------- | ------------ | ------------ | -------- | ---------- |\n| important | student      | teacher      | teaching | office     |",
         "location": "jwc.ts",
         "module": () => import('@/routes/uestc/jwc.ts')
       },
@@ -150965,7 +150955,7 @@ export default {
         "categories": [
           "government"
         ],
-        "example": "/gov/tianjin/tjrcgzw-notice/rczc/sjrczc/",
+        "example": "/gov/tianjin/tjrcgzw-notice/rczc/sjrczc",
         "parameters": {
           "cate": "栏目分类，可在源网站 URL 中找到，例如 rczc（人才政策）",
           "subCate": "子栏目分类，例如 sjrczc（市级人才政策）"
@@ -161737,7 +161727,7 @@ export default {
           "BeaCox"
         ],
         "url": "www.cs.sjtu.edu.cn/notice-xssw-bkspy.html",
-        "description": "| 本科生培养 | 研究生培养 | 国际交流 | 党建德育 | 团学工作 | 职业发展 | 其他 |\n| ---------- | ---------- | -------- | -------- | -------- | -------- | ---- |\n| bkspy      | yjspy      | gjjl     | djdy     | txgz     | zyfz     | qt   |",
+        "description": "仅包含官网未登录时可见的公开通知。分类没有公开通知时无法生成订阅。\n\n| 本科生培养 | 研究生培养 | 国际交流 | 党建德育 | 团学工作 | 职业发展 | 其他 |\n| ---------- | ---------- | -------- | -------- | -------- | -------- | ---- |\n| bkspy      | yjspy      | gjjl     | djdy     | txgz     | zyfz     | qt   |",
         "location": "cs/tzgg.tsx",
         "module": () => import('@/routes/sjtu/cs/tzgg.tsx')
       },
@@ -161777,10 +161767,10 @@ export default {
         "categories": [
           "university"
         ],
-        "example": "/sjtu/gs/enroll/59",
+        "example": "/sjtu/gs/xsjy",
         "parameters": {
           "type": "类别",
-          "num": "细分类别, 仅对`type`为`enroll`或`exchange`有效"
+          "num": "细分类别, 仅对`type`为`exchange`有效"
         },
         "features": {
           "requireConfig": false,
@@ -161820,7 +161810,7 @@ export default {
         "maintainers": [
           "dzx-dzx"
         ],
-        "description": "| 工作信息 | 招生信息 | 培养信息 | 学位学科 | 国际交流 | 创新工程 |\n| -------- | -------- | -------- | -------- | -------- | -------- |\n| work     | enroll   | train    | degree   | exchange | xsjy     |\n\n当`type`为`enroll`, `num`可选字段:\n\n| 58       | 59       | 60         | 61       | 62       |\n| -------- | -------- | ---------- | -------- | -------- |\n| 博士招生 | 硕士招生 | 港澳台招生 | 考点信息 | 院系动态 |\n\n当`type`为`exchange`, `num`可选字段:\n\n| 67             | 68             | 69             | 70             | 71             |\n| -------------- | -------------- | -------------- | -------------- | -------------- |\n| 国家公派研究生 | 国际化培养资助 | 校际交换与联培 | 交流与合作项目 | 项目招募与宣讲 |",
+        "description": "| 工作信息 | 培养信息 | 学位学科 | 国际交流 | 创新工程 |\n| -------- | -------- | -------- | -------- | -------- |\n| work     | train    | degree   | exchange | xsjy     |\n\n招生信息已移至研究生招生网，请使用「研究生招生网招考信息」路由 `/sjtu/yzb/zkxx/:type`。\n\n当`type`为`exchange`, `num`可选字段:\n\n| 67             | 68             | 69             | 70             | 71             |\n| -------------- | -------------- | -------------- | -------------- | -------------- |\n| 国家公派研究生 | 国际化培养资助 | 校际交换与联培 | 交流与合作项目 | 项目招募与宣讲 |",
         "location": "gs.ts",
         "module": () => import('@/routes/sjtu/gs.ts')
       },
@@ -161932,6 +161922,186 @@ export default {
         "description": "| 博士招生 | 硕士招生 | 港澳台招生 | 考点信息 | 院系动态 |\n| -------- | -------- | ---------- | -------- | -------- |\n| bszs     | sszs     | gatzs      | kdxx     | yxdt     |",
         "location": "yzb/zkxx.ts",
         "module": () => import('@/routes/sjtu/yzb/zkxx.ts')
+      },
+      "/cs/rcpy/:category": {
+        "path": "/cs/rcpy/:category",
+        "categories": [
+          "university"
+        ],
+        "example": "/sjtu/cs/rcpy/bsyjs_notice",
+        "parameters": {
+          "category": "栏目代码，见下表，与官网栏目网址中 .html 前的部分一致"
+        },
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "radar": [
+          {
+            "title": "计算机学院 - 人才培养 - 本科生培养 - 国际交流",
+            "source": [
+              "www.cs.sjtu.edu.cn/bkspy_gjjl.html",
+              "cs.sjtu.edu.cn/bkspy_gjjl.html"
+            ],
+            "target": "/cs/rcpy/bkspy_gjjl"
+          },
+          {
+            "title": "计算机学院 - 人才培养 - 研究生培养 - 招生工作",
+            "source": [
+              "www.cs.sjtu.edu.cn/bsyjs_zsgz.html",
+              "cs.sjtu.edu.cn/bsyjs_zsgz.html"
+            ],
+            "target": "/cs/rcpy/bsyjs_zsgz"
+          },
+          {
+            "title": "计算机学院 - 人才培养 - 研究生培养 - 学籍管理",
+            "source": [
+              "www.cs.sjtu.edu.cn/bsyjs_xjgl.html",
+              "cs.sjtu.edu.cn/bsyjs_xjgl.html"
+            ],
+            "target": "/cs/rcpy/bsyjs_xjgl"
+          },
+          {
+            "title": "计算机学院 - 人才培养 - 研究生培养 - 培养管理",
+            "source": [
+              "www.cs.sjtu.edu.cn/bsyjs_pygl.html",
+              "cs.sjtu.edu.cn/bsyjs_pygl.html"
+            ],
+            "target": "/cs/rcpy/bsyjs_pygl"
+          },
+          {
+            "title": "计算机学院 - 人才培养 - 研究生培养 - 学位管理",
+            "source": [
+              "www.cs.sjtu.edu.cn/bsyjs_xwgl.html",
+              "cs.sjtu.edu.cn/bsyjs_xwgl.html"
+            ],
+            "target": "/cs/rcpy/bsyjs_xwgl"
+          },
+          {
+            "title": "计算机学院 - 人才培养 - 研究生培养 - 答辩公告",
+            "source": [
+              "www.cs.sjtu.edu.cn/bsyjs_dbgg.html",
+              "cs.sjtu.edu.cn/bsyjs_dbgg.html"
+            ],
+            "target": "/cs/rcpy/bsyjs_dbgg"
+          },
+          {
+            "title": "计算机学院 - 人才培养 - 研究生培养 - 国际交流",
+            "source": [
+              "www.cs.sjtu.edu.cn/bsyjs_gjjl.html",
+              "cs.sjtu.edu.cn/bsyjs_gjjl.html"
+            ],
+            "target": "/cs/rcpy/bsyjs_gjjl"
+          },
+          {
+            "title": "计算机学院 - 人才培养 - 研究生培养 - 教师事务",
+            "source": [
+              "www.cs.sjtu.edu.cn/bsyjs_jssw.html",
+              "cs.sjtu.edu.cn/bsyjs_jssw.html"
+            ],
+            "target": "/cs/rcpy/bsyjs_jssw"
+          },
+          {
+            "title": "计算机学院 - 人才培养 - 研究生培养 - 通知公告",
+            "source": [
+              "www.cs.sjtu.edu.cn/bsyjs_notice.html",
+              "cs.sjtu.edu.cn/bsyjs_notice.html"
+            ],
+            "target": "/cs/rcpy/bsyjs_notice"
+          },
+          {
+            "title": "计算机学院 - 人才培养 - 微专业培养",
+            "source": [
+              "www.cs.sjtu.edu.cn/wzypy.html",
+              "cs.sjtu.edu.cn/wzypy.html"
+            ],
+            "target": "/cs/rcpy/wzypy"
+          },
+          {
+            "title": "计算机学院 - 人才培养 - 教学实践 - 科创实践项目 - PRP 项目",
+            "source": [
+              "www.cs.sjtu.edu.cn/jxsj_kcsj_prp.html",
+              "cs.sjtu.edu.cn/jxsj_kcsj_prp.html"
+            ],
+            "target": "/cs/rcpy/jxsj_kcsj_prp"
+          },
+          {
+            "title": "计算机学院 - 人才培养 - 教学实践 - 科创实践项目 - 专业实习",
+            "source": [
+              "www.cs.sjtu.edu.cn/jxsj_kcsj_zysx.html",
+              "cs.sjtu.edu.cn/jxsj_kcsj_zysx.html"
+            ],
+            "target": "/cs/rcpy/jxsj_kcsj_zysx"
+          },
+          {
+            "title": "计算机学院 - 人才培养 - 教学实践 - 学生科创组织",
+            "source": [
+              "www.cs.sjtu.edu.cn/jxsj_xskczz.html",
+              "cs.sjtu.edu.cn/jxsj_xskczz.html"
+            ],
+            "target": "/cs/rcpy/jxsj_xskczz"
+          },
+          {
+            "title": "计算机学院 - 人才培养 - 学生工作 - 通知公告 - 党建德育",
+            "source": [
+              "www.cs.sjtu.edu.cn/xsgz-tzgg-djdy.html",
+              "cs.sjtu.edu.cn/xsgz-tzgg-djdy.html"
+            ],
+            "target": "/cs/rcpy/xsgz-tzgg-djdy"
+          },
+          {
+            "title": "计算机学院 - 人才培养 - 学生工作 - 通知公告 - 团学工作",
+            "source": [
+              "www.cs.sjtu.edu.cn/xsgz-tzgg-txgz.html",
+              "cs.sjtu.edu.cn/xsgz-tzgg-txgz.html"
+            ],
+            "target": "/cs/rcpy/xsgz-tzgg-txgz"
+          },
+          {
+            "title": "计算机学院 - 人才培养 - 学生工作 - 通知公告 - 学生事务",
+            "source": [
+              "www.cs.sjtu.edu.cn/xsgz-tzgg-xssw.html",
+              "cs.sjtu.edu.cn/xsgz-tzgg-xssw.html"
+            ],
+            "target": "/cs/rcpy/xsgz-tzgg-xssw"
+          },
+          {
+            "title": "计算机学院 - 人才培养 - 学生工作 - 通知公告 - 职业发展",
+            "source": [
+              "www.cs.sjtu.edu.cn/xsgz-tzgg-zyfz.html",
+              "cs.sjtu.edu.cn/xsgz-tzgg-zyfz.html"
+            ],
+            "target": "/cs/rcpy/xsgz-tzgg-zyfz"
+          },
+          {
+            "title": "计算机学院 - 人才培养 - 学生工作 - 规章制度 - 学生事务",
+            "source": [
+              "www.cs.sjtu.edu.cn/xsgz-gzzd-xssw.html",
+              "cs.sjtu.edu.cn/xsgz-gzzd-xssw.html"
+            ],
+            "target": "/cs/rcpy/xsgz-gzzd-xssw"
+          },
+          {
+            "title": "计算机学院 - 人才培养 - 学生工作 - 规章制度 - 职业发展",
+            "source": [
+              "www.cs.sjtu.edu.cn/xsgz-gzzd-zyfz.html",
+              "cs.sjtu.edu.cn/xsgz-gzzd-zyfz.html"
+            ],
+            "target": "/cs/rcpy/xsgz-gzzd-zyfz"
+          }
+        ],
+        "name": "计算机学院 - 人才培养",
+        "maintainers": [
+          "BeaCox"
+        ],
+        "url": "www.cs.sjtu.edu.cn/rcpy.html",
+        "description": "订阅「人才培养」下指定栏目的第一页文章。\n\n仅获取未登录时可见的列表和正文。需要 jAccount 登录或无法获取全文的文章保留公开标题、发布日期和原文链接。栏目没有公开条目时无法生成订阅。\n\n| 栏目 | category |\n| ---- | -------- |\n| 本科生培养 - 国际交流 | bkspy_gjjl |\n| 研究生培养 - 招生工作 | bsyjs_zsgz |\n| 研究生培养 - 学籍管理 | bsyjs_xjgl |\n| 研究生培养 - 培养管理 | bsyjs_pygl |\n| 研究生培养 - 学位管理 | bsyjs_xwgl |\n| 研究生培养 - 答辩公告 | bsyjs_dbgg |\n| 研究生培养 - 国际交流 | bsyjs_gjjl |\n| 研究生培养 - 教师事务 | bsyjs_jssw |\n| 研究生培养 - 通知公告 | bsyjs_notice |\n| 微专业培养 | wzypy |\n| 教学实践 - 科创实践项目 - PRP 项目 | jxsj_kcsj_prp |\n| 教学实践 - 科创实践项目 - 专业实习 | jxsj_kcsj_zysx |\n| 教学实践 - 学生科创组织 | jxsj_xskczz |\n| 学生工作 - 通知公告 - 党建德育 | xsgz-tzgg-djdy |\n| 学生工作 - 通知公告 - 团学工作 | xsgz-tzgg-txgz |\n| 学生工作 - 通知公告 - 学生事务 | xsgz-tzgg-xssw |\n| 学生工作 - 通知公告 - 职业发展 | xsgz-tzgg-zyfz |\n| 学生工作 - 规章制度 - 学生事务 | xsgz-gzzd-xssw |\n| 学生工作 - 规章制度 - 职业发展 | xsgz-gzzd-zyfz |\n\n「学生工作」下「规章制度」中的党建德育、团学工作，以及「管理服务」中的办事指南、日常管理目前没有公开条目，未纳入订阅。\n\n专业介绍、培养方案、课程信息、通知指南、快速链接、教学成果，以及教学实践中的其他介绍页属于静态介绍、课程目录或链接导航，未纳入订阅。",
+        "location": "cs/rcpy.ts",
+        "module": () => import('@/routes/sjtu/cs/rcpy.ts')
       }
     },
     "apiRoutes": {},
