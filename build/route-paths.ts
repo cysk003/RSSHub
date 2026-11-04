@@ -244,7 +244,7 @@ export type RoutePath =
   | `/appstore/xianmian`
   | `/appstorrent/programs`
   | `/aqara/:path{.+}?`
-  | `/aqara/:region{cn|kr|eu|us|ru|en}/:type?`
+  | `/aqara/:region{(?:cn|kr|eu|us|ru|en)}/:type?`
   | `/aqara/cn/news`
   | `/aqara/community/:id?/:keyword?`
   | `/aqicn/:city/:pollution?`
@@ -306,6 +306,7 @@ export type RoutePath =
   | `/bakamh/manga/:name`
   | `/bandbbs/:watch_type?/:list_type?`
   | `/bandcamp/artist/:artist`
+  | `/bandcamp/daily`
   | `/bandcamp/live`
   | `/bandcamp/tag/:tag?`
   | `/bandcamp/weekly`
@@ -1857,7 +1858,7 @@ export type RoutePath =
   | `/inoreader/rss/:user/:tag`
   | `/inshokuten/bukken/:area?/:region?`
   | `/inshokuten/rent-benchmark/:area?/:line?`
-  | `/inspirehep/:collection{jobs|seminars|conferences|institutions|experiments|journals}/:q?`
+  | `/inspirehep/:collection{(?:jobs|seminars|conferences|institutions|experiments|journals)}/:q?`
   | `/inspirehep/authors/:id`
   | `/inspirehep/literature/:q`
   | `/instagram/:category/:key`
@@ -3141,7 +3142,7 @@ export type RoutePath =
   | `/sina/finance/rollnews/:lid?`
   | `/sina/finance/stock/usstock/:cids?`
   | `/sina/rollnews/:lid?`
-  | `/sina/sports/:type?`
+  | `/sina/sports/:type`
   | `/sinchew/`
   | `/sinchew/category/:category{.+}?`
   | `/sinchew/latest`

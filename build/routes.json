@@ -15389,8 +15389,8 @@
         "location": "literature.ts",
         "module": "() => import('@/routes/inspirehep/literature.ts')"
       },
-      "/:collection{jobs|seminars|conferences|institutions|experiments|journals}/:q?": {
-        "path": "/:collection{jobs|seminars|conferences|institutions|experiments|journals}/:q?",
+      "/:collection{(?:jobs|seminars|conferences|institutions|experiments|journals)}/:q?": {
+        "path": "/:collection{(?:jobs|seminars|conferences|institutions|experiments|journals)}/:q?",
         "name": "Collection Search",
         "categories": [
           "journal"
@@ -17218,13 +17218,13 @@
         "maintainers": [
           "emdoe"
         ],
-        "example": "/openalex/s64187185/subfield/2604",
+        "example": "/openalex/s64187185/subfield/1312",
         "parameters": {
           "journals": "Pipe-separated journal source IDs (e.g., s64187185|s123456789)",
           "type": "Optional filter type: subfield, topic, field, or domain",
           "ids": "Optional pipe-separated filter IDs matching the type (e.g., 2604|2605 for subfields)"
         },
-        "description": "Get recent scientific publications from OpenAlex filtered by journal and optionally by topic classification (last 2 weeks).\n\nExamples:\n\n- /openalex/s64187185 - All works from a journal (no topic filter)\n- /openalex/s64187185/subfield/2604 - Filter by subfield\n- /openalex/s64187185|s123456/topic/T10001|T10002 - Filter by topic with multiple journals\n- /openalex/s64187185/field/19 - Filter by field\n- /openalex/s64187185/domain/1 - Filter by domain",
+        "description": "Get recent scientific publications from OpenAlex filtered by journal and optionally by topic classification (last 2 weeks).\n\nExamples:\n\n- /openalex/s64187185 - All works from a journal (no topic filter)\n- /openalex/s64187185/subfield/1312 - Filter by subfield\n- /openalex/s64187185|s123456/topic/T10001|T10002 - Filter by topic with multiple journals\n- /openalex/s64187185/field/19 - Filter by field\n- /openalex/s64187185/domain/1 - Filter by domain",
         "categories": [
           "journal"
         ],
@@ -33801,8 +33801,8 @@
   },
   "aqara": {
     "routes": {
-      "/:region{cn|kr|eu|us|ru|en}/:type?": {
-        "path": "/:region{cn|kr|eu|us|ru|en}/:type?",
+      "/:region{(?:cn|kr|eu|us|ru|en)}/:type?": {
+        "path": "/:region{(?:cn|kr|eu|us|ru|en)}/:type?",
         "categories": [
           "other"
         ],
@@ -81295,7 +81295,7 @@
             ]
           }
         },
-        "description": "Newly granted food business permits (飲食店営業許可 etc.) in Tokyo wards, from each ward's CC BY open data:\n\n- 渋谷区: [食品営業許可施設一覧 (ArcGIS FeatureServer)](https://city-shibuya-data.opendata.arcgis.com/items/e68f41ebfa5f4ea490ca9af701d44e02) — current and previous month\n- 港区: [食品営業許可一覧 (CSV)](https://catalog.data.metro.tokyo.lg.jp/dataset/t131032d0000000244) — monthly snapshot of valid permits, newest first\n- 台東区: [食品衛生営業施設一覧](https://www.city.taito.lg.jp/kenkohukusi/kenkokikikanrieisei/food/syokuhin-sisetu/index.html) — the two newest monthly 新規許可 CSVs (updated on the 10th)\n- 品川区: [食品衛生許可施設一覧](https://www.city.shinagawa.tokyo.jp/PC/kenkou/kenkou-eisei/kenkou-eisei-syokuhin/opendate.html) — the two newest monthly CSVs (updated on the 15th); individuals' names and addresses are masked by the publisher and come through as `null`\n- 世田谷区: [食品関係施設情報の公開について](https://www.city.setagaya.lg.jp/02245/online_tetsuzuki/3246.html) — the two newest 例月新規許可施設一覧 CSVs (updated on the 15th)\n- 目黒区: [飲食店等 (BODIK CKAN)](https://data.bodik.jp/dataset/131105_food_business) — the two newest 飲食店 新規 monthly CSVs (updated by the 10th)\n\nItems are sorted by permit date (`pubDate`). `_extra` holds `source`, `ward`, `permit_no`, `name`, `address`, `town` (町字), `permit_date`, `first_permit_date`, `expires_at` (許可満了日), `closed_date` (廃業日 — non-null means the business has already closed), `business_type`, `lat` / `lon` and the publisher's original columns in `raw`. Every field a publisher omits is `null`, never `0` or an empty string. Only 許可 rows are included (届出 rows are skipped).\n\n| Query   | Description                           | Default |\n| ------- | ------------------------------------- | ------- |\n| `limit` | Number of permits per source, max 500 | 100     |",
+        "description": "Newly granted food business permits (飲食店営業許可 etc.) in Tokyo wards, from each ward's CC BY open data:\n\n- 渋谷区: [食品営業許可施設一覧 (ArcGIS FeatureServer)](https://city-shibuya-data.opendata.arcgis.com/items/e68f41ebfa5f4ea490ca9af701d44e02) — current and previous month\n- 港区: [食品営業許可一覧 (CSV)](https://catalog.data.metro.tokyo.lg.jp/dataset/t131032d0000000244) — monthly snapshot of valid permits, newest first\n- 台東区: [食品衛生営業施設一覧](https://www.city.taito.lg.jp/kenkohukusi/kenkokikikanrieisei/food/syokuhin-sisetu/index.html) — the two newest monthly 新規許可 CSVs (updated on the 10th)\n- 品川区: [食品衛生許可施設一覧](https://www.city.shinagawa.tokyo.jp/kenko/eisei/1003077/1003132.html) — the two newest monthly CSVs (updated on the 15th); individuals' names and addresses are masked by the publisher and come through as `null`\n- 世田谷区: [食品関係施設情報の公開について](https://www.city.setagaya.lg.jp/02245/online_tetsuzuki/3246.html) — the two newest 例月新規許可施設一覧 CSVs (updated on the 15th)\n- 目黒区: [飲食店等 (BODIK CKAN)](https://data.bodik.jp/dataset/131105_food_business) — the two newest 飲食店 新規 monthly CSVs (updated by the 10th)\n\nItems are sorted by permit date (`pubDate`). `_extra` holds `source`, `ward`, `permit_no`, `name`, `address`, `town` (町字), `permit_date`, `first_permit_date`, `expires_at` (許可満了日), `closed_date` (廃業日 — non-null means the business has already closed), `business_type`, `lat` / `lon` and the publisher's original columns in `raw`. Every field a publisher omits is `null`, never `0` or an empty string. Only 許可 rows are included (届出 rows are skipped).\n\n| Query   | Description                           | Default |\n| ------- | ------------------------------------- | ------- |\n| `limit` | Number of permits per source, max 500 | 100     |",
         "categories": [
           "government"
         ],
@@ -119792,7 +119792,7 @@
           "AlanZeng423",
           "SuperPung"
         ],
-        "description": "| Focus on TJU | General News | Internal News | Media Report | Pictures of TJU |\n| :----------: | :----------: | :-----------: | :----------: | :-------------: |\n|     focus    |    general   |    internal   |     media    |     picture     |",
+        "description": "| Cover News | General News | Campus News | Media Report | Pictures of TJU |\n| :--------: | :----------: | :---------: | :----------: | :-------------: |\n|    focus   |    general   |   internal  |     media    |     picture     |",
         "location": "news/index.ts",
         "module": "() => import('@/routes/tju/news/index.ts')"
       },
@@ -135893,6 +135893,38 @@
         "description": "Releases on the music page of an artist or label, in the order the page shows them (newest first unless the artist reorders them). Returns the latest 10 by default, use `limit` for more. Artists on a custom domain still have a bandcamp.com subdomain.",
         "location": "artist.tsx",
         "module": "() => import('@/routes/bandcamp/artist.tsx')"
+      },
+      "/daily": {
+        "path": "/daily",
+        "categories": [
+          "new-media"
+        ],
+        "example": "/bandcamp/daily",
+        "parameters": {},
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "radar": [
+          {
+            "source": [
+              "daily.bandcamp.com/latest"
+            ],
+            "target": "/daily"
+          }
+        ],
+        "name": "Daily",
+        "maintainers": [
+          "ashi-koki"
+        ],
+        "url": "daily.bandcamp.com/latest",
+        "description": "The latest Bandcamp Daily articles, with the full article text and images.",
+        "location": "daily.ts",
+        "module": "() => import('@/routes/bandcamp/daily.ts')"
       },
       "/tag/:tag?": {
         "path": "/tag/:tag?",
@@ -161348,16 +161380,17 @@
   },
   "sina": {
     "routes": {
-      "/sports/:type?": {
-        "path": "/sports/:type?",
+      "/sports/:type": {
+        "path": "/sports/:type",
         "name": "体育",
         "categories": [
           "sport"
         ],
-        "example": "/sina/sports",
+        "example": "/sina/sports/volley",
         "parameters": {
-          "type": "类别"
+          "type": "运动类型，见下表"
         },
+        "description": "| 排球   | 游泳 | 乒乓球   | 羽毛球 | 台球    | 田径     | 体操  | 冰雪   | 射击 | 马术  | 拳击搏击 | UFC | 其他   |\n| ------ | ---- | -------- | ------ | ------- | -------- | ----- | ------ | ---- | ----- | -------- | --- | ------ |\n| volley | swim | pingpang | badmin | snooker | tianjing | ticao | winter | sh   | horse | kungfu   | ufc | others |",
         "maintainers": [
           "nczitzk"
         ],
