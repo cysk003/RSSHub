@@ -980,6 +980,9 @@
   "/zyw/hot/:site?": [
     "nczitzk"
   ],
+  "/4chan/:board/thread/:threadId/:routeParams?": [
+    "Hash6232"
+  ],
   "/4chan/:board/catalog/:routeParams?": [
     "heisenshark"
   ],
@@ -7730,11 +7733,11 @@
     "imbytecat",
     "simonsmh"
   ],
-  "/shopback/cashback/:store/:market?": [
-    "DIYgod"
-  ],
   "/shopback/:store": [
     "nczitzk"
+  ],
+  "/shopback/cashback/:store/:market?": [
+    "DIYgod"
   ],
   "/shopify/apps/:handle/reviews/:page?": [
     "PrintNow"
