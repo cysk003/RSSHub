@@ -1431,6 +1431,20 @@
       }
     ]
   },
+  "the-decoder.com": {
+    "_name": "The Decoder",
+    ".": [
+      {
+        "title": "News",
+        "docs": "https://docs.rsshub.app/routes/the-decoder",
+        "source": [
+          "/",
+          "/artificial-intelligence-news/"
+        ],
+        "target": "/the-decoder/news"
+      }
+    ]
+  },
   "unusualwhales.com": {
     "_name": "Unusual Whales",
     ".": [
@@ -63974,64 +63988,6 @@
       }
     ]
   },
-  "youtube.com": {
-    "_name": "YouTube",
-    "www": [
-      {
-        "title": "Custom URL",
-        "docs": "https://docs.rsshub.app/routes/youtube",
-        "source": [
-          "/c/:id"
-        ],
-        "target": "/youtube/c/:id"
-      },
-      {
-        "title": "Subscriptions",
-        "docs": "https://docs.rsshub.app/routes/youtube",
-        "source": [
-          "/feed/subscriptions",
-          "/feed/channels"
-        ],
-        "target": "/youtube/subscriptions"
-      },
-      {
-        "title": "Channel with id",
-        "docs": "https://docs.rsshub.app/routes/youtube",
-        "source": [
-          "/channel/:id"
-        ],
-        "target": "/youtube/channel/:id"
-      },
-      {
-        "title": "Live",
-        "docs": "https://docs.rsshub.app/routes/youtube",
-        "source": [
-          "/:username/streams",
-          "/channel/:username/streams"
-        ],
-        "target": "/youtube/live/:username"
-      },
-      {
-        "title": "Shows",
-        "docs": "https://docs.rsshub.app/routes/youtube",
-        "source": [
-          "/:username/shows",
-          "/channel/:username/shows"
-        ],
-        "target": "/youtube/shows/:username"
-      },
-      {
-        "title": "Channel with user handle",
-        "docs": "https://docs.rsshub.app/routes/youtube",
-        "source": [
-          "/user/:username",
-          "/:username",
-          "/:username/videos"
-        ],
-        "target": "/youtube/user/:username"
-      }
-    ]
-  },
   "x.com": {
     "_name": "X (Twitter)",
     ".": [
@@ -64090,6 +64046,64 @@
           "/:id"
         ],
         "target": "/twitter/user/:id"
+      }
+    ]
+  },
+  "youtube.com": {
+    "_name": "YouTube",
+    "www": [
+      {
+        "title": "Custom URL",
+        "docs": "https://docs.rsshub.app/routes/youtube",
+        "source": [
+          "/c/:id"
+        ],
+        "target": "/youtube/c/:id"
+      },
+      {
+        "title": "Subscriptions",
+        "docs": "https://docs.rsshub.app/routes/youtube",
+        "source": [
+          "/feed/subscriptions",
+          "/feed/channels"
+        ],
+        "target": "/youtube/subscriptions"
+      },
+      {
+        "title": "Channel with id",
+        "docs": "https://docs.rsshub.app/routes/youtube",
+        "source": [
+          "/channel/:id"
+        ],
+        "target": "/youtube/channel/:id"
+      },
+      {
+        "title": "Live",
+        "docs": "https://docs.rsshub.app/routes/youtube",
+        "source": [
+          "/:username/streams",
+          "/channel/:username/streams"
+        ],
+        "target": "/youtube/live/:username"
+      },
+      {
+        "title": "Shows",
+        "docs": "https://docs.rsshub.app/routes/youtube",
+        "source": [
+          "/:username/shows",
+          "/channel/:username/shows"
+        ],
+        "target": "/youtube/shows/:username"
+      },
+      {
+        "title": "Channel with user handle",
+        "docs": "https://docs.rsshub.app/routes/youtube",
+        "source": [
+          "/user/:username",
+          "/:username",
+          "/:username/videos"
+        ],
+        "target": "/youtube/user/:username"
       }
     ]
   },
