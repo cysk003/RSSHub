@@ -2040,6 +2040,7 @@ export type RoutePath =
   | `/keyakizaka46/blog`
   | `/keyakizaka46/news`
   | `/keylol/:path`
+  | `/kimi/blog`
   | `/kimlaw/thesis`
   | `/kiro/blog`
   | `/kiro/changelog`
@@ -3503,6 +3504,7 @@ export type RoutePath =
   | `/trendingpapers/papers/:category?/:time?/:cited?`
   | `/tribalfootball/`
   | `/trow/portal`
+  | `/tryprofound/research/:filter?`
   | `/tsdm39/bd/:type?`
   | `/tsinghua/career`
   | `/tsinghua/info/:type`
