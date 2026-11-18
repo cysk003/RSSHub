@@ -672,6 +672,7 @@ export type RoutePath =
   | `/cjlu/yjsy/:cate`
   | `/claude/blog`
   | `/claude/code/changelog`
+  | `/claude/dev/blog`
   | `/clickme/:site/:grouping/:name`
   | `/cline/blog`
   | `/cloudflare/blog`
@@ -3636,6 +3637,7 @@ export type RoutePath =
   | `/viva-la-vita/featured`
   | `/viva-la-vita/hot`
   | `/viva-la-vita/latest`
+  | `/vllm/blog`
   | `/voanews/:language/:channel?`
   | `/vocus/publication/:id`
   | `/vocus/user/:id`
