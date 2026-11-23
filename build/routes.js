@@ -2118,6 +2118,39 @@ export default {
     ],
     "lang": "zh-CN"
   },
+  "cspengyuan": {
+    "routes": {
+      "/research/:category?": {
+        "path": "/research/:category?",
+        "example": "/cspengyuan/research/macroSpecialResearch",
+        "name": "信用研究",
+        "categories": [
+          "finance"
+        ],
+        "maintainers": [
+          "DIYgod"
+        ],
+        "parameters": {
+          "category": "官网信用研究栏目编码，默认 macroSpecialResearch。"
+        },
+        "description": "| 栏目         | 编码                    |\n| ------------ | ----------------------- |\n| 宏观专题     | macroSpecialResearch    |\n| 政策解读     | macroPolicyResearch     |\n| 经济观察     | macroEconomiesResearch  |\n| 大类资产     | macroAssetClassResearch |\n| 宏观周报     | macroWeeklyResearch     |\n| 债市专题研究 | bondSpecial             |\n| 热点分析     | bondHotspot             |\n| 债市周报     | bondWeekly              |\n| 债市观察     | bondMonthly             |\n| 债市年报     | bondYearly              |\n| 行业评论     | industryComment         |\n| 行业展望     | industryOutlook         |\n| 行业专题     | industrySpecial         |",
+        "radar": [
+          {
+            "source": [
+              "www.cspengyuan.com/credit-research/:category"
+            ],
+            "target": "/research/:category"
+          }
+        ],
+        "location": "research.ts",
+        "module": () => import('@/routes/cspengyuan/research.ts')
+      }
+    },
+    "apiRoutes": {},
+    "name": "中证鹏元",
+    "url": "www.cspengyuan.com",
+    "lang": "zh-CN"
+  },
   "datalekt": {
     "routes": {
       "/incidents": {
@@ -2376,6 +2409,45 @@ export default {
       "blog"
     ],
     "lang": "zh-CN"
+  },
+  "dblp": {
+    "routes": {
+      "/:field": {
+        "path": "/:field",
+        "categories": [
+          "study"
+        ],
+        "example": "/dblp/knowledge%20tracing",
+        "parameters": {
+          "field": "Research field"
+        },
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": true,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "radar": [
+          {
+            "source": [
+              "dblp.org/search"
+            ]
+          }
+        ],
+        "name": "Keyword Search",
+        "maintainers": [
+          "ytno1"
+        ],
+        "location": "publication.ts",
+        "module": () => import('@/routes/dblp/publication.ts')
+      }
+    },
+    "apiRoutes": {},
+    "name": "DBLP",
+    "url": "dblp.org",
+    "lang": "en"
   },
   "dianping": {
     "routes": {
@@ -5246,40 +5318,6 @@ export default {
     "url": "public.tableau.com",
     "lang": "en"
   },
-  "the-decoder": {
-    "routes": {
-      "/news": {
-        "path": "/news",
-        "categories": [
-          "new-media"
-        ],
-        "example": "/the-decoder/news",
-        "name": "News",
-        "maintainers": [
-          "ljh12138164"
-        ],
-        "description": "Full English news and analysis from the official WordPress API, including images and videos. The official RSS feed only contains excerpts. Fetches the latest 30 articles by default; use the common `limit` parameter for up to 100 articles.",
-        "zh": {
-          "name": "新闻",
-          "description": "官方 RSS 只提供摘要。本路由通过官方 WordPress API 获取英文新闻与分析全文，保留正文中的图片和视频。默认获取最新 30 篇，可通过通用参数 `limit` 调整，最多 100 篇。"
-        },
-        "radar": [
-          {
-            "source": [
-              "the-decoder.com/",
-              "the-decoder.com/artificial-intelligence-news/"
-            ]
-          }
-        ],
-        "location": "news.ts",
-        "module": () => import('@/routes/the-decoder/news.ts')
-      }
-    },
-    "apiRoutes": {},
-    "name": "The Decoder",
-    "url": "the-decoder.com",
-    "lang": "en"
-  },
   "trendingpapers": {
     "routes": {
       "/papers/:category?/:time?/:cited?": {
@@ -6310,6 +6348,48 @@ export default {
     "name": "數位時代 BusinessNext",
     "url": "bnext.com.tw",
     "lang": "zh-TW"
+  },
+  "bse": {
+    "routes": {
+      "/:category?/:keyword?": {
+        "path": "/:category?/:keyword?",
+        "categories": [
+          "finance"
+        ],
+        "example": "/bse",
+        "parameters": {
+          "category": "分类，见下表，默认为本所要闻",
+          "keyword": "关键字，默认为空"
+        },
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "radar": [
+          {
+            "source": [
+              "bse.cn/"
+            ]
+          }
+        ],
+        "name": "栏目",
+        "maintainers": [
+          "nczitzk"
+        ],
+        "url": "bse.cn/",
+        "description": "| 本所要闻        | 人才招聘 | 采购信息 | 业务通知   |\n| --------------- | -------- | -------- | ---------- |\n| important\\_news | recruit  | purchase | news\\_list |\n\n| 法律法规  | 公开征求意见    | 部门规章         | 发行融资   |\n| --------- | --------------- | ---------------- | ---------- |\n| law\\_list | public\\_opinion | regulation\\_list | fxrz\\_list |\n\n| 持续监管   | 交易管理   | 市场管理   | 上市委会议公告  |\n| ---------- | ---------- | ---------- | --------------- |\n| cxjg\\_list | jygl\\_list | scgl\\_list | meeting\\_notice |\n\n| 上市委会议结果公告 | 上市委会议变更公告 | 并购重组委会议公告 |\n| ------------------ | ------------------ | ------------------ |\n| meeting\\_result    | meeting\\_change    | bgcz\\_notice       |\n\n| 并购重组委会议结果公告 | 并购重组委会议变更公告 | 终止审核           | 注册结果      |\n| ---------------------- | ---------------------- | ------------------ | ------------- |\n| bgcz\\_result           | bgcz\\_change           | termination\\_audit | audit\\_result |",
+        "location": "index.ts",
+        "module": () => import('@/routes/bse/index.ts')
+      }
+    },
+    "apiRoutes": {},
+    "name": "北京证券交易所",
+    "url": "bse.cn",
+    "lang": "zh-CN"
   },
   "chub": {
     "routes": {
@@ -9488,6 +9568,48 @@ export default {
     "url": "weekendhk.com",
     "lang": "zh-HK"
   },
+  "wfdf": {
+    "routes": {
+      "/news": {
+        "path": "/news",
+        "categories": [
+          "sport"
+        ],
+        "example": "/wfdf/news",
+        "parameters": {},
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "radar": [
+          {
+            "source": [
+              "wfdf.sport/news/",
+              "wfdf.sport/"
+            ]
+          }
+        ],
+        "name": "News",
+        "maintainers": [
+          "HankChow"
+        ],
+        "url": "wfdf.sport/news/",
+        "location": "news.ts",
+        "module": () => import('@/routes/wfdf/news.ts')
+      }
+    },
+    "apiRoutes": {},
+    "name": "WFDF",
+    "url": "wfdf.sport",
+    "categories": [
+      "sport"
+    ],
+    "lang": "en"
+  },
   "xianbao": {
     "routes": {
       "/:category?": {
@@ -9961,48 +10083,6 @@ export default {
     "url": "bitmovin.com",
     "lang": "en"
   },
-  "bse": {
-    "routes": {
-      "/:category?/:keyword?": {
-        "path": "/:category?/:keyword?",
-        "categories": [
-          "finance"
-        ],
-        "example": "/bse",
-        "parameters": {
-          "category": "分类，见下表，默认为本所要闻",
-          "keyword": "关键字，默认为空"
-        },
-        "features": {
-          "requireConfig": false,
-          "requirePuppeteer": true,
-          "antiCrawler": false,
-          "supportBT": false,
-          "supportPodcast": false,
-          "supportScihub": false
-        },
-        "radar": [
-          {
-            "source": [
-              "bse.cn/"
-            ]
-          }
-        ],
-        "name": "栏目",
-        "maintainers": [
-          "nczitzk"
-        ],
-        "url": "bse.cn/",
-        "description": "| 本所要闻        | 人才招聘 | 采购信息 | 业务通知   |\n| --------------- | -------- | -------- | ---------- |\n| important\\_news | recruit  | purchase | news\\_list |\n\n| 法律法规  | 公开征求意见    | 部门规章         | 发行融资   |\n| --------- | --------------- | ---------------- | ---------- |\n| law\\_list | public\\_opinion | regulation\\_list | fxrz\\_list |\n\n| 持续监管   | 交易管理   | 市场管理   | 上市委会议公告  |\n| ---------- | ---------- | ---------- | --------------- |\n| cxjg\\_list | jygl\\_list | scgl\\_list | meeting\\_notice |\n\n| 上市委会议结果公告 | 上市委会议变更公告 | 并购重组委会议公告 |\n| ------------------ | ------------------ | ------------------ |\n| meeting\\_result    | meeting\\_change    | bgcz\\_notice       |\n\n| 并购重组委会议结果公告 | 并购重组委会议变更公告 | 终止审核           | 注册结果      |\n| ---------------------- | ---------------------- | ------------------ | ------------- |\n| bgcz\\_result           | bgcz\\_change           | termination\\_audit | audit\\_result |",
-        "location": "index.ts",
-        "module": () => import('@/routes/bse/index.ts')
-      }
-    },
-    "apiRoutes": {},
-    "name": "北京证券交易所",
-    "url": "bse.cn",
-    "lang": "zh-CN"
-  },
   "cbre": {
     "routes": {
       "/research/:site?/:section?": {
@@ -10222,40 +10302,77 @@ export default {
     "url": "commonhealth.com.tw",
     "lang": "zh-TW"
   },
-  "cspengyuan": {
+  "crac": {
     "routes": {
-      "/research/:category?": {
-        "path": "/research/:category?",
-        "example": "/cspengyuan/research/macroSpecialResearch",
-        "name": "信用研究",
+      "/:type?": {
+        "path": "/:type?",
         "categories": [
-          "finance"
+          "government"
         ],
-        "maintainers": [
-          "DIYgod"
-        ],
-        "features": {
-          "requirePuppeteer": true
-        },
+        "example": "/crac/2",
         "parameters": {
-          "category": "官网信用研究栏目编码，默认 macroSpecialResearch。"
+          "type": "类型，见下表，默认为全部"
         },
-        "description": "| 栏目         | 编码                    |\n| ------------ | ----------------------- |\n| 宏观专题     | macroSpecialResearch    |\n| 政策解读     | macroPolicyResearch     |\n| 经济观察     | macroEconomiesResearch  |\n| 大类资产     | macroAssetClassResearch |\n| 宏观周报     | macroWeeklyResearch     |\n| 债市专题研究 | bondSpecial             |\n| 热点分析     | bondHotspot             |\n| 债市周报     | bondWeekly              |\n| 债市观察     | bondMonthly             |\n| 债市年报     | bondYearly              |\n| 行业评论     | industryComment         |\n| 行业展望     | industryOutlook         |\n| 行业专题     | industrySpecial         |",
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "name": "最新资讯",
+        "maintainers": [
+          "Misaka13514"
+        ],
+        "description": "| 新闻动态 | 通知公告 | 政策法规 | 常见问题 | 资料下载 | English | 业余中继台 | 科普专栏 |\n| -------- | -------- | -------- | -------- | -------- | ------- | ---------- | -------- |\n| 1        | 2        | 3        | 5        | 6        | 7       | 8          | 9        |",
         "radar": [
           {
             "source": [
-              "www.cspengyuan.com/credit-research/:category"
-            ],
-            "target": "/research/:category"
+              "www.crac.org.cn/",
+              "www.crac.org.cn/News/*"
+            ]
           }
         ],
-        "location": "research.ts",
-        "module": () => import('@/routes/cspengyuan/research.ts')
+        "location": "index.ts",
+        "module": () => import('@/routes/crac/index.ts')
+      },
+      "/exam": {
+        "path": "/exam",
+        "categories": [
+          "government"
+        ],
+        "example": "/crac/exam",
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "name": "考试信息",
+        "maintainers": [
+          "admxj"
+        ],
+        "radar": [
+          {
+            "source": [
+              "zhipu.allspectrum.cn/CRAC/crac/pages/list_examMsg.html"
+            ],
+            "target": "/exam"
+          }
+        ],
+        "location": "exam.tsx",
+        "module": () => import('@/routes/crac/exam.tsx')
       }
     },
     "apiRoutes": {},
-    "name": "中证鹏元",
-    "url": "www.cspengyuan.com",
+    "name": "中国无线电协会业余无线电分会",
+    "url": "www.crac.org.cn",
+    "categories": [
+      "government"
+    ],
     "lang": "zh-CN"
   },
   "curius": {
@@ -10295,45 +10412,6 @@ export default {
     "apiRoutes": {},
     "name": "Curius",
     "url": "curius.app",
-    "lang": "en"
-  },
-  "dblp": {
-    "routes": {
-      "/:field": {
-        "path": "/:field",
-        "categories": [
-          "study"
-        ],
-        "example": "/dblp/knowledge%20tracing",
-        "parameters": {
-          "field": "Research field"
-        },
-        "features": {
-          "requireConfig": false,
-          "requirePuppeteer": true,
-          "antiCrawler": true,
-          "supportBT": false,
-          "supportPodcast": false,
-          "supportScihub": false
-        },
-        "radar": [
-          {
-            "source": [
-              "dblp.org/search"
-            ]
-          }
-        ],
-        "name": "Keyword Search",
-        "maintainers": [
-          "ytno1"
-        ],
-        "location": "publication.ts",
-        "module": () => import('@/routes/dblp/publication.ts')
-      }
-    },
-    "apiRoutes": {},
-    "name": "DBLP",
-    "url": "dblp.org",
     "lang": "en"
   },
   "diershoubing": {
@@ -10523,6 +10601,49 @@ export default {
     "name": "GoFans",
     "url": "gofans.cn",
     "lang": "zh-CN"
+  },
+  "hiring.cafe": {
+    "routes": {
+      "/jobs/:keywords": {
+        "path": "/jobs/:keywords",
+        "categories": [
+          "other"
+        ],
+        "example": "/hiring.cafe/jobs/sustainability",
+        "parameters": {
+          "keywords": "Keywords to search for"
+        },
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": true,
+          "antiCrawler": false,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "radar": [
+          {
+            "source": [
+              "hiring.cafe"
+            ]
+          }
+        ],
+        "description": "Search uses the current public website’s default region, which HiringCafe selects from the visitor’s location. Public job summaries are included when full descriptions are unavailable.",
+        "name": "Jobs",
+        "maintainers": [
+          "mintyfrankie"
+        ],
+        "location": "jobs.tsx",
+        "module": () => import('@/routes/hiring.cafe/jobs.tsx')
+      }
+    },
+    "apiRoutes": {},
+    "name": "HiringCafe",
+    "url": "hiringcafe.com",
+    "description": "HiringCafe is a platform for job seekers to find job opportunities and for employers to post job listings.",
+    "zh": {
+      "name": "HiringCafe"
+    }
   },
   "houxu": {
     "routes": {
@@ -11734,6 +11855,66 @@ export default {
     "url": "rottentomatoes.com",
     "lang": "en"
   },
+  "ryo.lu": {
+    "routes": {
+      "/journal/:lang?": {
+        "path": "/journal/:lang?",
+        "categories": [
+          "blog"
+        ],
+        "view": 0,
+        "example": "/ryo.lu/journal",
+        "parameters": {
+          "lang": {
+            "description": "Language",
+            "default": "en",
+            "options": [
+              {
+                "value": "en",
+                "label": "English"
+              },
+              {
+                "value": "zh",
+                "label": "中文"
+              },
+              {
+                "value": "ja",
+                "label": "日本語"
+              }
+            ]
+          }
+        },
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "radar": [
+          {
+            "source": [
+              "ryo.lu/journal",
+              "ryo.lu/"
+            ],
+            "target": "/journal"
+          }
+        ],
+        "name": "Journal",
+        "maintainers": [
+          "TonyRL"
+        ],
+        "url": "ryo.lu/journal",
+        "location": "journal.tsx",
+        "module": () => import('@/routes/ryo.lu/journal.tsx')
+      }
+    },
+    "apiRoutes": {},
+    "name": "Ryo Lu",
+    "url": "ryo.lu",
+    "lang": "en"
+  },
   "scmuseum": {
     "routes": {
       "/exhibition/:type?": {
@@ -12638,6 +12819,100 @@ export default {
     "name": "Behance",
     "url": "www.behance.net",
     "lang": "en"
+  },
+  "bitget": {
+    "routes": {
+      "/announcement/:type/:lang?": {
+        "path": "/announcement/:type/:lang?",
+        "categories": [
+          "finance"
+        ],
+        "view": 0,
+        "example": "/bitget/announcement/all/zh-CN",
+        "parameters": {
+          "type": {
+            "description": "Bitget 通知类型",
+            "default": "all",
+            "options": [
+              {
+                "value": "all",
+                "label": "全部通知"
+              },
+              {
+                "value": "new-listing",
+                "label": "新币上线"
+              },
+              {
+                "value": "latest-activities",
+                "label": "最新活动"
+              },
+              {
+                "value": "new-announcement",
+                "label": "最新公告"
+              }
+            ]
+          },
+          "lang": {
+            "description": "语言",
+            "default": "zh-CN",
+            "options": [
+              {
+                "value": "zh-CN",
+                "label": "中文"
+              },
+              {
+                "value": "en-US",
+                "label": "English"
+              },
+              {
+                "value": "es-ES",
+                "label": "Español"
+              },
+              {
+                "value": "fr-FR",
+                "label": "Français"
+              },
+              {
+                "value": "de-DE",
+                "label": "Deutsch"
+              },
+              {
+                "value": "ja-JP",
+                "label": "日本語"
+              },
+              {
+                "value": "ru-RU",
+                "label": "Русский"
+              },
+              {
+                "value": "ar-SA",
+                "label": "العربية"
+              }
+            ]
+          }
+        },
+        "radar": [
+          {
+            "source": [
+              "www.bitget.com/:lang/promotion/inmail",
+              "www.bitget.com/:lang/inmail"
+            ],
+            "target": "/announcement/all/:lang"
+          }
+        ],
+        "name": "Announcement",
+        "description": "type:\n\n| Type              | Description |\n| ----------------- | ----------- |\n| all               | 全部通知    |\n| new-listing       | 新币上线    |\n| latest-activities | 最新活动    |\n| new-announcement  | 最新公告    |\n\nlang:\n\n| Lang  | Description |\n| ----- | ----------- |\n| zh-CN | 中文        |\n| en-US | English     |\n| es-ES | Español     |\n| fr-FR | Français    |\n| de-DE | Deutsch     |\n| ja-JP | 日本語      |\n| ru-RU | Русский     |\n| ar-SA | العربية     |",
+        "maintainers": [
+          "YukiCoco"
+        ],
+        "location": "announcement.ts",
+        "module": () => import('@/routes/bitget/announcement.ts')
+      }
+    },
+    "apiRoutes": {},
+    "name": "Bitget",
+    "url": "bitget.com",
+    "lang": "zh-CN"
   },
   "bossdesign": {
     "routes": {
@@ -13834,6 +14109,30 @@ export default {
     "url": "www.douyu.com",
     "lang": "zh-CN"
   },
+  "ele.me": {
+    "routes": {
+      "/open/announce": {
+        "path": "/open/announce",
+        "categories": [
+          "programming"
+        ],
+        "example": "/ele.me/open/announce",
+        "name": "商家开放平台公告",
+        "maintainers": [
+          "phantomk"
+        ],
+        "location": "open/announce.ts",
+        "module": () => import('@/routes/ele.me/open/announce.ts')
+      }
+    },
+    "apiRoutes": {},
+    "name": "饿了么",
+    "url": "www.ele.me",
+    "categories": [
+      "programming"
+    ],
+    "lang": "zh-CN"
+  },
   "eleduck": {
     "routes": {
       "/jobs": {
@@ -14587,6 +14886,54 @@ export default {
     "name": "Foresight News",
     "url": "foresightnews.pro",
     "lang": "zh-CN"
+  },
+  "fortnite": {
+    "routes": {
+      "/news/:options?": {
+        "path": "/news/:options?",
+        "categories": [
+          "game"
+        ],
+        "example": "/fortnite/news",
+        "parameters": {
+          "options": "Query-style options, `lang` and `tag`, see below"
+        },
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "radar": [
+          {
+            "source": [
+              "www.fortnite.com/news"
+            ],
+            "target": "/news"
+          },
+          {
+            "source": [
+              "www.fortnite.com/news/tag/:tag"
+            ],
+            "target": "/news/tag=:tag"
+          }
+        ],
+        "name": "News",
+        "maintainers": [
+          "lyqluis"
+        ],
+        "url": "www.fortnite.com/news",
+        "description": "- `lang`, default `en-US`, one of `ar`, `de`, `en-US`, `es-ES`, `es-MX`, `fr`, `it`, `ja`, `ko`, `pl`, `pt-BR`, `ru`, `tr`, `zh-Hans`\n- `tag`, optional, one of `battle-royale` (Battle Royale), `fortnite-competitive` (Fortnite Competitive), `fortnite-festival` (Fortnite Festival), `fortnite-news` (Fortnite News), `fortnite-og` (Fortnite OG), `fortnite-uefn-and-creative` (UEFN and Creative), `lego-fortnite` (LEGO Fortnite Odyssey), `lego-fortnite-brick-life` (LEGO Fortnite Brick Life), `ranked` (Ranked Battle Royale), `reload` (Reload), `rocket-racing` (Rocket Racing), `save-the-world` (Save the World)",
+        "location": "news.ts",
+        "module": () => import('@/routes/fortnite/news.ts')
+      }
+    },
+    "apiRoutes": {},
+    "name": "Fortnite",
+    "url": "fortnite.com",
+    "lang": "en"
   },
   "gamekee": {
     "routes": {
@@ -16844,6 +17191,50 @@ export default {
     "url": "mittrchina.com",
     "lang": "zh-CN"
   },
+  "mymusicsheet": {
+    "routes": {
+      "/user/sheets/:username/:iso?/:freeOnly?": {
+        "path": "/user/sheets/:username/:iso?/:freeOnly?",
+        "categories": [
+          "shopping"
+        ],
+        "example": "/mymusicsheet/user/sheets/HalcyonMusic/USD/1",
+        "parameters": {
+          "username": "Username, can be found in the URL",
+          "iso": "ISO 4217 currency code for displaying prices, defaults to `USD`",
+          "freeOnly": "Only return free scores, any value to enable"
+        },
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "radar": [
+          {
+            "source": [
+              "mymusicfive.com/:username/*",
+              "mymusicfive.com/:username"
+            ],
+            "target": "/user/sheets/:username"
+          }
+        ],
+        "name": "User Sheets",
+        "maintainers": [
+          "Freddd13"
+        ],
+        "description": "Please refer to [Wikipedia](https://en.wikipedia.org/wiki/ISO_4217#Active_codes) for ISO 4217.",
+        "location": "usersheets.tsx",
+        "module": () => import('@/routes/mymusicsheet/usersheets.tsx')
+      }
+    },
+    "apiRoutes": {},
+    "name": "mymusic5 (MyMusicSheet)",
+    "url": "mymusicfive.com",
+    "lang": "en"
+  },
   "nanhua": {
     "routes": {
       "/index-research/:category?": {
@@ -17661,6 +18052,75 @@ export default {
     "apiRoutes": {},
     "name": "Pixabay",
     "url": "pixabay.com",
+    "lang": "en"
+  },
+  "producthunt": {
+    "routes": {
+      "/feed": {
+        "path": "/feed",
+        "categories": [
+          "other"
+        ],
+        "example": "/producthunt/feed",
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "name": "Official Feed",
+        "maintainers": [
+          "miaoyafeng",
+          "Fatpandac"
+        ],
+        "url": "www.producthunt.com/feed/",
+        "location": "feed.ts",
+        "module": () => import('@/routes/producthunt/feed.ts')
+      },
+      "/today": {
+        "path": "/today",
+        "categories": [
+          "other"
+        ],
+        "example": "/producthunt/today",
+        "features": {
+          "requireConfig": [
+            {
+              "name": "PRODUCTHUNT_ACCESS_TOKEN",
+              "description": "Optional API access token for the featured daily list when the website is unavailable. See [Product Hunt API documentation](https://api.producthunt.com/v2/docs).",
+              "optional": true
+            }
+          ],
+          "requirePuppeteer": false,
+          "antiCrawler": true,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "description": "Top products from the publisher’s Today list. The general Product Hunt feed is also available at `/producthunt/feed`.",
+        "radar": [
+          {
+            "source": [
+              "www.producthunt.com/"
+            ]
+          }
+        ],
+        "name": "Top Products Launching Today",
+        "maintainers": [
+          "miaoyafeng",
+          "Fatpandac"
+        ],
+        "url": "www.producthunt.com/",
+        "location": "today.tsx",
+        "module": () => import('@/routes/producthunt/today.tsx')
+      }
+    },
+    "apiRoutes": {},
+    "name": "Product Hunt",
+    "url": "www.producthunt.com",
+    "description": "> 官方 Feed 地址为: <https://www.producthunt.com/feed>",
     "lang": "en"
   },
   "qbittorrent": {
@@ -21276,6 +21736,115 @@ export default {
     "url": "discord.com",
     "lang": "en"
   },
+  "dr": {
+    "routes": {
+      "/:category?": {
+        "path": "/:category?",
+        "categories": [
+          "traditional-media"
+        ],
+        "example": "/dr/senestenyt",
+        "parameters": {
+          "category": {
+            "description": "DR-sektion, se tabellen nedenfor. Standarden er `senestenyt` (Kort nyt)",
+            "options": [
+              {
+                "value": "senestenyt",
+                "label": "Seneste nyt (Kort nyt)"
+              },
+              {
+                "value": "indland",
+                "label": "Indland"
+              },
+              {
+                "value": "udland",
+                "label": "Udland"
+              },
+              {
+                "value": "penge",
+                "label": "Penge"
+              },
+              {
+                "value": "politik",
+                "label": "Politik"
+              },
+              {
+                "value": "sporten",
+                "label": "Sport"
+              },
+              {
+                "value": "viden",
+                "label": "Viden"
+              }
+            ]
+          }
+        },
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "radar": [
+          {
+            "source": [
+              "www.dr.dk/nyheder"
+            ],
+            "target": "/senestenyt"
+          },
+          {
+            "source": [
+              "www.dr.dk/nyheder/indland"
+            ],
+            "target": "/indland"
+          },
+          {
+            "source": [
+              "www.dr.dk/nyheder/udland"
+            ],
+            "target": "/udland"
+          },
+          {
+            "source": [
+              "www.dr.dk/nyheder/penge"
+            ],
+            "target": "/penge"
+          },
+          {
+            "source": [
+              "www.dr.dk/nyheder/politik"
+            ],
+            "target": "/politik"
+          },
+          {
+            "source": [
+              "www.dr.dk/sporten"
+            ],
+            "target": "/sporten"
+          },
+          {
+            "source": [
+              "www.dr.dk/nyheder/viden"
+            ],
+            "target": "/viden"
+          }
+        ],
+        "name": "Nyheder",
+        "maintainers": [
+          "cufezhusy"
+        ],
+        "description": "DRs nyheder, baseret på de officielle RSS-feeds. RSSHub forsøger at hente den fulde artikeltekst fra dr.dk. Hvis den fulde tekst ikke kan hentes, bruges beskrivelsen fra den officielle RSS-feed.\n\n| Kategori   | Beskrivelse            |\n| ---------- | ---------------------- |\n| senestenyt | Seneste nyt (Kort nyt) |\n| indland    | Indland                |\n| udland     | Udland                 |\n| penge      | Penge                  |\n| politik    | Politik                |\n| sporten    | Sport                  |\n| viden      | Viden                  |",
+        "location": "index.ts",
+        "module": () => import('@/routes/dr/index.ts')
+      }
+    },
+    "apiRoutes": {},
+    "name": "DR (Danmarks Radio)",
+    "url": "dr.dk",
+    "lang": "da"
+  },
   "facebook": {
     "routes": {
       "/group/:id": {
@@ -21419,12 +21988,74 @@ export default {
         "url": "www.facebook.com",
         "location": "reels.ts",
         "module": () => import('@/routes/facebook/reels.ts')
+      },
+      "/search/:keyword": {
+        "path": "/search/:keyword",
+        "categories": [
+          "social-media"
+        ],
+        "example": "/facebook/search/rsshub",
+        "parameters": {
+          "keyword": "Search keyword"
+        },
+        "features": {
+          "requireConfig": [
+            {
+              "name": "FACEBOOK_COOKIE",
+              "description": "Facebook cookie, only `c_user` and `xs` are required."
+            }
+          ],
+          "antiCrawler": true
+        },
+        "name": "Search",
+        "maintainers": [
+          "TonyRL"
+        ],
+        "url": "www.facebook.com",
+        "location": "search.ts",
+        "module": () => import('@/routes/facebook/search.ts')
       }
     },
     "apiRoutes": {},
     "name": "Facebook",
     "url": "www.facebook.com",
     "lang": "en"
+  },
+  "fanbox": {
+    "routes": {
+      "/:creator": {
+        "path": "/:creator",
+        "categories": [
+          "social-media"
+        ],
+        "example": "/fanbox/official",
+        "parameters": {
+          "creator": "fanbox user name"
+        },
+        "maintainers": [
+          "KarasuShin",
+          "pseudoyu"
+        ],
+        "name": "Creator",
+        "features": {
+          "requireConfig": [
+            {
+              "name": "FANBOX_SESSION_ID",
+              "description": "Required for private posts. Can be found in browser DevTools -> Application -> Cookies -> https://www.fanbox.cc -> FANBOXSESSID",
+              "optional": true
+            }
+          ],
+          "requirePuppeteer": false,
+          "nsfw": true
+        },
+        "location": "index.ts",
+        "module": () => import('@/routes/fanbox/index.ts')
+      }
+    },
+    "apiRoutes": {},
+    "name": "fanbox",
+    "url": "www.fanbox.cc",
+    "lang": "zh-CN"
   },
   "fansly": {
     "routes": {
@@ -25534,6 +26165,663 @@ export default {
     "url": "bbs.viva-la-vita.org",
     "lang": "zh-CN"
   },
+  "voronoiapp": {
+    "routes": {
+      "/author/:username": {
+        "url": "voronoiapp.com",
+        "categories": [
+          "picture"
+        ],
+        "view": 2,
+        "maintainers": [
+          "Cesaryuan"
+        ],
+        "name": "Author Posts",
+        "path": "/author/:username",
+        "radar": [
+          {
+            "source": [
+              "www.voronoiapp.com/author/:username"
+            ],
+            "target": "/author/:username"
+          }
+        ],
+        "example": "/voronoiapp/author/visualcapitalist",
+        "parameters": {
+          "username": "The username of the author"
+        },
+        "location": "author.ts",
+        "module": () => import('@/routes/voronoiapp/author.ts')
+      },
+      "/editors-pick/:category?": {
+        "url": "voronoiapp.com",
+        "categories": [
+          "picture"
+        ],
+        "view": 2,
+        "maintainers": [
+          "Cesaryuan"
+        ],
+        "name": "Editor's Pick Posts",
+        "path": "/editors-pick/:category?",
+        "radar": [
+          {
+            "source": [
+              "www.voronoiapp.com/posts/editors-pick"
+            ],
+            "target": "/editors-pick"
+          }
+        ],
+        "example": "/voronoiapp/editors-pick",
+        "parameters": {
+          "category": {
+            "description": "The category of the post",
+            "default": "",
+            "options": [
+              {
+                "value": "",
+                "label": "All categories"
+              },
+              {
+                "value": "Automotive",
+                "label": "Automotive Data Insights - Explore a range of automotive data visualizations showcasing trends, innovations, and market dynamics in the automotive industry."
+              },
+              {
+                "value": "Business",
+                "label": "Business Visualization Trends - Discover business visualizations covering market analysis, corporate strategies, and economic impacts across global industries."
+              },
+              {
+                "value": "Climate",
+                "label": "Climate Data Visualized - Delve into climate change data visualizations that detail weather patterns, environmental impacts, and sustainability efforts worldwide."
+              },
+              {
+                "value": "Demographics",
+                "label": "Demographic Visual Insights - Explore visual demographics data showcasing population trends, societal changes, and demographic analytics across regions."
+              },
+              {
+                "value": "Economy",
+                "label": "Economic Visualization Insights - View economic visualizations illustrating financial markets, economic policies, and global economic health."
+              },
+              {
+                "value": "Energy",
+                "label": "Energy Industry Visual Data - Discover the dynamics of global energy consumption, renewable sources, and energy market trends through vivid visualizations."
+              },
+              {
+                "value": "Entertainment",
+                "label": "Entertainment Industry Data - Explore data visualizations in the entertainment industry, covering everything from box office trends to streaming service analytics."
+              },
+              {
+                "value": "Geopolitics",
+                "label": "Geopolitical Data Visualized - Understand global geopolitical shifts and international relations through comprehensive geopolitical data visualizations."
+              },
+              {
+                "value": "Healthcare",
+                "label": "Healthcare Insights Visualized - Analyze healthcare data visualizations spanning disease trends, healthcare services, and public health policies."
+              },
+              {
+                "value": "Innovation",
+                "label": "Innovation in Data - Dive into innovation data visualizations highlighting technology advancements, R&D investments, and patent trends."
+              },
+              {
+                "value": "Maps",
+                "label": "Cartographic Visual Insights - Discover cartographic visualizations that map everything from socio-economic data to geographical phenomena."
+              },
+              {
+                "value": "Markets",
+                "label": "Market Trends Visualized - Visualize market trends, financial data, and economic forecasts through comprehensive market visualizations."
+              },
+              {
+                "value": "Money",
+                "label": "Financial Data Visualized - Dive into financial visualizations depicting currency trends, investment flows, and banking statistics."
+              },
+              {
+                "value": "Natural Resources",
+                "label": "Natural Resources Data - Explore visualizations of natural resources, detailing extraction, consumption, and conservation data."
+              },
+              {
+                "value": "Politics",
+                "label": "Political Visual Insights - Analyze political trends, election results, and legislative impacts through detailed political visualizations."
+              },
+              {
+                "value": "Public Opinion",
+                "label": "Public Opinion Trends - Discover visualizations of public opinion polls, social trends, and cultural shifts across different regions."
+              },
+              {
+                "value": "Real Estate",
+                "label": "Real Estate Market Insights - Explore real estate market trends, property values, and urban development through targeted data visualizations."
+              },
+              {
+                "value": "Sports",
+                "label": "Sports Data Insights - Analyze sports data visualizations that showcase performance statistics, team rankings, and sports economics."
+              },
+              {
+                "value": "Technology",
+                "label": "Technology Trends Visualized - Dive into technology visualizations highlighting industry trends, tech adoption rates, and innovation impacts."
+              },
+              {
+                "value": "Wealth",
+                "label": "Wealth Distribution Insights - Explore wealth distribution, financial health, and economic disparities through detailed visualizations."
+              },
+              {
+                "value": "Travel",
+                "label": "Travel Trends Visualized - Discover travel trends, tourism statistics, and destination analytics through engaging visualizations."
+              },
+              {
+                "value": "Nature",
+                "label": "Nature and Conservation Data - Delve into visualizations of ecological data, wildlife statistics, and conservation efforts around the globe."
+              },
+              {
+                "value": "Space",
+                "label": "Space Exploration Data - Explore the universe with space data visualizations covering planetary science, space missions, and astronomical discoveries."
+              },
+              {
+                "value": "Diagram",
+                "label": "Diagrammatic Data Insights - Understand complex data through diagrams that simplify information across various topics and industries."
+              },
+              {
+                "value": "Other",
+                "label": "Diverse Data Visualizations - Explore a variety of data visualizations that don't neatly fit into any single category but offer unique insights."
+              }
+            ]
+          }
+        },
+        "location": "editors-pick.ts",
+        "module": () => import('@/routes/voronoiapp/editors-pick.ts')
+      },
+      "/home/:category?": {
+        "url": "voronoiapp.com",
+        "categories": [
+          "picture"
+        ],
+        "view": 2,
+        "maintainers": [
+          "Cesaryuan"
+        ],
+        "name": "Home Posts",
+        "path": "/home/:category?",
+        "description": "This is the home page of Voronoi App",
+        "radar": [
+          {
+            "source": [
+              "www.voronoiapp.com",
+              "www.voronoiapp.com/posts/voronoi"
+            ],
+            "target": "/home"
+          }
+        ],
+        "example": "/voronoiapp/home",
+        "parameters": {
+          "category": {
+            "description": "The category of the post",
+            "default": "",
+            "options": [
+              {
+                "value": "",
+                "label": "All categories"
+              },
+              {
+                "value": "Automotive",
+                "label": "Automotive Data Insights - Explore a range of automotive data visualizations showcasing trends, innovations, and market dynamics in the automotive industry."
+              },
+              {
+                "value": "Business",
+                "label": "Business Visualization Trends - Discover business visualizations covering market analysis, corporate strategies, and economic impacts across global industries."
+              },
+              {
+                "value": "Climate",
+                "label": "Climate Data Visualized - Delve into climate change data visualizations that detail weather patterns, environmental impacts, and sustainability efforts worldwide."
+              },
+              {
+                "value": "Demographics",
+                "label": "Demographic Visual Insights - Explore visual demographics data showcasing population trends, societal changes, and demographic analytics across regions."
+              },
+              {
+                "value": "Economy",
+                "label": "Economic Visualization Insights - View economic visualizations illustrating financial markets, economic policies, and global economic health."
+              },
+              {
+                "value": "Energy",
+                "label": "Energy Industry Visual Data - Discover the dynamics of global energy consumption, renewable sources, and energy market trends through vivid visualizations."
+              },
+              {
+                "value": "Entertainment",
+                "label": "Entertainment Industry Data - Explore data visualizations in the entertainment industry, covering everything from box office trends to streaming service analytics."
+              },
+              {
+                "value": "Geopolitics",
+                "label": "Geopolitical Data Visualized - Understand global geopolitical shifts and international relations through comprehensive geopolitical data visualizations."
+              },
+              {
+                "value": "Healthcare",
+                "label": "Healthcare Insights Visualized - Analyze healthcare data visualizations spanning disease trends, healthcare services, and public health policies."
+              },
+              {
+                "value": "Innovation",
+                "label": "Innovation in Data - Dive into innovation data visualizations highlighting technology advancements, R&D investments, and patent trends."
+              },
+              {
+                "value": "Maps",
+                "label": "Cartographic Visual Insights - Discover cartographic visualizations that map everything from socio-economic data to geographical phenomena."
+              },
+              {
+                "value": "Markets",
+                "label": "Market Trends Visualized - Visualize market trends, financial data, and economic forecasts through comprehensive market visualizations."
+              },
+              {
+                "value": "Money",
+                "label": "Financial Data Visualized - Dive into financial visualizations depicting currency trends, investment flows, and banking statistics."
+              },
+              {
+                "value": "Natural Resources",
+                "label": "Natural Resources Data - Explore visualizations of natural resources, detailing extraction, consumption, and conservation data."
+              },
+              {
+                "value": "Politics",
+                "label": "Political Visual Insights - Analyze political trends, election results, and legislative impacts through detailed political visualizations."
+              },
+              {
+                "value": "Public Opinion",
+                "label": "Public Opinion Trends - Discover visualizations of public opinion polls, social trends, and cultural shifts across different regions."
+              },
+              {
+                "value": "Real Estate",
+                "label": "Real Estate Market Insights - Explore real estate market trends, property values, and urban development through targeted data visualizations."
+              },
+              {
+                "value": "Sports",
+                "label": "Sports Data Insights - Analyze sports data visualizations that showcase performance statistics, team rankings, and sports economics."
+              },
+              {
+                "value": "Technology",
+                "label": "Technology Trends Visualized - Dive into technology visualizations highlighting industry trends, tech adoption rates, and innovation impacts."
+              },
+              {
+                "value": "Wealth",
+                "label": "Wealth Distribution Insights - Explore wealth distribution, financial health, and economic disparities through detailed visualizations."
+              },
+              {
+                "value": "Travel",
+                "label": "Travel Trends Visualized - Discover travel trends, tourism statistics, and destination analytics through engaging visualizations."
+              },
+              {
+                "value": "Nature",
+                "label": "Nature and Conservation Data - Delve into visualizations of ecological data, wildlife statistics, and conservation efforts around the globe."
+              },
+              {
+                "value": "Space",
+                "label": "Space Exploration Data - Explore the universe with space data visualizations covering planetary science, space missions, and astronomical discoveries."
+              },
+              {
+                "value": "Diagram",
+                "label": "Diagrammatic Data Insights - Understand complex data through diagrams that simplify information across various topics and industries."
+              },
+              {
+                "value": "Other",
+                "label": "Diverse Data Visualizations - Explore a variety of data visualizations that don't neatly fit into any single category but offer unique insights."
+              }
+            ]
+          }
+        },
+        "location": "home.ts",
+        "module": () => import('@/routes/voronoiapp/home.ts')
+      },
+      "/latest/:category?": {
+        "url": "voronoiapp.com",
+        "categories": [
+          "picture"
+        ],
+        "view": 2,
+        "maintainers": [
+          "Cesaryuan"
+        ],
+        "name": "Latest Posts",
+        "path": "/latest/:category?",
+        "radar": [
+          {
+            "source": [
+              "www.voronoiapp.com/posts/latest"
+            ],
+            "target": "/latest"
+          }
+        ],
+        "example": "/voronoiapp/latest",
+        "parameters": {
+          "category": {
+            "description": "The category of the post",
+            "default": "",
+            "options": [
+              {
+                "value": "",
+                "label": "All categories"
+              },
+              {
+                "value": "Automotive",
+                "label": "Automotive Data Insights - Explore a range of automotive data visualizations showcasing trends, innovations, and market dynamics in the automotive industry."
+              },
+              {
+                "value": "Business",
+                "label": "Business Visualization Trends - Discover business visualizations covering market analysis, corporate strategies, and economic impacts across global industries."
+              },
+              {
+                "value": "Climate",
+                "label": "Climate Data Visualized - Delve into climate change data visualizations that detail weather patterns, environmental impacts, and sustainability efforts worldwide."
+              },
+              {
+                "value": "Demographics",
+                "label": "Demographic Visual Insights - Explore visual demographics data showcasing population trends, societal changes, and demographic analytics across regions."
+              },
+              {
+                "value": "Economy",
+                "label": "Economic Visualization Insights - View economic visualizations illustrating financial markets, economic policies, and global economic health."
+              },
+              {
+                "value": "Energy",
+                "label": "Energy Industry Visual Data - Discover the dynamics of global energy consumption, renewable sources, and energy market trends through vivid visualizations."
+              },
+              {
+                "value": "Entertainment",
+                "label": "Entertainment Industry Data - Explore data visualizations in the entertainment industry, covering everything from box office trends to streaming service analytics."
+              },
+              {
+                "value": "Geopolitics",
+                "label": "Geopolitical Data Visualized - Understand global geopolitical shifts and international relations through comprehensive geopolitical data visualizations."
+              },
+              {
+                "value": "Healthcare",
+                "label": "Healthcare Insights Visualized - Analyze healthcare data visualizations spanning disease trends, healthcare services, and public health policies."
+              },
+              {
+                "value": "Innovation",
+                "label": "Innovation in Data - Dive into innovation data visualizations highlighting technology advancements, R&D investments, and patent trends."
+              },
+              {
+                "value": "Maps",
+                "label": "Cartographic Visual Insights - Discover cartographic visualizations that map everything from socio-economic data to geographical phenomena."
+              },
+              {
+                "value": "Markets",
+                "label": "Market Trends Visualized - Visualize market trends, financial data, and economic forecasts through comprehensive market visualizations."
+              },
+              {
+                "value": "Money",
+                "label": "Financial Data Visualized - Dive into financial visualizations depicting currency trends, investment flows, and banking statistics."
+              },
+              {
+                "value": "Natural Resources",
+                "label": "Natural Resources Data - Explore visualizations of natural resources, detailing extraction, consumption, and conservation data."
+              },
+              {
+                "value": "Politics",
+                "label": "Political Visual Insights - Analyze political trends, election results, and legislative impacts through detailed political visualizations."
+              },
+              {
+                "value": "Public Opinion",
+                "label": "Public Opinion Trends - Discover visualizations of public opinion polls, social trends, and cultural shifts across different regions."
+              },
+              {
+                "value": "Real Estate",
+                "label": "Real Estate Market Insights - Explore real estate market trends, property values, and urban development through targeted data visualizations."
+              },
+              {
+                "value": "Sports",
+                "label": "Sports Data Insights - Analyze sports data visualizations that showcase performance statistics, team rankings, and sports economics."
+              },
+              {
+                "value": "Technology",
+                "label": "Technology Trends Visualized - Dive into technology visualizations highlighting industry trends, tech adoption rates, and innovation impacts."
+              },
+              {
+                "value": "Wealth",
+                "label": "Wealth Distribution Insights - Explore wealth distribution, financial health, and economic disparities through detailed visualizations."
+              },
+              {
+                "value": "Travel",
+                "label": "Travel Trends Visualized - Discover travel trends, tourism statistics, and destination analytics through engaging visualizations."
+              },
+              {
+                "value": "Nature",
+                "label": "Nature and Conservation Data - Delve into visualizations of ecological data, wildlife statistics, and conservation efforts around the globe."
+              },
+              {
+                "value": "Space",
+                "label": "Space Exploration Data - Explore the universe with space data visualizations covering planetary science, space missions, and astronomical discoveries."
+              },
+              {
+                "value": "Diagram",
+                "label": "Diagrammatic Data Insights - Understand complex data through diagrams that simplify information across various topics and industries."
+              },
+              {
+                "value": "Other",
+                "label": "Diverse Data Visualizations - Explore a variety of data visualizations that don't neatly fit into any single category but offer unique insights."
+              }
+            ]
+          }
+        },
+        "location": "latest.ts",
+        "module": () => import('@/routes/voronoiapp/latest.ts')
+      },
+      "/popular/:tab?/:time_range?/:category?": {
+        "url": "voronoiapp.com",
+        "categories": [
+          "picture"
+        ],
+        "view": 2,
+        "maintainers": [
+          "Cesaryuan"
+        ],
+        "name": "Popular Posts",
+        "path": "/popular/:tab?/:time_range?/:category?",
+        "radar": [
+          {
+            "title": "Most Liked Posts",
+            "source": [
+              "www.voronoiapp.com/posts/most-popular"
+            ],
+            "target": "/popular/most-popular"
+          },
+          {
+            "title": "Most Discussed Posts",
+            "source": [
+              "www.voronoiapp.com/posts/most-discussed"
+            ],
+            "target": "/popular/most-discussed"
+          },
+          {
+            "title": "Most Viewed Posts",
+            "source": [
+              "www.voronoiapp.com/posts/most-viewed"
+            ],
+            "target": "/popular/most-viewed"
+          }
+        ],
+        "parameters": {
+          "tab": {
+            "description": "The tab to get the popular posts from.",
+            "default": "most-popular",
+            "options": [
+              {
+                "value": "most-popular",
+                "label": "Most Liked"
+              },
+              {
+                "value": "most-discussed",
+                "label": "Most Discussed"
+              },
+              {
+                "value": "most-viewed",
+                "label": "Most Viewed"
+              }
+            ]
+          },
+          "time_range": {
+            "description": "Time range between which the posts are popular.",
+            "default": "MONTH",
+            "options": [
+              {
+                "value": "WEEK",
+                "label": "Last 7 days"
+              },
+              {
+                "value": "MONTH",
+                "label": "Last 30 days"
+              },
+              {
+                "value": "YEAR",
+                "label": "Last 12 months"
+              },
+              {
+                "value": "ALL",
+                "label": "All time"
+              }
+            ]
+          },
+          "category": {
+            "description": "The category of the post",
+            "default": "",
+            "options": [
+              {
+                "value": "",
+                "label": "All categories"
+              },
+              {
+                "value": "Automotive",
+                "label": "Automotive Data Insights - Explore a range of automotive data visualizations showcasing trends, innovations, and market dynamics in the automotive industry."
+              },
+              {
+                "value": "Business",
+                "label": "Business Visualization Trends - Discover business visualizations covering market analysis, corporate strategies, and economic impacts across global industries."
+              },
+              {
+                "value": "Climate",
+                "label": "Climate Data Visualized - Delve into climate change data visualizations that detail weather patterns, environmental impacts, and sustainability efforts worldwide."
+              },
+              {
+                "value": "Demographics",
+                "label": "Demographic Visual Insights - Explore visual demographics data showcasing population trends, societal changes, and demographic analytics across regions."
+              },
+              {
+                "value": "Economy",
+                "label": "Economic Visualization Insights - View economic visualizations illustrating financial markets, economic policies, and global economic health."
+              },
+              {
+                "value": "Energy",
+                "label": "Energy Industry Visual Data - Discover the dynamics of global energy consumption, renewable sources, and energy market trends through vivid visualizations."
+              },
+              {
+                "value": "Entertainment",
+                "label": "Entertainment Industry Data - Explore data visualizations in the entertainment industry, covering everything from box office trends to streaming service analytics."
+              },
+              {
+                "value": "Geopolitics",
+                "label": "Geopolitical Data Visualized - Understand global geopolitical shifts and international relations through comprehensive geopolitical data visualizations."
+              },
+              {
+                "value": "Healthcare",
+                "label": "Healthcare Insights Visualized - Analyze healthcare data visualizations spanning disease trends, healthcare services, and public health policies."
+              },
+              {
+                "value": "Innovation",
+                "label": "Innovation in Data - Dive into innovation data visualizations highlighting technology advancements, R&D investments, and patent trends."
+              },
+              {
+                "value": "Maps",
+                "label": "Cartographic Visual Insights - Discover cartographic visualizations that map everything from socio-economic data to geographical phenomena."
+              },
+              {
+                "value": "Markets",
+                "label": "Market Trends Visualized - Visualize market trends, financial data, and economic forecasts through comprehensive market visualizations."
+              },
+              {
+                "value": "Money",
+                "label": "Financial Data Visualized - Dive into financial visualizations depicting currency trends, investment flows, and banking statistics."
+              },
+              {
+                "value": "Natural Resources",
+                "label": "Natural Resources Data - Explore visualizations of natural resources, detailing extraction, consumption, and conservation data."
+              },
+              {
+                "value": "Politics",
+                "label": "Political Visual Insights - Analyze political trends, election results, and legislative impacts through detailed political visualizations."
+              },
+              {
+                "value": "Public Opinion",
+                "label": "Public Opinion Trends - Discover visualizations of public opinion polls, social trends, and cultural shifts across different regions."
+              },
+              {
+                "value": "Real Estate",
+                "label": "Real Estate Market Insights - Explore real estate market trends, property values, and urban development through targeted data visualizations."
+              },
+              {
+                "value": "Sports",
+                "label": "Sports Data Insights - Analyze sports data visualizations that showcase performance statistics, team rankings, and sports economics."
+              },
+              {
+                "value": "Technology",
+                "label": "Technology Trends Visualized - Dive into technology visualizations highlighting industry trends, tech adoption rates, and innovation impacts."
+              },
+              {
+                "value": "Wealth",
+                "label": "Wealth Distribution Insights - Explore wealth distribution, financial health, and economic disparities through detailed visualizations."
+              },
+              {
+                "value": "Travel",
+                "label": "Travel Trends Visualized - Discover travel trends, tourism statistics, and destination analytics through engaging visualizations."
+              },
+              {
+                "value": "Nature",
+                "label": "Nature and Conservation Data - Delve into visualizations of ecological data, wildlife statistics, and conservation efforts around the globe."
+              },
+              {
+                "value": "Space",
+                "label": "Space Exploration Data - Explore the universe with space data visualizations covering planetary science, space missions, and astronomical discoveries."
+              },
+              {
+                "value": "Diagram",
+                "label": "Diagrammatic Data Insights - Understand complex data through diagrams that simplify information across various topics and industries."
+              },
+              {
+                "value": "Other",
+                "label": "Diverse Data Visualizations - Explore a variety of data visualizations that don't neatly fit into any single category but offer unique insights."
+              }
+            ]
+          }
+        },
+        "example": "/voronoiapp/popular/most-popular/MONTH",
+        "location": "popular.ts",
+        "module": () => import('@/routes/voronoiapp/popular.ts')
+      },
+      "/search/:keyword": {
+        "url": "voronoiapp.com",
+        "categories": [
+          "picture"
+        ],
+        "view": 2,
+        "maintainers": [
+          "Cesaryuan"
+        ],
+        "name": "Search Keyword Posts",
+        "path": "/search/:keyword",
+        "radar": [
+          {
+            "source": [
+              "www.voronoiapp.com/explore"
+            ],
+            "target": "/search/:keyword"
+          }
+        ],
+        "example": "/voronoiapp/search/china",
+        "parameters": {
+          "keyword": "The keyword to search for"
+        },
+        "location": "search.ts",
+        "module": () => import('@/routes/voronoiapp/search.ts')
+      }
+    },
+    "apiRoutes": {},
+    "name": "Voronoi",
+    "url": "voronoiapp.com",
+    "lang": "en"
+  },
   "wellcee": {
     "routes": {
       "/rent/:city/:district?": {
@@ -25579,166 +26867,59 @@ export default {
     ],
     "lang": "zh-CN"
   },
-  "douyin": {
+  "zuvio": {
     "routes": {
-      "/hashtag/:cid/:routeParams?": {
-        "path": "/hashtag/:cid/:routeParams?",
+      "/student5/:board?": {
+        "path": "/student5/:board?",
         "categories": [
-          "social-media"
+          "bbs"
         ],
-        "example": "/douyin/hashtag/1592824105719812",
+        "example": "/zuvio/student5/34",
         "parameters": {
-          "cid": "标签 ID，可在标签页面 URL 中找到",
-          "routeParams": "额外参数，query string 格式，请参阅上面的表格"
+          "board": "看板 ID，空为全站文章，可在看板 URL 或下方路由找到"
         },
         "features": {
           "requireConfig": false,
-          "requirePuppeteer": true,
-          "antiCrawler": true,
+          "requirePuppeteer": false,
+          "antiCrawler": false,
           "supportBT": false,
           "supportPodcast": false,
           "supportScihub": false
         },
-        "radar": [
-          {
-            "source": [
-              "douyin.com/hashtag/:cid"
-            ],
-            "target": "/hashtag/:cid"
-          }
-        ],
-        "name": "标签",
+        "name": "校園話題",
         "maintainers": [
           "TonyRL"
         ],
-        "location": "hashtag.ts",
-        "module": () => import('@/routes/douyin/hashtag.ts')
+        "location": "student5.ts",
+        "module": () => import('@/routes/zuvio/student5.ts')
       },
-      "/live/:rid/:showTime?": {
-        "path": "/live/:rid/:showTime?",
+      "/student5/boards": {
+        "path": "/student5/boards",
         "categories": [
-          "live"
+          "bbs"
         ],
-        "example": "/douyin/live/685317364746",
-        "parameters": {
-          "rid": "直播间 id, 可在主播直播间页 URL 中找到",
-          "showTime": "是否在标题后添加本场首次检测时间，0/1/true/false，默认 false。"
-        },
-        "description": "优先读取公开页面中的直播状态，必要时使用 Playwright 读取页面或直播间接口。showTime 开启时，标题后显示 RSSHub 本场首次检测时间（UTC+8），并非源站实际开播时刻，也不会作为 pubDate。时间按本场真实 room ID 缓存 30 天，重复读取不会延长有效期。内存缓存重启或清除缓存会重置记录，建议使用 Redis 保持记录稳定。",
+        "example": "/zuvio/student5/boards",
+        "parameters": {},
         "features": {
           "requireConfig": false,
-          "requirePuppeteer": true,
-          "antiCrawler": true,
+          "requirePuppeteer": false,
+          "antiCrawler": false,
           "supportBT": false,
           "supportPodcast": false,
           "supportScihub": false
         },
-        "radar": [
-          {
-            "source": [
-              "live.douyin.com/:rid"
-            ]
-          }
-        ],
-        "name": "直播间开播",
+        "name": "看板列表",
         "maintainers": [
           "TonyRL"
         ],
-        "location": "live.ts",
-        "module": () => import('@/routes/douyin/live.ts')
-      },
-      "/user/:uid/:routeParams?": {
-        "path": "/user/:uid/:routeParams?",
-        "categories": [
-          "social-media"
-        ],
-        "example": "/douyin/user/MS4wLjABAAAARcAHmmF9mAG3JEixq_CdP72APhBlGlLVbN-1eBcPqao",
-        "parameters": {
-          "uid": "uid，可在用户页面 URL 中找到",
-          "routeParams": "额外参数，query string 格式，请参阅上面的表格"
-        },
-        "features": {
-          "requireConfig": false,
-          "requirePuppeteer": true,
-          "antiCrawler": true,
-          "supportBT": false,
-          "supportPodcast": false,
-          "supportScihub": false
-        },
-        "radar": [
-          {
-            "source": [
-              "douyin.com/user/:uid"
-            ],
-            "target": "/user/:uid"
-          }
-        ],
-        "name": "博主",
-        "maintainers": [
-          "Max-Tortoise",
-          "Rongronggg9"
-        ],
-        "location": "user.ts",
-        "module": () => import('@/routes/douyin/user.ts')
-      },
-      "/collection": {
-        "path": "/collection",
-        "name": "收藏的视频",
-        "example": "/douyin/collection",
-        "categories": [
-          "social-media"
-        ],
-        "maintainers": [
-          "DIYgod"
-        ],
-        "features": {
-          "requirePuppeteer": true,
-          "antiCrawler": true,
-          "requireConfig": [
-            {
-              "name": "DOUYIN_COOKIE",
-              "description": "对应允许用于订阅的本人账号。"
-            }
-          ]
-        },
-        "description": "订阅 DOUYIN\\_COOKIE 对应账号收藏的视频首屏。收藏夹、音乐、合集和短剧不在此路由范围内。发布时间为视频原始发布时间，收藏时间没有公开提供。",
-        "location": "collection.ts",
-        "module": () => import('@/routes/douyin/collection.ts')
-      },
-      "/likes/:uid": {
-        "path": "/likes/:uid",
-        "name": "喜欢的视频",
-        "example": "/douyin/likes/self",
-        "categories": [
-          "social-media"
-        ],
-        "maintainers": [
-          "DIYgod"
-        ],
-        "parameters": {
-          "uid": "用户页面 URL 中的 sec_user_id，或者 self 表示 DOUYIN_COOKIE 对应的登录账号。"
-        },
-        "features": {
-          "requirePuppeteer": true,
-          "antiCrawler": true,
-          "requireConfig": [
-            {
-              "name": "DOUYIN_COOKIE",
-              "optional": true,
-              "description": "订阅自己的喜欢列表时必须配置；其他用户的列表须对当前账号公开。"
-            }
-          ]
-        },
-        "description": "只读取喜欢列表的首屏。设为私密的列表仅对应账号能够访问。发布时间为视频原始发布时间，点赞时间没有公开提供。",
-        "location": "likes.ts",
-        "module": () => import('@/routes/douyin/likes.ts')
+        "location": "boards.ts",
+        "module": () => import('@/routes/zuvio/boards.ts')
       }
     },
     "apiRoutes": {},
-    "name": "抖音直播",
-    "url": "douyin.com",
-    "description": "::: warning\n反爬严格，需要启用 Playwright。抖音的视频 CDN 会验证 Referer，意味着许多阅读器都无法直接播放内嵌视频，以下是一些变通解决方案：\n\n1. 启用内嵌视频 (`embed=1`), 参考 [通用参数 -> 多媒体处理](/parameter#多媒体处理) 配置 `multimedia_hotlink_template` **或** `wrap_multimedia_in_iframe`。\n2. 关闭内嵌视频 (`embed=0`)，手动点击 `视频直链` 超链接，一般情况下均可成功播放视频。若仍然出现 HTTP 403，请复制 URL 以后到浏览器打开。\n3. 点击原文链接打开抖音网页版的视频详情页播放视频。\n\n:::\n\n额外参数\n\n| 键      | 含义             | 值                     | 默认值  |\n| ------- | ---------------- | ---------------------- | ------- |\n| `embed` | 是否启用内嵌视频 | `0`/`1`/`true`/`false` | `false` |",
-    "lang": "zh-CN"
+    "name": "Zuvio",
+    "url": "irs.zuvio.com.tw",
+    "lang": "zh-TW"
   },
   "fanfou": {
     "routes": {
@@ -34179,7 +35360,7 @@ export default {
         },
         "features": {
           "requireConfig": false,
-          "requirePuppeteer": true,
+          "requirePuppeteer": false,
           "antiCrawler": true,
           "supportBT": false,
           "supportPodcast": false,
@@ -38113,7 +39294,7 @@ export default {
         },
         "features": {
           "requireConfig": false,
-          "requirePuppeteer": true,
+          "requirePuppeteer": false,
           "antiCrawler": false,
           "supportBT": false,
           "supportPodcast": false,
@@ -38691,100 +39872,6 @@ export default {
     "url": "cs.bit.edu.cn",
     "lang": "zh-CN"
   },
-  "bitget": {
-    "routes": {
-      "/announcement/:type/:lang?": {
-        "path": "/announcement/:type/:lang?",
-        "categories": [
-          "finance"
-        ],
-        "view": 0,
-        "example": "/bitget/announcement/all/zh-CN",
-        "parameters": {
-          "type": {
-            "description": "Bitget 通知类型",
-            "default": "all",
-            "options": [
-              {
-                "value": "all",
-                "label": "全部通知"
-              },
-              {
-                "value": "new-listing",
-                "label": "新币上线"
-              },
-              {
-                "value": "latest-activities",
-                "label": "最新活动"
-              },
-              {
-                "value": "new-announcement",
-                "label": "最新公告"
-              }
-            ]
-          },
-          "lang": {
-            "description": "语言",
-            "default": "zh-CN",
-            "options": [
-              {
-                "value": "zh-CN",
-                "label": "中文"
-              },
-              {
-                "value": "en-US",
-                "label": "English"
-              },
-              {
-                "value": "es-ES",
-                "label": "Español"
-              },
-              {
-                "value": "fr-FR",
-                "label": "Français"
-              },
-              {
-                "value": "de-DE",
-                "label": "Deutsch"
-              },
-              {
-                "value": "ja-JP",
-                "label": "日本語"
-              },
-              {
-                "value": "ru-RU",
-                "label": "Русский"
-              },
-              {
-                "value": "ar-SA",
-                "label": "العربية"
-              }
-            ]
-          }
-        },
-        "radar": [
-          {
-            "source": [
-              "www.bitget.com/:lang/promotion/inmail",
-              "www.bitget.com/:lang/inmail"
-            ],
-            "target": "/announcement/all/:lang"
-          }
-        ],
-        "name": "Announcement",
-        "description": "type:\n\n| Type              | Description |\n| ----------------- | ----------- |\n| all               | 全部通知    |\n| new-listing       | 新币上线    |\n| latest-activities | 最新活动    |\n| new-announcement  | 最新公告    |\n\nlang:\n\n| Lang  | Description |\n| ----- | ----------- |\n| zh-CN | 中文        |\n| en-US | English     |\n| es-ES | Español     |\n| fr-FR | Français    |\n| de-DE | Deutsch     |\n| ja-JP | 日本語      |\n| ru-RU | Русский     |\n| ar-SA | العربية     |",
-        "maintainers": [
-          "YukiCoco"
-        ],
-        "location": "announcement.ts",
-        "module": () => import('@/routes/bitget/announcement.ts')
-      }
-    },
-    "apiRoutes": {},
-    "name": "Bitget",
-    "url": "bitget.com",
-    "lang": "zh-CN"
-  },
   "bjeea": {
     "routes": {
       "/:type": {
@@ -39199,7 +40286,7 @@ export default {
         "features": {
           "requireConfig": false,
           "requirePuppeteer": false,
-          "antiCrawler": false,
+          "antiCrawler": true,
           "supportBT": false,
           "supportPodcast": false,
           "supportScihub": false
@@ -46000,7 +47087,7 @@ export default {
         },
         "features": {
           "requireConfig": false,
-          "requirePuppeteer": true,
+          "requirePuppeteer": false,
           "antiCrawler": false,
           "supportBT": false,
           "supportPodcast": false,
@@ -47318,7 +48405,6 @@ export default {
     "lang": "zh-TW"
   },
   "cline": {
-    "name": "cline",
     "routes": {
       "/blog": {
         "path": "/blog",
@@ -47354,7 +48440,14 @@ export default {
         "module": () => import('@/routes/cline/blog.ts')
       }
     },
-    "apiRoutes": {}
+    "apiRoutes": {},
+    "name": "Cline Official Blog",
+    "url": "cline.bot",
+    "description": "Cline Official Blog.\nCline is an AI-powered coding assistant that runs in VS Code. It goes beyond simple autocompletion by reading and writing across multiple files, executing commands, and adapting to your workflow—like having a skilled developer pair-programming with you right inside your editor.\nCline understands your codebase context and can help with everything from small code edits to complex refactoring tasks.",
+    "zh": {
+      "name": "Cline Official Blog",
+      "description": "Cline 官方博客"
+    }
   },
   "cloudflare": {
     "routes": {
@@ -50843,79 +51936,6 @@ export default {
     "url": "www.cqwu.edu.cn",
     "lang": "zh-CN"
   },
-  "crac": {
-    "routes": {
-      "/exam": {
-        "path": "/exam",
-        "categories": [
-          "government"
-        ],
-        "example": "/crac/exam",
-        "features": {
-          "requireConfig": false,
-          "requirePuppeteer": false,
-          "antiCrawler": false,
-          "supportBT": false,
-          "supportPodcast": false,
-          "supportScihub": false
-        },
-        "name": "考试信息",
-        "maintainers": [
-          "admxj"
-        ],
-        "radar": [
-          {
-            "source": [
-              "zhipu.allspectrum.cn/CRAC/crac/pages/list_examMsg.html"
-            ],
-            "target": "/exam"
-          }
-        ],
-        "location": "exam.tsx",
-        "module": () => import('@/routes/crac/exam.tsx')
-      },
-      "/:type?": {
-        "path": "/:type?",
-        "categories": [
-          "government"
-        ],
-        "example": "/crac/2",
-        "parameters": {
-          "type": "类型，见下表，默认为全部"
-        },
-        "features": {
-          "requireConfig": false,
-          "requirePuppeteer": false,
-          "antiCrawler": false,
-          "supportBT": false,
-          "supportPodcast": false,
-          "supportScihub": false
-        },
-        "name": "最新资讯",
-        "maintainers": [
-          "Misaka13514"
-        ],
-        "description": "| 新闻动态 | 通知公告 | 政策法规 | 常见问题 | 资料下载 | English | 业余中继台 | 科普专栏 |\n| -------- | -------- | -------- | -------- | -------- | ------- | ---------- | -------- |\n| 1        | 2        | 3        | 5        | 6        | 7       | 8          | 9        |",
-        "radar": [
-          {
-            "source": [
-              "www.crac.org.cn/",
-              "www.crac.org.cn/News/*"
-            ]
-          }
-        ],
-        "location": "index.ts",
-        "module": () => import('@/routes/crac/index.ts')
-      }
-    },
-    "apiRoutes": {},
-    "name": "中国无线电协会业余无线电分会",
-    "url": "www.crac.org.cn",
-    "categories": [
-      "government"
-    ],
-    "lang": "zh-CN"
-  },
   "craigslist": {
     "routes": {
       "/:location/:type/:query?": {
@@ -51843,9 +52863,6 @@ export default {
         "maintainers": [
           "sanmmm"
         ],
-        "features": {
-          "requirePuppeteer": true
-        },
         "url": "graduate.cug.edu.cn/tzgg.htm",
         "location": "graduate.ts",
         "module": () => import('@/routes/cug/graduate.ts')
@@ -52168,7 +53185,7 @@ export default {
         "name": "教务处通知公告",
         "features": {
           "requireConfig": false,
-          "requirePuppeteer": true,
+          "requirePuppeteer": false,
           "antiCrawler": true,
           "supportBT": false,
           "supportPodcast": false,
@@ -52423,6 +53440,55 @@ export default {
     "name": "Cybercrime Magazine",
     "url": "cybersecurityventures.com",
     "lang": "en"
+  },
+  "czechstepbystep": {
+    "routes": {
+      "/kratke-ceske-zpravy": {
+        "path": "/kratke-ceske-zpravy",
+        "categories": [
+          "study"
+        ],
+        "example": "/czechstepbystep/kratke-ceske-zpravy",
+        "parameters": {},
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportRadar": true,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "radar": [
+          {
+            "source": [
+              "www.czechstepbystep.cz/kategorie/kratke-ceske-zpravy"
+            ],
+            "target": "/kratke-ceske-zpravy"
+          }
+        ],
+        "name": "Krátké české zprávy",
+        "maintainers": [
+          "cmp0xff"
+        ],
+        "url": "www.czechstepbystep.cz/kategorie/kratke-ceske-zpravy",
+        "description": "Short Czech news (Krátké české zprávy) from CzechStepByStep including video, full transcript, online exercises, and worksheets.",
+        "zh": {
+          "name": "捷克语短新闻",
+          "description": "来自 CzechStepByStep 的捷克语短新闻（Krátké české zprávy），包含视频、完整文字记录、在线练习和工作表。"
+        },
+        "location": "kratke-ceske-zpravy.ts",
+        "module": () => import('@/routes/czechstepbystep/kratke-ceske-zpravy.ts')
+      }
+    },
+    "apiRoutes": {},
+    "name": "CzechStepByStep",
+    "url": "www.czechstepbystep.cz",
+    "lang": "cs",
+    "zh": {
+      "name": "捷克语学习",
+      "description": "捷克语学习网站，提供短新闻、在线练习与工作表。"
+    }
   },
   "cztv": {
     "routes": {
@@ -56133,6 +57199,167 @@ export default {
     "url": "dorohedoro.net",
     "lang": "ja"
   },
+  "douyin": {
+    "routes": {
+      "/hashtag/:cid/:routeParams?": {
+        "path": "/hashtag/:cid/:routeParams?",
+        "categories": [
+          "social-media"
+        ],
+        "example": "/douyin/hashtag/1592824105719812",
+        "parameters": {
+          "cid": "标签 ID，可在标签页面 URL 中找到",
+          "routeParams": "额外参数，query string 格式，请参阅上面的表格"
+        },
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": true,
+          "antiCrawler": true,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "radar": [
+          {
+            "source": [
+              "douyin.com/hashtag/:cid"
+            ],
+            "target": "/hashtag/:cid"
+          }
+        ],
+        "name": "标签",
+        "maintainers": [
+          "TonyRL"
+        ],
+        "location": "hashtag.ts",
+        "module": () => import('@/routes/douyin/hashtag.ts')
+      },
+      "/user/:uid/:routeParams?": {
+        "path": "/user/:uid/:routeParams?",
+        "categories": [
+          "social-media"
+        ],
+        "example": "/douyin/user/MS4wLjABAAAARcAHmmF9mAG3JEixq_CdP72APhBlGlLVbN-1eBcPqao",
+        "parameters": {
+          "uid": "uid，可在用户页面 URL 中找到",
+          "routeParams": "额外参数，query string 格式，请参阅上面的表格"
+        },
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": true,
+          "antiCrawler": true,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "radar": [
+          {
+            "source": [
+              "douyin.com/user/:uid"
+            ],
+            "target": "/user/:uid"
+          }
+        ],
+        "name": "博主",
+        "maintainers": [
+          "Max-Tortoise",
+          "Rongronggg9"
+        ],
+        "location": "user.ts",
+        "module": () => import('@/routes/douyin/user.ts')
+      },
+      "/collection": {
+        "path": "/collection",
+        "name": "收藏的视频",
+        "example": "/douyin/collection",
+        "categories": [
+          "social-media"
+        ],
+        "maintainers": [
+          "DIYgod"
+        ],
+        "features": {
+          "requirePuppeteer": true,
+          "antiCrawler": true,
+          "requireConfig": [
+            {
+              "name": "DOUYIN_COOKIE",
+              "description": "对应允许用于订阅的本人账号。"
+            }
+          ]
+        },
+        "description": "订阅 DOUYIN\\_COOKIE 对应账号收藏的视频首屏。收藏夹、音乐、合集和短剧不在此路由范围内。发布时间为视频原始发布时间，收藏时间没有公开提供。",
+        "location": "collection.ts",
+        "module": () => import('@/routes/douyin/collection.ts')
+      },
+      "/likes/:uid": {
+        "path": "/likes/:uid",
+        "name": "喜欢的视频",
+        "example": "/douyin/likes/self",
+        "categories": [
+          "social-media"
+        ],
+        "maintainers": [
+          "DIYgod"
+        ],
+        "parameters": {
+          "uid": "用户页面 URL 中的 sec_user_id，或者 self 表示 DOUYIN_COOKIE 对应的登录账号。"
+        },
+        "features": {
+          "requirePuppeteer": true,
+          "antiCrawler": true,
+          "requireConfig": [
+            {
+              "name": "DOUYIN_COOKIE",
+              "optional": true,
+              "description": "订阅自己的喜欢列表时必须配置；其他用户的列表须对当前账号公开。"
+            }
+          ]
+        },
+        "description": "只读取喜欢列表的首屏。设为私密的列表仅对应账号能够访问。发布时间为视频原始发布时间，点赞时间没有公开提供。",
+        "location": "likes.ts",
+        "module": () => import('@/routes/douyin/likes.ts')
+      },
+      "/live/:rid/:showTime?": {
+        "path": "/live/:rid/:showTime?",
+        "categories": [
+          "live"
+        ],
+        "example": "/douyin/live/685317364746",
+        "parameters": {
+          "rid": "直播间 id, 可在主播直播间页 URL 中找到",
+          "showTime": "是否在标题后添加本场首次检测时间，0/1/true/false，默认 false。"
+        },
+        "description": "优先读取公开页面中的直播状态，必要时使用 Playwright 读取页面或直播间接口。showTime 开启时，标题后显示 RSSHub 本场首次检测时间（UTC+8），并非源站实际开播时刻，也不会作为 pubDate。时间按本场真实 room ID 缓存 30 天，重复读取不会延长有效期。内存缓存重启或清除缓存会重置记录，建议使用 Redis 保持记录稳定。",
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": true,
+          "antiCrawler": true,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "radar": [
+          {
+            "source": [
+              "live.douyin.com/:rid"
+            ]
+          }
+        ],
+        "name": "直播间开播",
+        "maintainers": [
+          "TonyRL"
+        ],
+        "location": "live.ts",
+        "module": () => import('@/routes/douyin/live.ts')
+      }
+    },
+    "apiRoutes": {},
+    "name": "抖音直播",
+    "url": "douyin.com",
+    "description": "::: warning\n反爬严格，需要启用 Playwright。抖音的视频 CDN 会验证 Referer，意味着许多阅读器都无法直接播放内嵌视频，以下是一些变通解决方案：\n\n1. 启用内嵌视频 (`embed=1`), 参考 [通用参数 -> 多媒体处理](/parameter#多媒体处理) 配置 `multimedia_hotlink_template` **或** `wrap_multimedia_in_iframe`。\n2. 关闭内嵌视频 (`embed=0`)，手动点击 `视频直链` 超链接，一般情况下均可成功播放视频。若仍然出现 HTTP 403，请复制 URL 以后到浏览器打开。\n3. 点击原文链接打开抖音网页版的视频详情页播放视频。\n\n:::\n\n额外参数\n\n| 键      | 含义             | 值                     | 默认值  |\n| ------- | ---------------- | ---------------------- | ------- |\n| `embed` | 是否启用内嵌视频 | `0`/`1`/`true`/`false` | `false` |",
+    "lang": "zh-CN"
+  },
   "dpm": {
     "routes": {
       "/exhibitions/:type?": {
@@ -56929,15 +58156,15 @@ export default {
           },
           {
             "source": [
-              "cn.eagle.cool/blog/design-resources"
+              "cn.eagle.cool/blog/knowledge"
             ],
-            "target": "/blog/design-resources/cn"
+            "target": "/blog/knowledge/cn"
           },
           {
             "source": [
-              "cn.eagle.cool/blog/learn-design"
+              "cn.eagle.cool/blog/design-resources"
             ],
-            "target": "/blog/learn-design/cn"
+            "target": "/blog/design-resources/cn"
           },
           {
             "source": [
@@ -56947,9 +58174,15 @@ export default {
           },
           {
             "source": [
-              "cn.eagle.cool/blog/why-eagle"
+              "cn.eagle.cool/blog/product-news"
             ],
-            "target": "/blog/why-eagle/cn"
+            "target": "/blog/product-news/cn"
+          },
+          {
+            "source": [
+              "tw.eagle.cool/blog/knowledge"
+            ],
+            "target": "/blog/knowledge/tw"
           },
           {
             "source": [
@@ -56959,21 +58192,15 @@ export default {
           },
           {
             "source": [
-              "tw.eagle.cool/blog/learn-design"
-            ],
-            "target": "/blog/learn-design/tw"
-          },
-          {
-            "source": [
               "tw.eagle.cool/blog/inside-eagle"
             ],
             "target": "/blog/inside-eagle/tw"
           },
           {
             "source": [
-              "tw.eagle.cool/blog/why-eagle"
+              "tw.eagle.cool/blog/product-news"
             ],
-            "target": "/blog/why-eagle/tw"
+            "target": "/blog/product-news/tw"
           },
           {
             "source": [
@@ -56983,15 +58210,15 @@ export default {
           },
           {
             "source": [
-              "en.eagle.cool/blog/design-resources"
+              "en.eagle.cool/blog/knowledge"
             ],
-            "target": "/blog/design-resources/en"
+            "target": "/blog/knowledge/en"
           },
           {
             "source": [
-              "en.eagle.cool/blog/learn-design"
+              "en.eagle.cool/blog/design-resources"
             ],
-            "target": "/blog/learn-design/en"
+            "target": "/blog/design-resources/en"
           },
           {
             "source": [
@@ -57001,9 +58228,9 @@ export default {
           },
           {
             "source": [
-              "en.eagle.cool/blog/why-eagle"
+              "en.eagle.cool/blog/product-news"
             ],
-            "target": "/blog/why-eagle/en"
+            "target": "/blog/product-news/en"
           },
           {
             "source": [
@@ -58215,30 +59442,6 @@ export default {
     "apiRoutes": {},
     "name": "Elastic 中文社区",
     "url": "elasticsearch.cn",
-    "lang": "zh-CN"
-  },
-  "ele.me": {
-    "routes": {
-      "/open/announce": {
-        "path": "/open/announce",
-        "categories": [
-          "programming"
-        ],
-        "example": "/ele.me/open/announce",
-        "name": "商家开放平台公告",
-        "maintainers": [
-          "phantomk"
-        ],
-        "location": "open/announce.ts",
-        "module": () => import('@/routes/ele.me/open/announce.ts')
-      }
-    },
-    "apiRoutes": {},
-    "name": "饿了么",
-    "url": "www.ele.me",
-    "categories": [
-      "programming"
-    ],
     "lang": "zh-CN"
   },
   "elecfans": {
@@ -68035,49 +69238,6 @@ export default {
     "url": "hinatazaka46.com",
     "lang": "ja"
   },
-  "hiring.cafe": {
-    "routes": {
-      "/jobs/:keywords": {
-        "path": "/jobs/:keywords",
-        "categories": [
-          "other"
-        ],
-        "example": "/hiring.cafe/jobs/sustainability",
-        "parameters": {
-          "keywords": "Keywords to search for"
-        },
-        "features": {
-          "requireConfig": false,
-          "requirePuppeteer": true,
-          "antiCrawler": false,
-          "supportBT": false,
-          "supportPodcast": false,
-          "supportScihub": false
-        },
-        "radar": [
-          {
-            "source": [
-              "hiring.cafe"
-            ]
-          }
-        ],
-        "description": "Search uses the current public website’s default region, which HiringCafe selects from the visitor’s location. Public job summaries are included when full descriptions are unavailable.",
-        "name": "Jobs",
-        "maintainers": [
-          "mintyfrankie"
-        ],
-        "location": "jobs.tsx",
-        "module": () => import('@/routes/hiring.cafe/jobs.tsx')
-      }
-    },
-    "apiRoutes": {},
-    "name": "HiringCafe",
-    "url": "hiringcafe.com",
-    "description": "HiringCafe is a platform for job seekers to find job opportunities and for employers to post job listings.",
-    "zh": {
-      "name": "HiringCafe"
-    }
-  },
   "hit": {
     "routes": {
       "/hitgs/:id?": {
@@ -70431,7 +71591,7 @@ export default {
         ],
         "features": {
           "requireConfig": false,
-          "requirePuppeteer": true,
+          "requirePuppeteer": false,
           "antiCrawler": false,
           "supportRadar": true,
           "supportBT": false,
@@ -80466,22 +81626,22 @@ export default {
         "maintainers": [
           "TonyRL"
         ],
-        "example": "/komica/gita/00b/動畫",
+        "example": "/komica/gaia/00b/動畫",
         "parameters": {
-          "host": "子網域，即討論板網址中 `*.komica1.org` 的第一段，如 `gita`",
+          "host": "子網域，即討論板網址中 `*.komica1.org` 的第一段，如 `gaia`",
           "board": "討論板路徑，如 `00b`",
           "category": "類別（列表模式），如 `動畫`、`漫畫`、`掛圖`、`新番捏他`、`新番實況`、`模型`、`軍武`；留空為整個版面"
         },
-        "description": "例如綜合避難所 <https://gita.komica1.org/00b/> 對應 `/komica/gita/00b`，其「動畫」列表對應 `/komica/gita/00b/動畫`。",
+        "description": "例如綜合避難所 <https://gaia.komica1.org/00b/> 對應 `/komica/gaia/00b`，其「動畫」列表對應 `/komica/gaia/00b/動畫`。",
         "categories": [
           "bbs"
         ],
         "radar": [
           {
             "source": [
-              "gita.komica1.org/:board/"
+              "gaia.komica1.org/:board/"
             ],
-            "target": "/gita/:board"
+            "target": "/gaia/:board"
           }
         ],
         "location": "index.ts",
@@ -88995,7 +90155,6 @@ export default {
           "sort": "排序，可选 `order-tid` 即 发表排序，默认为 回帖排序"
         },
         "features": {
-          "requirePuppeteer": true,
           "antiCrawler": true
         },
         "name": "分类",
@@ -89016,7 +90175,6 @@ export default {
           "type": "类型，见下表"
         },
         "features": {
-          "requirePuppeteer": true,
           "antiCrawler": true
         },
         "name": "期刊点评",
@@ -89067,7 +90225,7 @@ export default {
         ],
         "features": {
           "requireConfig": false,
-          "requirePuppeteer": true,
+          "requirePuppeteer": false,
           "antiCrawler": true,
           "supportRadar": true,
           "supportBT": false,
@@ -90346,7 +91504,7 @@ export default {
         },
         "features": {
           "requireConfig": false,
-          "requirePuppeteer": true,
+          "requirePuppeteer": false,
           "antiCrawler": false,
           "supportBT": false,
           "supportPodcast": false,
@@ -95275,9 +96433,6 @@ export default {
         "maintainers": [
           "Xm798"
         ],
-        "features": {
-          "requirePuppeteer": true
-        },
         "description": "| 综合新闻 | 党委行政 | 人事 / 合作 | 研究生培养 | 本科生培养 | 学生工作 | 通知公告 | 学术信息 | 答辩公告 |\n| -------- | -------- | ----------- | ---------- | ---------- | -------- | -------- | -------- | -------- |\n| zhxw     | dwxz     | rshz        | yjs        | bks        | xsgz     | tzgg     | xsxx     | dbgg     |",
         "location": "college/cae.ts",
         "module": () => import('@/routes/nuaa/college/cae.ts')
@@ -95294,7 +96449,7 @@ export default {
         },
         "features": {
           "requireConfig": false,
-          "requirePuppeteer": true,
+          "requirePuppeteer": false,
           "antiCrawler": false,
           "supportBT": false,
           "supportPodcast": false,
@@ -95323,7 +96478,7 @@ export default {
         },
         "features": {
           "requireConfig": false,
-          "requirePuppeteer": true,
+          "requirePuppeteer": false,
           "antiCrawler": false,
           "supportBT": false,
           "supportPodcast": false,
@@ -103514,6 +104669,96 @@ export default {
       "game"
     ]
   },
+  "psyche": {
+    "routes": {
+      "/topic/:topic": {
+        "path": "/topic/:topic",
+        "categories": [
+          "new-media"
+        ],
+        "example": "/psyche/topic/therapeia",
+        "parameters": {
+          "topic": "Topic"
+        },
+        "radar": [
+          {
+            "source": [
+              "psyche.co/therapeia"
+            ],
+            "target": "/topic/therapeia"
+          },
+          {
+            "source": [
+              "psyche.co/eudaimonia"
+            ],
+            "target": "/topic/eudaimonia"
+          },
+          {
+            "source": [
+              "psyche.co/poiesis"
+            ],
+            "target": "/topic/poiesis"
+          }
+        ],
+        "name": "Topics",
+        "maintainers": [
+          "emdoe"
+        ],
+        "description": "Supported categories: Therapeia, Eudaimonia, and Poiesis.",
+        "location": "topic.ts",
+        "module": () => import('@/routes/psyche/topic.ts')
+      },
+      "/type/:type": {
+        "path": "/type/:type",
+        "categories": [
+          "new-media"
+        ],
+        "example": "/psyche/type/ideas",
+        "parameters": {
+          "type": "Type"
+        },
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "radar": [
+          {
+            "source": [
+              "psyche.co/ideas"
+            ],
+            "target": "/type/ideas"
+          },
+          {
+            "source": [
+              "psyche.co/guides"
+            ],
+            "target": "/type/guides"
+          },
+          {
+            "source": [
+              "psyche.co/films"
+            ],
+            "target": "/type/films"
+          }
+        ],
+        "name": "Types",
+        "maintainers": [
+          "emdoe"
+        ],
+        "description": "Supported types: Ideas, Guides, and Films.",
+        "location": "type.ts",
+        "module": () => import('@/routes/psyche/type.ts')
+      }
+    },
+    "apiRoutes": {},
+    "name": "Psyche",
+    "url": "psyche.co",
+    "lang": "en"
+  },
   "publico": {
     "routes": {
       "/ciencias/:subsection?": {
@@ -104581,9 +105826,6 @@ export default {
           "nczitzk"
         ],
         "description": "| QTS | QuTS hero  | QuTScloud | QSS | QuWAN Orchestrator  | QES | QVP | QuRouter | TAS | AfoBot |\n| --- | ---------- | --------- | --- | ------------------- | --- | --- | -------- | --- | ------ |\n| qts | quts\\_hero | qutscloud | qss | quwan\\_orchestrator | qes | qvp | qurouter | tas | afobot |",
-        "features": {
-          "requirePuppeteer": true
-        },
         "location": "release-notes.ts",
         "module": () => import('@/routes/qnap/release-notes.ts')
       }
@@ -107804,9 +109046,6 @@ export default {
         "maintainers": [
           "DIYgod"
         ],
-        "features": {
-          "requirePuppeteer": true
-        },
         "parameters": {
           "site": "cn：中国简体中文（默认）；hk：香港英文；hk-tc：香港繁体中文。"
         },
@@ -111362,9 +112601,6 @@ export default {
           "PrintNow"
         ],
         "radar": [],
-        "features": {
-          "requirePuppeteer": true
-        },
         "location": "apps/search.ts",
         "module": () => import('@/routes/shopify/apps/search.ts')
       },
@@ -119528,9 +120764,6 @@ export default {
         "maintainers": [
           "lyling"
         ],
-        "features": {
-          "requirePuppeteer": true
-        },
         "location": "cloud/developer/column.ts",
         "module": () => import('@/routes/tencent/cloud/developer/column.ts')
       },
@@ -119821,6 +121054,40 @@ export default {
     ],
     "description": "",
     "lang": "zh-CN"
+  },
+  "the-decoder": {
+    "routes": {
+      "/news": {
+        "path": "/news",
+        "categories": [
+          "new-media"
+        ],
+        "example": "/the-decoder/news",
+        "name": "News",
+        "maintainers": [
+          "ljh12138164"
+        ],
+        "description": "Free-to-read English news and analysis in full from the official WordPress API, including images and videos. Skips subscriber-only posts and posts without a body. Returns up to 30 articles by default; use the common `limit` parameter to request up to 100 articles.",
+        "zh": {
+          "name": "新闻",
+          "description": "通过官方 WordPress API 获取可免费阅读的英文新闻与分析全文，保留正文中的图片和视频，跳过订阅专享和无正文的文章。默认最多返回 30 篇，可通过通用参数 `limit` 请求最多 100 篇。"
+        },
+        "radar": [
+          {
+            "source": [
+              "the-decoder.com/",
+              "the-decoder.com/artificial-intelligence-news/"
+            ]
+          }
+        ],
+        "location": "news.ts",
+        "module": () => import('@/routes/the-decoder/news.ts')
+      }
+    },
+    "apiRoutes": {},
+    "name": "The Decoder",
+    "url": "the-decoder.com",
+    "lang": "en"
   },
   "theatlantic": {
     "routes": {
@@ -121263,6 +122530,63 @@ export default {
     "url": "cic.tju.edu.cn",
     "lang": "zh-CN"
   },
+  "together": {
+    "routes": {
+      "/blog": {
+        "path": "/blog",
+        "name": "Blog",
+        "url": "together.ai/blog",
+        "categories": [
+          "programming"
+        ],
+        "view": 0,
+        "example": "/together/blog",
+        "parameters": {},
+        "maintainers": [
+          "ljh12138164"
+        ],
+        "description": "Full-text news, research, model launches, and engineering posts from the official Together AI blog (`together.ai/blog`) via its RSS feed, preserving hero media, `<audio>` samples, `<video>` players, YouTube/Vimeo embeds, code blocks, and tables. Returns up to 20 articles by default and supports the common `limit` parameter.",
+        "zh": {
+          "name": "博客",
+          "description": "通过官方 RSS 抓取 Together AI 官方博客全文（涵盖新闻动态、前沿研究、模型发布与推理工程实践），完整保留题图、音视频播放器、YouTube/Vimeo 视频嵌入、代码块与表格。默认返回最新 20 篇，支持通用 `limit` 参数。"
+        },
+        "radar": [
+          {
+            "source": [
+              "www.together.ai/blog",
+              "www.together.ai/blog/:slug",
+              "www.together.ai/blog/rss.xml",
+              "together.ai/blog",
+              "together.ai/blog/:slug"
+            ],
+            "target": "/blog"
+          }
+        ],
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "location": "blog.ts",
+        "module": () => import('@/routes/together/blog.ts')
+      }
+    },
+    "apiRoutes": {},
+    "name": "Together AI",
+    "url": "together.ai",
+    "categories": [
+      "programming"
+    ],
+    "lang": "en",
+    "description": "News, research, model releases, and inference engineering articles from Together AI.",
+    "zh": {
+      "name": "Together AI",
+      "description": "Together AI 官方博客、研究发布、模型上线与推理工程实践文章。"
+    }
+  },
   "tokeninsight": {
     "routes": {
       "/blog/:lang?": {
@@ -121700,6 +123024,32 @@ export default {
   },
   "toutiao": {
     "routes": {
+      "/user/token/:token": {
+        "path": "/user/token/:token",
+        "categories": [
+          "new-media"
+        ],
+        "example": "/toutiao/user/token/MS4wLjABAAAApOspM7AnWqplD9FIBGnhJRfUjFT_msD1KZMfNPBZa-c",
+        "parameters": {
+          "token": "用户 token，可在用户主页 URL 找到"
+        },
+        "features": {
+          "antiCrawler": true
+        },
+        "radar": [
+          {
+            "source": [
+              "www.toutiao.com/c/user/token/:token"
+            ]
+          }
+        ],
+        "name": "头条主页",
+        "maintainers": [
+          "TonyRL"
+        ],
+        "location": "user.tsx",
+        "module": () => import('@/routes/toutiao/user.tsx')
+      },
       "/channel/:category": {
         "path": "/channel/:category",
         "categories": [
@@ -121808,32 +123158,6 @@ export default {
         ],
         "location": "channel.ts",
         "module": () => import('@/routes/toutiao/channel.ts')
-      },
-      "/user/token/:token": {
-        "path": "/user/token/:token",
-        "categories": [
-          "new-media"
-        ],
-        "example": "/toutiao/user/token/MS4wLjABAAAApOspM7AnWqplD9FIBGnhJRfUjFT_msD1KZMfNPBZa-c",
-        "parameters": {
-          "token": "用户 token，可在用户主页 URL 找到"
-        },
-        "features": {
-          "antiCrawler": true
-        },
-        "radar": [
-          {
-            "source": [
-              "www.toutiao.com/c/user/token/:token"
-            ]
-          }
-        ],
-        "name": "头条主页",
-        "maintainers": [
-          "TonyRL"
-        ],
-        "location": "user.tsx",
-        "module": () => import('@/routes/toutiao/user.tsx')
       }
     },
     "apiRoutes": {},
@@ -123737,7 +125061,7 @@ export default {
         "parameters": {},
         "features": {
           "requireConfig": false,
-          "requirePuppeteer": true,
+          "requirePuppeteer": false,
           "antiCrawler": false,
           "supportBT": false,
           "supportPodcast": false,
@@ -124462,6 +125786,38 @@ export default {
     "name": "裏垢女子まとめ",
     "url": "uraaka-joshi.com",
     "lang": "ja"
+  },
+  "uscc": {
+    "routes": {
+      "/research": {
+        "path": "/research",
+        "categories": [
+          "government"
+        ],
+        "example": "/uscc/research",
+        "name": "Research",
+        "maintainers": [
+          "pseudoyu"
+        ],
+        "radar": [
+          {
+            "source": [
+              "www.uscc.gov/research"
+            ],
+            "target": "/research"
+          }
+        ],
+        "location": "research.ts",
+        "module": () => import('@/routes/uscc/research.ts')
+      }
+    },
+    "apiRoutes": {},
+    "name": "U.S.-China Economic and Security Review Commission",
+    "url": "www.uscc.gov",
+    "categories": [
+      "government"
+    ],
+    "lang": "en"
   },
   "usenix": {
     "routes": {
@@ -127145,48 +128501,6 @@ export default {
       "bbs"
     ],
     "lang": "zh-CN"
-  },
-  "wfdf": {
-    "routes": {
-      "/news": {
-        "path": "/news",
-        "categories": [
-          "sport"
-        ],
-        "example": "/wfdf/news",
-        "parameters": {},
-        "features": {
-          "requireConfig": false,
-          "requirePuppeteer": false,
-          "antiCrawler": false,
-          "supportBT": false,
-          "supportPodcast": false,
-          "supportScihub": false
-        },
-        "radar": [
-          {
-            "source": [
-              "wfdf.sport/news/",
-              "wfdf.sport/"
-            ]
-          }
-        ],
-        "name": "News",
-        "maintainers": [
-          "HankChow"
-        ],
-        "url": "wfdf.sport/news/",
-        "location": "news.ts",
-        "module": () => import('@/routes/wfdf/news.ts')
-      }
-    },
-    "apiRoutes": {},
-    "name": "WFDF",
-    "url": "wfdf.sport",
-    "categories": [
-      "sport"
-    ],
-    "lang": "en"
   },
   "wfu": {
     "routes": {
@@ -130948,7 +132262,7 @@ export default {
         },
         "features": {
           "requireConfig": false,
-          "requirePuppeteer": true,
+          "requirePuppeteer": false,
           "antiCrawler": true,
           "supportBT": false,
           "supportPodcast": false,
@@ -131128,7 +132442,6 @@ export default {
           "g0ngjie"
         ],
         "features": {
-          "requirePuppeteer": true,
           "antiCrawler": true
         },
         "url": "www.yilinzazhi.com",
@@ -132846,7 +134159,7 @@ export default {
         },
         "features": {
           "requireConfig": false,
-          "requirePuppeteer": true,
+          "requirePuppeteer": false,
           "antiCrawler": false,
           "supportBT": false,
           "supportPodcast": false,
@@ -143107,115 +144420,6 @@ export default {
     "url": "www.douban.com",
     "lang": "zh-CN"
   },
-  "dr": {
-    "routes": {
-      "/:category?": {
-        "path": "/:category?",
-        "categories": [
-          "traditional-media"
-        ],
-        "example": "/dr/senestenyt",
-        "parameters": {
-          "category": {
-            "description": "DR-sektion, se tabellen nedenfor. Standarden er `senestenyt` (Kort nyt)",
-            "options": [
-              {
-                "value": "senestenyt",
-                "label": "Seneste nyt (Kort nyt)"
-              },
-              {
-                "value": "indland",
-                "label": "Indland"
-              },
-              {
-                "value": "udland",
-                "label": "Udland"
-              },
-              {
-                "value": "penge",
-                "label": "Penge"
-              },
-              {
-                "value": "politik",
-                "label": "Politik"
-              },
-              {
-                "value": "sporten",
-                "label": "Sport"
-              },
-              {
-                "value": "viden",
-                "label": "Viden"
-              }
-            ]
-          }
-        },
-        "features": {
-          "requireConfig": false,
-          "requirePuppeteer": false,
-          "antiCrawler": false,
-          "supportBT": false,
-          "supportPodcast": false,
-          "supportScihub": false
-        },
-        "radar": [
-          {
-            "source": [
-              "www.dr.dk/nyheder"
-            ],
-            "target": "/senestenyt"
-          },
-          {
-            "source": [
-              "www.dr.dk/nyheder/indland"
-            ],
-            "target": "/indland"
-          },
-          {
-            "source": [
-              "www.dr.dk/nyheder/udland"
-            ],
-            "target": "/udland"
-          },
-          {
-            "source": [
-              "www.dr.dk/nyheder/penge"
-            ],
-            "target": "/penge"
-          },
-          {
-            "source": [
-              "www.dr.dk/nyheder/politik"
-            ],
-            "target": "/politik"
-          },
-          {
-            "source": [
-              "www.dr.dk/sporten"
-            ],
-            "target": "/sporten"
-          },
-          {
-            "source": [
-              "www.dr.dk/nyheder/viden"
-            ],
-            "target": "/viden"
-          }
-        ],
-        "name": "Nyheder",
-        "maintainers": [
-          "cufezhusy"
-        ],
-        "description": "DRs nyheder, baseret på de officielle RSS-feeds. RSSHub forsøger at hente den fulde artikeltekst fra dr.dk. Hvis den fulde tekst ikke kan hentes, bruges beskrivelsen fra den officielle RSS-feed.\n\n| Kategori   | Beskrivelse            |\n| ---------- | ---------------------- |\n| senestenyt | Seneste nyt (Kort nyt) |\n| indland    | Indland                |\n| udland     | Udland                 |\n| penge      | Penge                  |\n| politik    | Politik                |\n| sporten    | Sport                  |\n| viden      | Viden                  |",
-        "location": "index.ts",
-        "module": () => import('@/routes/dr/index.ts')
-      }
-    },
-    "apiRoutes": {},
-    "name": "DR (Danmarks Radio)",
-    "url": "dr.dk",
-    "lang": "da"
-  },
   "dribbble": {
     "routes": {
       "/keyword/:keyword": {
@@ -151068,7 +152272,7 @@ export default {
         "parameters": {},
         "features": {
           "requireConfig": false,
-          "requirePuppeteer": true,
+          "requirePuppeteer": false,
           "antiCrawler": false,
           "supportBT": false,
           "supportPodcast": false,
@@ -151128,7 +152332,7 @@ export default {
         "parameters": {},
         "features": {
           "requireConfig": false,
-          "requirePuppeteer": true,
+          "requirePuppeteer": false,
           "antiCrawler": false,
           "supportBT": false,
           "supportPodcast": false,
@@ -160655,7 +161859,7 @@ export default {
           "WenryXu"
         ],
         "features": {
-          "requirePuppeteer": true
+          "antiCrawler": true
         },
         "location": "index.ts",
         "module": () => import('@/routes/noi/index.ts')
@@ -160671,7 +161875,7 @@ export default {
           "WenryXu"
         ],
         "features": {
-          "requirePuppeteer": true
+          "antiCrawler": true
         },
         "location": "province-news.ts",
         "module": () => import('@/routes/noi/province-news.ts')
@@ -160687,7 +161891,7 @@ export default {
           "WenryXu"
         ],
         "features": {
-          "requirePuppeteer": true
+          "antiCrawler": true
         },
         "location": "winners-list.ts",
         "module": () => import('@/routes/noi/winners-list.ts')
@@ -162951,6 +164155,69 @@ export default {
         "url": "yz.scnu.edu.cn/tongzhigonggao/ssgg",
         "location": "yjs.ts",
         "module": () => import('@/routes/scnu/yjs.ts')
+      },
+      "/physics-school-announcements": {
+        "path": "/physics-school-announcements",
+        "categories": [
+          "university"
+        ],
+        "example": "/scnu/physics-school-announcements",
+        "radar": [
+          {
+            "source": [
+              "physics.scnu.edu.cn/NEWS/Notices/*"
+            ]
+          }
+        ],
+        "name": "物理学院通知",
+        "maintainers": [
+          "Shinonome28"
+        ],
+        "url": "physics.scnu.edu.cn/NEWS/Notices/",
+        "location": "physics/announcements.ts",
+        "module": () => import('@/routes/scnu/physics/announcements.ts')
+      },
+      "/physics-school-news": {
+        "path": "/physics-school-news",
+        "categories": [
+          "university"
+        ],
+        "example": "/scnu/physics-school-news",
+        "radar": [
+          {
+            "source": [
+              "physics.scnu.edu.cn/NEWS/News/*"
+            ]
+          }
+        ],
+        "name": "物理学院新闻动态",
+        "maintainers": [
+          "Shinonome28"
+        ],
+        "url": "physics.scnu.edu.cn/NEWS/News/",
+        "location": "physics/news.ts",
+        "module": () => import('@/routes/scnu/physics/news.ts')
+      },
+      "/physics-school-research-news": {
+        "path": "/physics-school-research-news",
+        "categories": [
+          "university"
+        ],
+        "example": "/scnu/physics-school-research-news",
+        "radar": [
+          {
+            "source": [
+              "physics.scnu.edu.cn/RESEARCH/*"
+            ]
+          }
+        ],
+        "name": "物理学院科学研究动态",
+        "maintainers": [
+          "Shinonome28"
+        ],
+        "url": "physics.scnu.edu.cn/RESEARCH/",
+        "location": "physics/research.ts",
+        "module": () => import('@/routes/scnu/physics/research.ts')
       }
     },
     "apiRoutes": {},
@@ -166146,6 +167413,142 @@ export default {
     "lang": "en",
     "description": "Profound is an AI search visibility platform. Its Research Hub publishes data studies on answer engines, AI shopping and personal agents."
   },
+  "twreporter": {
+    "routes": {
+      "/category/:category": {
+        "path": "/category/:category",
+        "categories": [
+          "new-media"
+        ],
+        "example": "/twreporter/category/world",
+        "parameters": {
+          "category": "Category"
+        },
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "radar": [
+          {
+            "source": [
+              "twreporter.org/:category"
+            ]
+          },
+          {
+            "source": [
+              "twreporter.org/categories/world"
+            ],
+            "target": "/category/world"
+          },
+          {
+            "source": [
+              "twreporter.org/categories/humanrights"
+            ],
+            "target": "/category/humanrights"
+          },
+          {
+            "source": [
+              "twreporter.org/categories/politics-and-society"
+            ],
+            "target": "/category/politics_and_society"
+          },
+          {
+            "source": [
+              "twreporter.org/categories/health"
+            ],
+            "target": "/category/health"
+          },
+          {
+            "source": [
+              "twreporter.org/categories/environment"
+            ],
+            "target": "/category/environment"
+          },
+          {
+            "source": [
+              "twreporter.org/categories/econ"
+            ],
+            "target": "/category/econ"
+          },
+          {
+            "source": [
+              "twreporter.org/categories/culture"
+            ],
+            "target": "/category/culture"
+          },
+          {
+            "source": [
+              "twreporter.org/categories/education"
+            ],
+            "target": "/category/education"
+          },
+          {
+            "source": [
+              "twreporter.org/categories/podcast"
+            ],
+            "target": "/category/podcast"
+          },
+          {
+            "source": [
+              "twreporter.org/categories/opinion"
+            ],
+            "target": "/category/opinion"
+          },
+          {
+            "source": [
+              "twreporter.org/categories/photography"
+            ],
+            "target": "/category/photos_section"
+          }
+        ],
+        "name": "分類",
+        "maintainers": [
+          "emdoe"
+        ],
+        "url": "twreporter.org/",
+        "location": "category.ts",
+        "module": () => import('@/routes/twreporter/category.ts')
+      },
+      "/newest": {
+        "path": "/newest",
+        "categories": [
+          "new-media"
+        ],
+        "example": "/twreporter/newest",
+        "parameters": {},
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "radar": [
+          {
+            "source": [
+              "twreporter.org/"
+            ]
+          }
+        ],
+        "name": "最新",
+        "maintainers": [
+          "emdoe"
+        ],
+        "url": "twreporter.org/",
+        "location": "newest.ts",
+        "module": () => import('@/routes/twreporter/newest.ts')
+      }
+    },
+    "apiRoutes": {},
+    "name": "報導者",
+    "url": "twreporter.org",
+    "lang": "zh-TW"
+  },
   "vocus": {
     "routes": {
       "/publication/:id": {
@@ -166209,663 +167612,6 @@ export default {
     "name": "方格子",
     "url": "vocus.cc",
     "lang": "zh-TW"
-  },
-  "voronoiapp": {
-    "routes": {
-      "/author/:username": {
-        "url": "voronoiapp.com",
-        "categories": [
-          "picture"
-        ],
-        "view": 2,
-        "maintainers": [
-          "Cesaryuan"
-        ],
-        "name": "Author Posts",
-        "path": "/author/:username",
-        "radar": [
-          {
-            "source": [
-              "www.voronoiapp.com/author/:username"
-            ],
-            "target": "/author/:username"
-          }
-        ],
-        "example": "/voronoiapp/author/visualcapitalist",
-        "parameters": {
-          "username": "The username of the author"
-        },
-        "location": "author.ts",
-        "module": () => import('@/routes/voronoiapp/author.ts')
-      },
-      "/editors-pick/:category?": {
-        "url": "voronoiapp.com",
-        "categories": [
-          "picture"
-        ],
-        "view": 2,
-        "maintainers": [
-          "Cesaryuan"
-        ],
-        "name": "Editor's Pick Posts",
-        "path": "/editors-pick/:category?",
-        "radar": [
-          {
-            "source": [
-              "www.voronoiapp.com/posts/editors-pick"
-            ],
-            "target": "/editors-pick"
-          }
-        ],
-        "example": "/voronoiapp/editors-pick",
-        "parameters": {
-          "category": {
-            "description": "The category of the post",
-            "default": "",
-            "options": [
-              {
-                "value": "",
-                "label": "All categories"
-              },
-              {
-                "value": "Automotive",
-                "label": "Automotive Data Insights - Explore a range of automotive data visualizations showcasing trends, innovations, and market dynamics in the automotive industry."
-              },
-              {
-                "value": "Business",
-                "label": "Business Visualization Trends - Discover business visualizations covering market analysis, corporate strategies, and economic impacts across global industries."
-              },
-              {
-                "value": "Climate",
-                "label": "Climate Data Visualized - Delve into climate change data visualizations that detail weather patterns, environmental impacts, and sustainability efforts worldwide."
-              },
-              {
-                "value": "Demographics",
-                "label": "Demographic Visual Insights - Explore visual demographics data showcasing population trends, societal changes, and demographic analytics across regions."
-              },
-              {
-                "value": "Economy",
-                "label": "Economic Visualization Insights - View economic visualizations illustrating financial markets, economic policies, and global economic health."
-              },
-              {
-                "value": "Energy",
-                "label": "Energy Industry Visual Data - Discover the dynamics of global energy consumption, renewable sources, and energy market trends through vivid visualizations."
-              },
-              {
-                "value": "Entertainment",
-                "label": "Entertainment Industry Data - Explore data visualizations in the entertainment industry, covering everything from box office trends to streaming service analytics."
-              },
-              {
-                "value": "Geopolitics",
-                "label": "Geopolitical Data Visualized - Understand global geopolitical shifts and international relations through comprehensive geopolitical data visualizations."
-              },
-              {
-                "value": "Healthcare",
-                "label": "Healthcare Insights Visualized - Analyze healthcare data visualizations spanning disease trends, healthcare services, and public health policies."
-              },
-              {
-                "value": "Innovation",
-                "label": "Innovation in Data - Dive into innovation data visualizations highlighting technology advancements, R&D investments, and patent trends."
-              },
-              {
-                "value": "Maps",
-                "label": "Cartographic Visual Insights - Discover cartographic visualizations that map everything from socio-economic data to geographical phenomena."
-              },
-              {
-                "value": "Markets",
-                "label": "Market Trends Visualized - Visualize market trends, financial data, and economic forecasts through comprehensive market visualizations."
-              },
-              {
-                "value": "Money",
-                "label": "Financial Data Visualized - Dive into financial visualizations depicting currency trends, investment flows, and banking statistics."
-              },
-              {
-                "value": "Natural Resources",
-                "label": "Natural Resources Data - Explore visualizations of natural resources, detailing extraction, consumption, and conservation data."
-              },
-              {
-                "value": "Politics",
-                "label": "Political Visual Insights - Analyze political trends, election results, and legislative impacts through detailed political visualizations."
-              },
-              {
-                "value": "Public Opinion",
-                "label": "Public Opinion Trends - Discover visualizations of public opinion polls, social trends, and cultural shifts across different regions."
-              },
-              {
-                "value": "Real Estate",
-                "label": "Real Estate Market Insights - Explore real estate market trends, property values, and urban development through targeted data visualizations."
-              },
-              {
-                "value": "Sports",
-                "label": "Sports Data Insights - Analyze sports data visualizations that showcase performance statistics, team rankings, and sports economics."
-              },
-              {
-                "value": "Technology",
-                "label": "Technology Trends Visualized - Dive into technology visualizations highlighting industry trends, tech adoption rates, and innovation impacts."
-              },
-              {
-                "value": "Wealth",
-                "label": "Wealth Distribution Insights - Explore wealth distribution, financial health, and economic disparities through detailed visualizations."
-              },
-              {
-                "value": "Travel",
-                "label": "Travel Trends Visualized - Discover travel trends, tourism statistics, and destination analytics through engaging visualizations."
-              },
-              {
-                "value": "Nature",
-                "label": "Nature and Conservation Data - Delve into visualizations of ecological data, wildlife statistics, and conservation efforts around the globe."
-              },
-              {
-                "value": "Space",
-                "label": "Space Exploration Data - Explore the universe with space data visualizations covering planetary science, space missions, and astronomical discoveries."
-              },
-              {
-                "value": "Diagram",
-                "label": "Diagrammatic Data Insights - Understand complex data through diagrams that simplify information across various topics and industries."
-              },
-              {
-                "value": "Other",
-                "label": "Diverse Data Visualizations - Explore a variety of data visualizations that don't neatly fit into any single category but offer unique insights."
-              }
-            ]
-          }
-        },
-        "location": "editors-pick.ts",
-        "module": () => import('@/routes/voronoiapp/editors-pick.ts')
-      },
-      "/home/:category?": {
-        "url": "voronoiapp.com",
-        "categories": [
-          "picture"
-        ],
-        "view": 2,
-        "maintainers": [
-          "Cesaryuan"
-        ],
-        "name": "Home Posts",
-        "path": "/home/:category?",
-        "description": "This is the home page of Voronoi App",
-        "radar": [
-          {
-            "source": [
-              "www.voronoiapp.com",
-              "www.voronoiapp.com/posts/voronoi"
-            ],
-            "target": "/home"
-          }
-        ],
-        "example": "/voronoiapp/home",
-        "parameters": {
-          "category": {
-            "description": "The category of the post",
-            "default": "",
-            "options": [
-              {
-                "value": "",
-                "label": "All categories"
-              },
-              {
-                "value": "Automotive",
-                "label": "Automotive Data Insights - Explore a range of automotive data visualizations showcasing trends, innovations, and market dynamics in the automotive industry."
-              },
-              {
-                "value": "Business",
-                "label": "Business Visualization Trends - Discover business visualizations covering market analysis, corporate strategies, and economic impacts across global industries."
-              },
-              {
-                "value": "Climate",
-                "label": "Climate Data Visualized - Delve into climate change data visualizations that detail weather patterns, environmental impacts, and sustainability efforts worldwide."
-              },
-              {
-                "value": "Demographics",
-                "label": "Demographic Visual Insights - Explore visual demographics data showcasing population trends, societal changes, and demographic analytics across regions."
-              },
-              {
-                "value": "Economy",
-                "label": "Economic Visualization Insights - View economic visualizations illustrating financial markets, economic policies, and global economic health."
-              },
-              {
-                "value": "Energy",
-                "label": "Energy Industry Visual Data - Discover the dynamics of global energy consumption, renewable sources, and energy market trends through vivid visualizations."
-              },
-              {
-                "value": "Entertainment",
-                "label": "Entertainment Industry Data - Explore data visualizations in the entertainment industry, covering everything from box office trends to streaming service analytics."
-              },
-              {
-                "value": "Geopolitics",
-                "label": "Geopolitical Data Visualized - Understand global geopolitical shifts and international relations through comprehensive geopolitical data visualizations."
-              },
-              {
-                "value": "Healthcare",
-                "label": "Healthcare Insights Visualized - Analyze healthcare data visualizations spanning disease trends, healthcare services, and public health policies."
-              },
-              {
-                "value": "Innovation",
-                "label": "Innovation in Data - Dive into innovation data visualizations highlighting technology advancements, R&D investments, and patent trends."
-              },
-              {
-                "value": "Maps",
-                "label": "Cartographic Visual Insights - Discover cartographic visualizations that map everything from socio-economic data to geographical phenomena."
-              },
-              {
-                "value": "Markets",
-                "label": "Market Trends Visualized - Visualize market trends, financial data, and economic forecasts through comprehensive market visualizations."
-              },
-              {
-                "value": "Money",
-                "label": "Financial Data Visualized - Dive into financial visualizations depicting currency trends, investment flows, and banking statistics."
-              },
-              {
-                "value": "Natural Resources",
-                "label": "Natural Resources Data - Explore visualizations of natural resources, detailing extraction, consumption, and conservation data."
-              },
-              {
-                "value": "Politics",
-                "label": "Political Visual Insights - Analyze political trends, election results, and legislative impacts through detailed political visualizations."
-              },
-              {
-                "value": "Public Opinion",
-                "label": "Public Opinion Trends - Discover visualizations of public opinion polls, social trends, and cultural shifts across different regions."
-              },
-              {
-                "value": "Real Estate",
-                "label": "Real Estate Market Insights - Explore real estate market trends, property values, and urban development through targeted data visualizations."
-              },
-              {
-                "value": "Sports",
-                "label": "Sports Data Insights - Analyze sports data visualizations that showcase performance statistics, team rankings, and sports economics."
-              },
-              {
-                "value": "Technology",
-                "label": "Technology Trends Visualized - Dive into technology visualizations highlighting industry trends, tech adoption rates, and innovation impacts."
-              },
-              {
-                "value": "Wealth",
-                "label": "Wealth Distribution Insights - Explore wealth distribution, financial health, and economic disparities through detailed visualizations."
-              },
-              {
-                "value": "Travel",
-                "label": "Travel Trends Visualized - Discover travel trends, tourism statistics, and destination analytics through engaging visualizations."
-              },
-              {
-                "value": "Nature",
-                "label": "Nature and Conservation Data - Delve into visualizations of ecological data, wildlife statistics, and conservation efforts around the globe."
-              },
-              {
-                "value": "Space",
-                "label": "Space Exploration Data - Explore the universe with space data visualizations covering planetary science, space missions, and astronomical discoveries."
-              },
-              {
-                "value": "Diagram",
-                "label": "Diagrammatic Data Insights - Understand complex data through diagrams that simplify information across various topics and industries."
-              },
-              {
-                "value": "Other",
-                "label": "Diverse Data Visualizations - Explore a variety of data visualizations that don't neatly fit into any single category but offer unique insights."
-              }
-            ]
-          }
-        },
-        "location": "home.ts",
-        "module": () => import('@/routes/voronoiapp/home.ts')
-      },
-      "/latest/:category?": {
-        "url": "voronoiapp.com",
-        "categories": [
-          "picture"
-        ],
-        "view": 2,
-        "maintainers": [
-          "Cesaryuan"
-        ],
-        "name": "Latest Posts",
-        "path": "/latest/:category?",
-        "radar": [
-          {
-            "source": [
-              "www.voronoiapp.com/posts/latest"
-            ],
-            "target": "/latest"
-          }
-        ],
-        "example": "/voronoiapp/latest",
-        "parameters": {
-          "category": {
-            "description": "The category of the post",
-            "default": "",
-            "options": [
-              {
-                "value": "",
-                "label": "All categories"
-              },
-              {
-                "value": "Automotive",
-                "label": "Automotive Data Insights - Explore a range of automotive data visualizations showcasing trends, innovations, and market dynamics in the automotive industry."
-              },
-              {
-                "value": "Business",
-                "label": "Business Visualization Trends - Discover business visualizations covering market analysis, corporate strategies, and economic impacts across global industries."
-              },
-              {
-                "value": "Climate",
-                "label": "Climate Data Visualized - Delve into climate change data visualizations that detail weather patterns, environmental impacts, and sustainability efforts worldwide."
-              },
-              {
-                "value": "Demographics",
-                "label": "Demographic Visual Insights - Explore visual demographics data showcasing population trends, societal changes, and demographic analytics across regions."
-              },
-              {
-                "value": "Economy",
-                "label": "Economic Visualization Insights - View economic visualizations illustrating financial markets, economic policies, and global economic health."
-              },
-              {
-                "value": "Energy",
-                "label": "Energy Industry Visual Data - Discover the dynamics of global energy consumption, renewable sources, and energy market trends through vivid visualizations."
-              },
-              {
-                "value": "Entertainment",
-                "label": "Entertainment Industry Data - Explore data visualizations in the entertainment industry, covering everything from box office trends to streaming service analytics."
-              },
-              {
-                "value": "Geopolitics",
-                "label": "Geopolitical Data Visualized - Understand global geopolitical shifts and international relations through comprehensive geopolitical data visualizations."
-              },
-              {
-                "value": "Healthcare",
-                "label": "Healthcare Insights Visualized - Analyze healthcare data visualizations spanning disease trends, healthcare services, and public health policies."
-              },
-              {
-                "value": "Innovation",
-                "label": "Innovation in Data - Dive into innovation data visualizations highlighting technology advancements, R&D investments, and patent trends."
-              },
-              {
-                "value": "Maps",
-                "label": "Cartographic Visual Insights - Discover cartographic visualizations that map everything from socio-economic data to geographical phenomena."
-              },
-              {
-                "value": "Markets",
-                "label": "Market Trends Visualized - Visualize market trends, financial data, and economic forecasts through comprehensive market visualizations."
-              },
-              {
-                "value": "Money",
-                "label": "Financial Data Visualized - Dive into financial visualizations depicting currency trends, investment flows, and banking statistics."
-              },
-              {
-                "value": "Natural Resources",
-                "label": "Natural Resources Data - Explore visualizations of natural resources, detailing extraction, consumption, and conservation data."
-              },
-              {
-                "value": "Politics",
-                "label": "Political Visual Insights - Analyze political trends, election results, and legislative impacts through detailed political visualizations."
-              },
-              {
-                "value": "Public Opinion",
-                "label": "Public Opinion Trends - Discover visualizations of public opinion polls, social trends, and cultural shifts across different regions."
-              },
-              {
-                "value": "Real Estate",
-                "label": "Real Estate Market Insights - Explore real estate market trends, property values, and urban development through targeted data visualizations."
-              },
-              {
-                "value": "Sports",
-                "label": "Sports Data Insights - Analyze sports data visualizations that showcase performance statistics, team rankings, and sports economics."
-              },
-              {
-                "value": "Technology",
-                "label": "Technology Trends Visualized - Dive into technology visualizations highlighting industry trends, tech adoption rates, and innovation impacts."
-              },
-              {
-                "value": "Wealth",
-                "label": "Wealth Distribution Insights - Explore wealth distribution, financial health, and economic disparities through detailed visualizations."
-              },
-              {
-                "value": "Travel",
-                "label": "Travel Trends Visualized - Discover travel trends, tourism statistics, and destination analytics through engaging visualizations."
-              },
-              {
-                "value": "Nature",
-                "label": "Nature and Conservation Data - Delve into visualizations of ecological data, wildlife statistics, and conservation efforts around the globe."
-              },
-              {
-                "value": "Space",
-                "label": "Space Exploration Data - Explore the universe with space data visualizations covering planetary science, space missions, and astronomical discoveries."
-              },
-              {
-                "value": "Diagram",
-                "label": "Diagrammatic Data Insights - Understand complex data through diagrams that simplify information across various topics and industries."
-              },
-              {
-                "value": "Other",
-                "label": "Diverse Data Visualizations - Explore a variety of data visualizations that don't neatly fit into any single category but offer unique insights."
-              }
-            ]
-          }
-        },
-        "location": "latest.ts",
-        "module": () => import('@/routes/voronoiapp/latest.ts')
-      },
-      "/popular/:tab?/:time_range?/:category?": {
-        "url": "voronoiapp.com",
-        "categories": [
-          "picture"
-        ],
-        "view": 2,
-        "maintainers": [
-          "Cesaryuan"
-        ],
-        "name": "Popular Posts",
-        "path": "/popular/:tab?/:time_range?/:category?",
-        "radar": [
-          {
-            "title": "Most Liked Posts",
-            "source": [
-              "www.voronoiapp.com/posts/most-popular"
-            ],
-            "target": "/popular/most-popular"
-          },
-          {
-            "title": "Most Discussed Posts",
-            "source": [
-              "www.voronoiapp.com/posts/most-discussed"
-            ],
-            "target": "/popular/most-discussed"
-          },
-          {
-            "title": "Most Viewed Posts",
-            "source": [
-              "www.voronoiapp.com/posts/most-viewed"
-            ],
-            "target": "/popular/most-viewed"
-          }
-        ],
-        "parameters": {
-          "tab": {
-            "description": "The tab to get the popular posts from.",
-            "default": "most-popular",
-            "options": [
-              {
-                "value": "most-popular",
-                "label": "Most Liked"
-              },
-              {
-                "value": "most-discussed",
-                "label": "Most Discussed"
-              },
-              {
-                "value": "most-viewed",
-                "label": "Most Viewed"
-              }
-            ]
-          },
-          "time_range": {
-            "description": "Time range between which the posts are popular.",
-            "default": "MONTH",
-            "options": [
-              {
-                "value": "WEEK",
-                "label": "Last 7 days"
-              },
-              {
-                "value": "MONTH",
-                "label": "Last 30 days"
-              },
-              {
-                "value": "YEAR",
-                "label": "Last 12 months"
-              },
-              {
-                "value": "ALL",
-                "label": "All time"
-              }
-            ]
-          },
-          "category": {
-            "description": "The category of the post",
-            "default": "",
-            "options": [
-              {
-                "value": "",
-                "label": "All categories"
-              },
-              {
-                "value": "Automotive",
-                "label": "Automotive Data Insights - Explore a range of automotive data visualizations showcasing trends, innovations, and market dynamics in the automotive industry."
-              },
-              {
-                "value": "Business",
-                "label": "Business Visualization Trends - Discover business visualizations covering market analysis, corporate strategies, and economic impacts across global industries."
-              },
-              {
-                "value": "Climate",
-                "label": "Climate Data Visualized - Delve into climate change data visualizations that detail weather patterns, environmental impacts, and sustainability efforts worldwide."
-              },
-              {
-                "value": "Demographics",
-                "label": "Demographic Visual Insights - Explore visual demographics data showcasing population trends, societal changes, and demographic analytics across regions."
-              },
-              {
-                "value": "Economy",
-                "label": "Economic Visualization Insights - View economic visualizations illustrating financial markets, economic policies, and global economic health."
-              },
-              {
-                "value": "Energy",
-                "label": "Energy Industry Visual Data - Discover the dynamics of global energy consumption, renewable sources, and energy market trends through vivid visualizations."
-              },
-              {
-                "value": "Entertainment",
-                "label": "Entertainment Industry Data - Explore data visualizations in the entertainment industry, covering everything from box office trends to streaming service analytics."
-              },
-              {
-                "value": "Geopolitics",
-                "label": "Geopolitical Data Visualized - Understand global geopolitical shifts and international relations through comprehensive geopolitical data visualizations."
-              },
-              {
-                "value": "Healthcare",
-                "label": "Healthcare Insights Visualized - Analyze healthcare data visualizations spanning disease trends, healthcare services, and public health policies."
-              },
-              {
-                "value": "Innovation",
-                "label": "Innovation in Data - Dive into innovation data visualizations highlighting technology advancements, R&D investments, and patent trends."
-              },
-              {
-                "value": "Maps",
-                "label": "Cartographic Visual Insights - Discover cartographic visualizations that map everything from socio-economic data to geographical phenomena."
-              },
-              {
-                "value": "Markets",
-                "label": "Market Trends Visualized - Visualize market trends, financial data, and economic forecasts through comprehensive market visualizations."
-              },
-              {
-                "value": "Money",
-                "label": "Financial Data Visualized - Dive into financial visualizations depicting currency trends, investment flows, and banking statistics."
-              },
-              {
-                "value": "Natural Resources",
-                "label": "Natural Resources Data - Explore visualizations of natural resources, detailing extraction, consumption, and conservation data."
-              },
-              {
-                "value": "Politics",
-                "label": "Political Visual Insights - Analyze political trends, election results, and legislative impacts through detailed political visualizations."
-              },
-              {
-                "value": "Public Opinion",
-                "label": "Public Opinion Trends - Discover visualizations of public opinion polls, social trends, and cultural shifts across different regions."
-              },
-              {
-                "value": "Real Estate",
-                "label": "Real Estate Market Insights - Explore real estate market trends, property values, and urban development through targeted data visualizations."
-              },
-              {
-                "value": "Sports",
-                "label": "Sports Data Insights - Analyze sports data visualizations that showcase performance statistics, team rankings, and sports economics."
-              },
-              {
-                "value": "Technology",
-                "label": "Technology Trends Visualized - Dive into technology visualizations highlighting industry trends, tech adoption rates, and innovation impacts."
-              },
-              {
-                "value": "Wealth",
-                "label": "Wealth Distribution Insights - Explore wealth distribution, financial health, and economic disparities through detailed visualizations."
-              },
-              {
-                "value": "Travel",
-                "label": "Travel Trends Visualized - Discover travel trends, tourism statistics, and destination analytics through engaging visualizations."
-              },
-              {
-                "value": "Nature",
-                "label": "Nature and Conservation Data - Delve into visualizations of ecological data, wildlife statistics, and conservation efforts around the globe."
-              },
-              {
-                "value": "Space",
-                "label": "Space Exploration Data - Explore the universe with space data visualizations covering planetary science, space missions, and astronomical discoveries."
-              },
-              {
-                "value": "Diagram",
-                "label": "Diagrammatic Data Insights - Understand complex data through diagrams that simplify information across various topics and industries."
-              },
-              {
-                "value": "Other",
-                "label": "Diverse Data Visualizations - Explore a variety of data visualizations that don't neatly fit into any single category but offer unique insights."
-              }
-            ]
-          }
-        },
-        "example": "/voronoiapp/popular/most-popular/MONTH",
-        "location": "popular.ts",
-        "module": () => import('@/routes/voronoiapp/popular.ts')
-      },
-      "/search/:keyword": {
-        "url": "voronoiapp.com",
-        "categories": [
-          "picture"
-        ],
-        "view": 2,
-        "maintainers": [
-          "Cesaryuan"
-        ],
-        "name": "Search Keyword Posts",
-        "path": "/search/:keyword",
-        "radar": [
-          {
-            "source": [
-              "www.voronoiapp.com/explore"
-            ],
-            "target": "/search/:keyword"
-          }
-        ],
-        "example": "/voronoiapp/search/china",
-        "parameters": {
-          "keyword": "The keyword to search for"
-        },
-        "location": "search.ts",
-        "module": () => import('@/routes/voronoiapp/search.ts')
-      }
-    },
-    "apiRoutes": {},
-    "name": "Voronoi",
-    "url": "voronoiapp.com",
-    "lang": "en"
   },
   "web": {
     "routes": {
@@ -169504,55 +170250,6 @@ export default {
     "description": "::: tip\n自 2024 年 7 月，未登录状态下大部分路由[无法获取全文](https://github.com/DIYgod/RSSHub/issues/16260)。若有需要请在登陆知乎后寻找并添加包含`z_c0`的 Cookies 至环境变量`ZHIHU_COOKIES`。\n:::",
     "lang": "zh-CN"
   },
-  "czechstepbystep": {
-    "routes": {
-      "/kratke-ceske-zpravy": {
-        "path": "/kratke-ceske-zpravy",
-        "categories": [
-          "study"
-        ],
-        "example": "/czechstepbystep/kratke-ceske-zpravy",
-        "parameters": {},
-        "features": {
-          "requireConfig": false,
-          "requirePuppeteer": false,
-          "antiCrawler": false,
-          "supportRadar": true,
-          "supportBT": false,
-          "supportPodcast": false,
-          "supportScihub": false
-        },
-        "radar": [
-          {
-            "source": [
-              "www.czechstepbystep.cz/kategorie/kratke-ceske-zpravy"
-            ],
-            "target": "/kratke-ceske-zpravy"
-          }
-        ],
-        "name": "Krátké české zprávy",
-        "maintainers": [
-          "cmp0xff"
-        ],
-        "url": "www.czechstepbystep.cz/kategorie/kratke-ceske-zpravy",
-        "description": "Short Czech news (Krátké české zprávy) from CzechStepByStep including video, full transcript, online exercises, and worksheets.",
-        "zh": {
-          "name": "捷克语短新闻",
-          "description": "来自 CzechStepByStep 的捷克语短新闻（Krátké české zprávy），包含视频、完整文字记录、在线练习和工作表。"
-        },
-        "location": "kratke-ceske-zpravy.ts",
-        "module": () => import('@/routes/czechstepbystep/kratke-ceske-zpravy.ts')
-      }
-    },
-    "apiRoutes": {},
-    "name": "CzechStepByStep",
-    "url": "www.czechstepbystep.cz",
-    "lang": "cs",
-    "zh": {
-      "name": "捷克语学习",
-      "description": "捷克语学习网站，提供短新闻、在线练习与工作表。"
-    }
-  },
   "finology": {
     "routes": {
       "/bullets": {
@@ -169747,54 +170444,6 @@ export default {
     "apiRoutes": {},
     "name": "Finology Insider",
     "url": "insider.finology.in",
-    "lang": "en"
-  },
-  "fortnite": {
-    "routes": {
-      "/news/:options?": {
-        "path": "/news/:options?",
-        "categories": [
-          "game"
-        ],
-        "example": "/fortnite/news",
-        "parameters": {
-          "options": "Query-style options, `lang` and `tag`, see below"
-        },
-        "features": {
-          "requireConfig": false,
-          "requirePuppeteer": false,
-          "antiCrawler": false,
-          "supportBT": false,
-          "supportPodcast": false,
-          "supportScihub": false
-        },
-        "radar": [
-          {
-            "source": [
-              "www.fortnite.com/news"
-            ],
-            "target": "/news"
-          },
-          {
-            "source": [
-              "www.fortnite.com/news/tag/:tag"
-            ],
-            "target": "/news/tag=:tag"
-          }
-        ],
-        "name": "News",
-        "maintainers": [
-          "lyqluis"
-        ],
-        "url": "www.fortnite.com/news",
-        "description": "- `lang`, default `en-US`, one of `ar`, `de`, `en-US`, `es-ES`, `es-MX`, `fr`, `it`, `ja`, `ko`, `pl`, `pt-BR`, `ru`, `tr`, `zh-Hans`\n- `tag`, optional, one of `battle-royale` (Battle Royale), `fortnite-competitive` (Fortnite Competitive), `fortnite-festival` (Fortnite Festival), `fortnite-news` (Fortnite News), `fortnite-og` (Fortnite OG), `fortnite-uefn-and-creative` (UEFN and Creative), `lego-fortnite` (LEGO Fortnite Odyssey), `lego-fortnite-brick-life` (LEGO Fortnite Brick Life), `ranked` (Ranked Battle Royale), `reload` (Reload), `rocket-racing` (Rocket Racing), `save-the-world` (Save the World)",
-        "location": "news.ts",
-        "module": () => import('@/routes/fortnite/news.ts')
-      }
-    },
-    "apiRoutes": {},
-    "name": "Fortnite",
-    "url": "fortnite.com",
     "lang": "en"
   },
   "gcores": {
@@ -170836,50 +171485,6 @@ export default {
     "url": "bbs.hupu.com",
     "lang": "zh-CN"
   },
-  "mymusicsheet": {
-    "routes": {
-      "/user/sheets/:username/:iso?/:freeOnly?": {
-        "path": "/user/sheets/:username/:iso?/:freeOnly?",
-        "categories": [
-          "shopping"
-        ],
-        "example": "/mymusicsheet/user/sheets/HalcyonMusic/USD/1",
-        "parameters": {
-          "username": "Username, can be found in the URL",
-          "iso": "ISO 4217 currency code for displaying prices, defaults to `USD`",
-          "freeOnly": "Only return free scores, any value to enable"
-        },
-        "features": {
-          "requireConfig": false,
-          "requirePuppeteer": false,
-          "antiCrawler": false,
-          "supportBT": false,
-          "supportPodcast": false,
-          "supportScihub": false
-        },
-        "radar": [
-          {
-            "source": [
-              "mymusicfive.com/:username/*",
-              "mymusicfive.com/:username"
-            ],
-            "target": "/user/sheets/:username"
-          }
-        ],
-        "name": "User Sheets",
-        "maintainers": [
-          "Freddd13"
-        ],
-        "description": "Please refer to [Wikipedia](https://en.wikipedia.org/wiki/ISO_4217#Active_codes) for ISO 4217.",
-        "location": "usersheets.tsx",
-        "module": () => import('@/routes/mymusicsheet/usersheets.tsx')
-      }
-    },
-    "apiRoutes": {},
-    "name": "mymusic5 (MyMusicSheet)",
-    "url": "mymusicfive.com",
-    "lang": "en"
-  },
   "pixiv": {
     "routes": {
       "/user/bookmarks/:id": {
@@ -171281,225 +171886,6 @@ export default {
     "name": "pixiv",
     "url": "www.pixiv.net",
     "lang": "ja"
-  },
-  "producthunt": {
-    "routes": {
-      "/feed": {
-        "path": "/feed",
-        "categories": [
-          "other"
-        ],
-        "example": "/producthunt/feed",
-        "features": {
-          "requireConfig": false,
-          "requirePuppeteer": false,
-          "antiCrawler": false,
-          "supportBT": false,
-          "supportPodcast": false,
-          "supportScihub": false
-        },
-        "name": "Official Feed",
-        "maintainers": [
-          "miaoyafeng",
-          "Fatpandac"
-        ],
-        "url": "www.producthunt.com/feed/",
-        "location": "feed.ts",
-        "module": () => import('@/routes/producthunt/feed.ts')
-      },
-      "/today": {
-        "path": "/today",
-        "categories": [
-          "other"
-        ],
-        "example": "/producthunt/today",
-        "features": {
-          "requireConfig": [
-            {
-              "name": "PRODUCTHUNT_ACCESS_TOKEN",
-              "description": "Optional API access token for the featured daily list when the website is unavailable. See [Product Hunt API documentation](https://api.producthunt.com/v2/docs).",
-              "optional": true
-            }
-          ],
-          "requirePuppeteer": false,
-          "antiCrawler": true,
-          "supportBT": false,
-          "supportPodcast": false,
-          "supportScihub": false
-        },
-        "description": "Top products from the publisher’s Today list. The general Product Hunt feed is also available at `/producthunt/feed`.",
-        "radar": [
-          {
-            "source": [
-              "www.producthunt.com/"
-            ]
-          }
-        ],
-        "name": "Top Products Launching Today",
-        "maintainers": [
-          "miaoyafeng",
-          "Fatpandac"
-        ],
-        "url": "www.producthunt.com/",
-        "location": "today.tsx",
-        "module": () => import('@/routes/producthunt/today.tsx')
-      }
-    },
-    "apiRoutes": {},
-    "name": "Product Hunt",
-    "url": "www.producthunt.com",
-    "description": "> 官方 Feed 地址为: <https://www.producthunt.com/feed>",
-    "lang": "en"
-  },
-  "psyche": {
-    "routes": {
-      "/topic/:topic": {
-        "path": "/topic/:topic",
-        "categories": [
-          "new-media"
-        ],
-        "example": "/psyche/topic/therapeia",
-        "parameters": {
-          "topic": "Topic"
-        },
-        "radar": [
-          {
-            "source": [
-              "psyche.co/therapeia"
-            ],
-            "target": "/topic/therapeia"
-          },
-          {
-            "source": [
-              "psyche.co/eudaimonia"
-            ],
-            "target": "/topic/eudaimonia"
-          },
-          {
-            "source": [
-              "psyche.co/poiesis"
-            ],
-            "target": "/topic/poiesis"
-          }
-        ],
-        "name": "Topics",
-        "maintainers": [
-          "emdoe"
-        ],
-        "description": "Supported categories: Therapeia, Eudaimonia, and Poiesis.",
-        "location": "topic.ts",
-        "module": () => import('@/routes/psyche/topic.ts')
-      },
-      "/type/:type": {
-        "path": "/type/:type",
-        "categories": [
-          "new-media"
-        ],
-        "example": "/psyche/type/ideas",
-        "parameters": {
-          "type": "Type"
-        },
-        "features": {
-          "requireConfig": false,
-          "requirePuppeteer": false,
-          "antiCrawler": false,
-          "supportBT": false,
-          "supportPodcast": false,
-          "supportScihub": false
-        },
-        "radar": [
-          {
-            "source": [
-              "psyche.co/ideas"
-            ],
-            "target": "/type/ideas"
-          },
-          {
-            "source": [
-              "psyche.co/guides"
-            ],
-            "target": "/type/guides"
-          },
-          {
-            "source": [
-              "psyche.co/films"
-            ],
-            "target": "/type/films"
-          }
-        ],
-        "name": "Types",
-        "maintainers": [
-          "emdoe"
-        ],
-        "description": "Supported types: Ideas, Guides, and Films.",
-        "location": "type.ts",
-        "module": () => import('@/routes/psyche/type.ts')
-      }
-    },
-    "apiRoutes": {},
-    "name": "Psyche",
-    "url": "psyche.co",
-    "lang": "en"
-  },
-  "ryo.lu": {
-    "routes": {
-      "/journal/:lang?": {
-        "path": "/journal/:lang?",
-        "categories": [
-          "blog"
-        ],
-        "view": 0,
-        "example": "/ryo.lu/journal",
-        "parameters": {
-          "lang": {
-            "description": "Language",
-            "default": "en",
-            "options": [
-              {
-                "value": "en",
-                "label": "English"
-              },
-              {
-                "value": "zh",
-                "label": "中文"
-              },
-              {
-                "value": "ja",
-                "label": "日本語"
-              }
-            ]
-          }
-        },
-        "features": {
-          "requireConfig": false,
-          "requirePuppeteer": false,
-          "antiCrawler": false,
-          "supportBT": false,
-          "supportPodcast": false,
-          "supportScihub": false
-        },
-        "radar": [
-          {
-            "source": [
-              "ryo.lu/journal",
-              "ryo.lu/"
-            ],
-            "target": "/journal"
-          }
-        ],
-        "name": "Journal",
-        "maintainers": [
-          "TonyRL"
-        ],
-        "url": "ryo.lu/journal",
-        "location": "journal.tsx",
-        "module": () => import('@/routes/ryo.lu/journal.tsx')
-      }
-    },
-    "apiRoutes": {},
-    "name": "Ryo Lu",
-    "url": "ryo.lu",
-    "lang": "en"
   },
   "sobooks": {
     "routes": {
@@ -174935,178 +175321,6 @@ export default {
     "description": "::: warning\n由于区域限制，需要在有国内 IP 的机器上自建才能正常获取 RSS。而对于《TapTap 国际版》则需要部署在具有海外出口的 IP 上才可正常获取 RSS。\n:::",
     "lang": "zh-CN"
   },
-  "twreporter": {
-    "routes": {
-      "/category/:category": {
-        "path": "/category/:category",
-        "categories": [
-          "new-media"
-        ],
-        "example": "/twreporter/category/world",
-        "parameters": {
-          "category": "Category"
-        },
-        "features": {
-          "requireConfig": false,
-          "requirePuppeteer": false,
-          "antiCrawler": false,
-          "supportBT": false,
-          "supportPodcast": false,
-          "supportScihub": false
-        },
-        "radar": [
-          {
-            "source": [
-              "twreporter.org/:category"
-            ]
-          },
-          {
-            "source": [
-              "twreporter.org/categories/world"
-            ],
-            "target": "/category/world"
-          },
-          {
-            "source": [
-              "twreporter.org/categories/humanrights"
-            ],
-            "target": "/category/humanrights"
-          },
-          {
-            "source": [
-              "twreporter.org/categories/politics-and-society"
-            ],
-            "target": "/category/politics_and_society"
-          },
-          {
-            "source": [
-              "twreporter.org/categories/health"
-            ],
-            "target": "/category/health"
-          },
-          {
-            "source": [
-              "twreporter.org/categories/environment"
-            ],
-            "target": "/category/environment"
-          },
-          {
-            "source": [
-              "twreporter.org/categories/econ"
-            ],
-            "target": "/category/econ"
-          },
-          {
-            "source": [
-              "twreporter.org/categories/culture"
-            ],
-            "target": "/category/culture"
-          },
-          {
-            "source": [
-              "twreporter.org/categories/education"
-            ],
-            "target": "/category/education"
-          },
-          {
-            "source": [
-              "twreporter.org/categories/podcast"
-            ],
-            "target": "/category/podcast"
-          },
-          {
-            "source": [
-              "twreporter.org/categories/opinion"
-            ],
-            "target": "/category/opinion"
-          },
-          {
-            "source": [
-              "twreporter.org/categories/photography"
-            ],
-            "target": "/category/photos_section"
-          }
-        ],
-        "name": "分類",
-        "maintainers": [
-          "emdoe"
-        ],
-        "url": "twreporter.org/",
-        "location": "category.ts",
-        "module": () => import('@/routes/twreporter/category.ts')
-      },
-      "/newest": {
-        "path": "/newest",
-        "categories": [
-          "new-media"
-        ],
-        "example": "/twreporter/newest",
-        "parameters": {},
-        "features": {
-          "requireConfig": false,
-          "requirePuppeteer": false,
-          "antiCrawler": false,
-          "supportBT": false,
-          "supportPodcast": false,
-          "supportScihub": false
-        },
-        "radar": [
-          {
-            "source": [
-              "twreporter.org/"
-            ]
-          }
-        ],
-        "name": "最新",
-        "maintainers": [
-          "emdoe"
-        ],
-        "url": "twreporter.org/",
-        "location": "newest.ts",
-        "module": () => import('@/routes/twreporter/newest.ts')
-      }
-    },
-    "apiRoutes": {},
-    "name": "報導者",
-    "url": "twreporter.org",
-    "lang": "zh-TW"
-  },
-  "fanbox": {
-    "routes": {
-      "/:creator": {
-        "path": "/:creator",
-        "categories": [
-          "social-media"
-        ],
-        "example": "/fanbox/official",
-        "parameters": {
-          "creator": "fanbox user name"
-        },
-        "maintainers": [
-          "KarasuShin",
-          "pseudoyu"
-        ],
-        "name": "Creator",
-        "features": {
-          "requireConfig": [
-            {
-              "name": "FANBOX_SESSION_ID",
-              "description": "Required for private posts. Can be found in browser DevTools -> Application -> Cookies -> https://www.fanbox.cc -> FANBOXSESSID",
-              "optional": true
-            }
-          ],
-          "requirePuppeteer": false,
-          "nsfw": true
-        },
-        "location": "index.ts",
-        "module": () => import('@/routes/fanbox/index.ts')
-      }
-    },
-    "apiRoutes": {},
-    "name": "fanbox",
-    "url": "www.fanbox.cc",
-    "lang": "zh-CN"
-  },
   "google": {
     "routes": {
       "/album/:id": {
@@ -175525,60 +175739,6 @@ export default {
     "url": "www.google.com",
     "lang": "en"
   },
-  "zuvio": {
-    "routes": {
-      "/student5/boards": {
-        "path": "/student5/boards",
-        "categories": [
-          "bbs"
-        ],
-        "example": "/zuvio/student5/boards",
-        "parameters": {},
-        "features": {
-          "requireConfig": false,
-          "requirePuppeteer": false,
-          "antiCrawler": false,
-          "supportBT": false,
-          "supportPodcast": false,
-          "supportScihub": false
-        },
-        "name": "看板列表",
-        "maintainers": [
-          "TonyRL"
-        ],
-        "location": "boards.ts",
-        "module": () => import('@/routes/zuvio/boards.ts')
-      },
-      "/student5/:board?": {
-        "path": "/student5/:board?",
-        "categories": [
-          "bbs"
-        ],
-        "example": "/zuvio/student5/34",
-        "parameters": {
-          "board": "看板 ID，空为全站文章，可在看板 URL 或下方路由找到"
-        },
-        "features": {
-          "requireConfig": false,
-          "requirePuppeteer": false,
-          "antiCrawler": false,
-          "supportBT": false,
-          "supportPodcast": false,
-          "supportScihub": false
-        },
-        "name": "校園話題",
-        "maintainers": [
-          "TonyRL"
-        ],
-        "location": "student5.ts",
-        "module": () => import('@/routes/zuvio/student5.ts')
-      }
-    },
-    "apiRoutes": {},
-    "name": "Zuvio",
-    "url": "irs.zuvio.com.tw",
-    "lang": "zh-TW"
-  },
   "twitter": {
     "routes": {
       "/trends/:woeid?": {
@@ -175960,60 +176120,6 @@ export default {
   },
   "youtube": {
     "routes": {
-      "/community/:handle": {
-        "path": "/community/:handle",
-        "categories": [
-          "social-media"
-        ],
-        "example": "/youtube/community/@JFlaMusic",
-        "parameters": {
-          "handle": "YouTube handles or channel id"
-        },
-        "name": "Community Posts",
-        "maintainers": [
-          "TonyRL"
-        ],
-        "location": "community.tsx",
-        "module": () => import('@/routes/youtube/community.tsx')
-      },
-      "/c/:username/:embed?": {
-        "path": "/c/:username/:embed?",
-        "categories": [
-          "social-media"
-        ],
-        "example": "/youtube/c/YouTubeCreators",
-        "parameters": {
-          "username": "YouTube custom URL",
-          "embed": "Default to embed the video, set to any value to disable embedding"
-        },
-        "features": {
-          "requireConfig": [
-            {
-              "name": "YOUTUBE_KEY",
-              "description": " YouTube API Key, support multiple keys, split them with `,`, [API Key application](https://console.developers.google.com/)"
-            }
-          ],
-          "requirePuppeteer": false,
-          "antiCrawler": false,
-          "supportBT": false,
-          "supportPodcast": false,
-          "supportScihub": false
-        },
-        "radar": [
-          {
-            "source": [
-              "www.youtube.com/c/:id"
-            ],
-            "target": "/c/:id"
-          }
-        ],
-        "name": "Custom URL",
-        "maintainers": [
-          "TonyRL"
-        ],
-        "location": "custom.ts",
-        "module": () => import('@/routes/youtube/custom.ts')
-      },
       "/charts/:category?/:country?/:embed?": {
         "path": "/charts/:category?/:country?/:embed?",
         "categories": [
@@ -176078,6 +176184,60 @@ export default {
         "url": "www.youtube.com/feed/subscriptions",
         "location": "subscriptions.ts",
         "module": () => import('@/routes/youtube/subscriptions.ts')
+      },
+      "/community/:handle": {
+        "path": "/community/:handle",
+        "categories": [
+          "social-media"
+        ],
+        "example": "/youtube/community/@JFlaMusic",
+        "parameters": {
+          "handle": "YouTube handles or channel id"
+        },
+        "name": "Community Posts",
+        "maintainers": [
+          "TonyRL"
+        ],
+        "location": "community.tsx",
+        "module": () => import('@/routes/youtube/community.tsx')
+      },
+      "/c/:username/:embed?": {
+        "path": "/c/:username/:embed?",
+        "categories": [
+          "social-media"
+        ],
+        "example": "/youtube/c/YouTubeCreators",
+        "parameters": {
+          "username": "YouTube custom URL",
+          "embed": "Default to embed the video, set to any value to disable embedding"
+        },
+        "features": {
+          "requireConfig": [
+            {
+              "name": "YOUTUBE_KEY",
+              "description": " YouTube API Key, support multiple keys, split them with `,`, [API Key application](https://console.developers.google.com/)"
+            }
+          ],
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "radar": [
+          {
+            "source": [
+              "www.youtube.com/c/:id"
+            ],
+            "target": "/c/:id"
+          }
+        ],
+        "name": "Custom URL",
+        "maintainers": [
+          "TonyRL"
+        ],
+        "location": "custom.ts",
+        "module": () => import('@/routes/youtube/custom.ts')
       },
       "/channel/:id/:routeParams?": {
         "path": "/channel/:id/:routeParams?",
